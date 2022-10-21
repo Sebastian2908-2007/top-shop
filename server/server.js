@@ -1,0 +1,45 @@
+/**import express */
+const express = require('express');
+/**import apollo server */
+const { ApolloServer } = require('apollo-server-express');
+/**import schema stuff typedefs resolvers */
+const {typeDefs, resolvers} =require('./schemas');
+
+/*db connection */
+const db = require('./config/connection');
+
+/*port */
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+/**make apolloserver function */
+const startServer = async () => {
+    const server = new ApolloServer({
+        typeDefs,
+        resolvers,
+        csrfPrevention: true,
+        cache: 'bounded',
+        /**context here */
+    });
+    /**start apollo server */
+    await server.start();
+
+    /**apply express as middleware */
+    server.applyMiddleware({ app });
+
+    /*log grapql url */
+    console.log(`Use graphql at http://localhost:${PORT}${server.graphqlPath}`);
+};
+
+startServer()
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+db.once('open', () => {
+    app.listen(PORT, () => {
+        console.log(`API server running on ${PORT} !!! Yeah boy!`);
+    });
+});
+
+
