@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Sebastian2908-2007/sybs-crafty-shack/issues"
   },
-  "homepage": "https://github.com/Sebastian2908-2007/sybs-crafty-shack#readme"
+  "homepage": "https://github.com/Sebastian2908-2007/sybs-crafty-shack#readme",
+  "dependencies": {
+    "concurrently": "^7.4.0"
+  }
 }
