@@ -1,4 +1,5 @@
 const { Category, FileUpload } = require('../models');
+const Product = require('../models/Product');
 
 const resolvers = {
     Query:{
@@ -8,6 +9,9 @@ const resolvers = {
         getFiles: async (parent, args) => {
             return FileUpload.find().sort({createdAt: -1});
         },
+        getProducts: async (parent,args) => {
+            return Product.find().sort({createdAt: -1});
+        }
     },
 };
 

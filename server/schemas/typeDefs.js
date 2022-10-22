@@ -13,10 +13,20 @@ type Category {
     Key: String!
     Bucket: String!
  }
+ type Product {
+    _id: ID
+    name: String 
+    description: String
+    image: FileUpload
+    price: Int 
+    quantity: Int 
+    category: Category
+ }
 
 type Query {
     getCategories:[Category]
     getFiles:[FileUpload]
+    getProducts:[Product]
 }
 `;
 
