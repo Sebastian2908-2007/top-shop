@@ -2,9 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "watch": "nodemon"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -18,5 +19,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.6",
     "stripe": "^10.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
