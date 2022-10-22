@@ -1,3 +1,4 @@
 const Category = require('./Category');
+const FileUpload = require('./FileUpload');
 
-module.exports = { Category };
+module.exports = { Category, FileUpload };
