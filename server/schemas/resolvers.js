@@ -1,5 +1,6 @@
-const { Category, FileUpload, Order } = require('../models');
-const Product = require('../models/Product');
+const { Category, FileUpload, Order, Product, Blogpost } = require('../models');
+
+
 
 const resolvers = {
     Query:{
@@ -14,6 +15,9 @@ const resolvers = {
         },
         getOrders: async (parent, args) => {
             return Order.find().sort({createdAt: -1});
+        },
+        getBlogposts: async (parent, args) => {
+            return Blogpost.find().sort({createdAt: -1});
         },
     },
 };

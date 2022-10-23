@@ -29,11 +29,19 @@ type Category {
     products:[Product]
  }
 
+ type Blogpost {
+    _id: ID
+    title: String,
+    blogText: String
+    blogPic: FileUpload
+ }
+
 type Query {
     getCategories:[Category]
     getFiles:[FileUpload]
     getProducts:[Product]
     getOrders:[Order]
+    getBlogposts:[Blogpost]
 }
 `;
 
