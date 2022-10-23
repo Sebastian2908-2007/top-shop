@@ -15,18 +15,25 @@ type Category {
  }
  type Product {
     _id: ID
-    name: String 
-    description: String
+    name: String !
+    description: String !
     image: FileUpload
-    price: Int 
-    quantity: Int 
-    category: Category
+    price: Int !
+    quantity: Int ! 
+    category: Category !
+ }
+
+ type Order {
+    _id: ID
+    purchaseDate: String
+    products:[Product]
  }
 
 type Query {
     getCategories:[Category]
     getFiles:[FileUpload]
     getProducts:[Product]
+    getOrders:[Order]
 }
 `;
 
