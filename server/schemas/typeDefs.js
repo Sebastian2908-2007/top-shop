@@ -35,6 +35,15 @@ type Category {
     blogText: String
     blogPic: FileUpload
  }
+ type User {
+   _id: ID
+   firstName: String
+   lastName: String
+   email: String
+   password: String
+   isAdmin: Boolean
+   orders:[Order]
+ }
 
 type Query {
     getCategories:[Category]
@@ -42,6 +51,7 @@ type Query {
     getProducts:[Product]
     getOrders:[Order]
     getBlogposts:[Blogpost]
+    getUsers:[User]
 }
 `;
 

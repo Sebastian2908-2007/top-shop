@@ -1,4 +1,5 @@
-const { Category, FileUpload, Order, Product, Blogpost } = require('../models');
+const { Category, FileUpload, Order, Product, Blogpost, User } = require('../models');
+
 
 
 
@@ -18,6 +19,9 @@ const resolvers = {
         },
         getBlogposts: async (parent, args) => {
             return Blogpost.find().sort({createdAt: -1});
+        },
+        getUsers: async (parent, args) => {
+            return User.find().sort({createdAt: -1});
         },
     },
 };
