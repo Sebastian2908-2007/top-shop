@@ -31,17 +31,27 @@ type Category {
 
  type Blogpost {
     _id: ID
-    title: String,
-    blogText: String
+    title: String !
+    blogText: String !
     blogPic: FileUpload
  }
+
+type Review {
+   _Id: ID
+   reviewText: String!
+   rating: Int!
+   author: User
+}
+
  type User {
    _id: ID
-   firstName: String
-   lastName: String
-   email: String
-   password: String
+   firstName: String!
+   lastName: String!
+   email: String!
+   password: String!
    isAdmin: Boolean
+   hasLeftReview: Boolean
+   review: Review
    orders:[Order]
  }
 
@@ -52,6 +62,7 @@ type Query {
     getOrders:[Order]
     getBlogposts:[Blogpost]
     getUsers:[User]
+    getReviews:[Review]
 }
 `;
 

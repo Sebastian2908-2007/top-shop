@@ -30,6 +30,14 @@ const userSchema = new Schema({
         type: Boolean,
         default: false
     },
+    hasLeftReview:{
+        type: Boolean,
+        default: false
+     },
+     review:{
+         type: Schema.Types.ObjectId,
+         ref: 'Review'
+     },
     orders:[Order.schema]
 });
 
@@ -59,3 +67,4 @@ userSchema.methods.isPasswordCorrect = async function(password) {
 const User = model('User', userSchema);
 
 module.exports = User;
+
