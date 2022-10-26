@@ -43,6 +43,11 @@ type Review {
    author: User
 }
 
+type UserAuth {
+   user: User!
+   token: ID!
+}
+
  type User {
    _id: ID
    firstName: String!
@@ -63,6 +68,10 @@ type Query {
     getBlogposts:[Blogpost]
     getUsers:[User]
     getReviews:[Review]
+}
+
+type Mutation {
+   addUser(firstName:String!,lastName:String!,email:String!,password:String!): UserAuth
 }
 `;
 

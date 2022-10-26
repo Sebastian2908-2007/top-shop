@@ -19,12 +19,13 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true 
+        unique: true ,
+        match: [/.+@.+\..+/, 'Must match an email address!']
     },
     password: {
         type: String,
         required: true,
-        match:[/^(?=.{8,}$)(?=.?[a-z])(?=.?[A-Z])(?=.?[0-9])(?=.?\W).*$/,'password must contain at least 1 uppercase, 1 lowercase, 1 digit, 1 special character and have a length of at least of 8'],
+        match: [/^(?=.{8,}$)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?\W).*$/,'password must contain at least 1 uppercase, 1 lowercase, 1 digit, 1 special character and have a length of at least of 8']
     },
     isAdmin:{
         type: Boolean,
@@ -67,4 +68,5 @@ userSchema.methods.isPasswordCorrect = async function(password) {
 const User = model('User', userSchema);
 
 module.exports = User;
+// [/^(?=.{8,}$)(?=.?[a-z])(?=.?[A-Z])(?=.?[0-9])(?=.?\W).*$/,'password must contain at least 1 uppercase, 1 lowercase, 1 digit, 1 special character and have a length of at least of 8']
 
