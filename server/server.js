@@ -7,6 +7,7 @@ const {typeDefs, resolvers} =require('./schemas');
 
 /*db connection */
 const db = require('./config/connection');
+const { authMiddleware } = require('./utils/authorize');
 
 /*port */
 const PORT = process.env.PORT || 3001;
@@ -19,7 +20,7 @@ const startServer = async () => {
         resolvers,
         csrfPrevention: true,
         cache: 'bounded',
-        /**context here */
+        context: authMiddleware
     });
     /**start apollo server */
     await server.start();

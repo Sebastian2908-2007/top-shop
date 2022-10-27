@@ -72,6 +72,8 @@ type Query {
 
 type Mutation {
    addUser(firstName:String!,lastName:String!,email:String!,password:String!): UserAuth
+   loginUser(email:String!,password:String!): UserAuth
+   updateUser(firstName:String,lastName:String,email:String): User
 }
 `;
 
