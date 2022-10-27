@@ -25,6 +25,9 @@ const resolvers = {
         getUsers: async (parent, args) => {
             return await User.find().sort({createdAt: -1});
         },
+        getUserById: async (parent,{_id}) => {
+            return await User.findOne({_id:_id});
+        },
         getReviews: async  (parent,args) => {
             return await Review.find().populate('User').sort({createdAt: -1});
         },
@@ -62,6 +65,13 @@ const resolvers = {
               return updatedUser;
             }
             throw new AuthenticationError('no permissions');
+        },
+        deleteUser: async (parent,{_id},context) => {
+            if(context.user._id === _id) {
+                const deletedUser = await User.findOneAndDelete({_id:_id});
+                return deletedUser;
+            }
+            throw new AuthenticationError('it must actually be you account to delete!');
         },
     }
 };

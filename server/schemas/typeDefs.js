@@ -67,6 +67,7 @@ type Query {
     getOrders:[Order]
     getBlogposts:[Blogpost]
     getUsers:[User]
+    getUserById(_id:ID): User
     getReviews:[Review]
 }
 
@@ -74,6 +75,7 @@ type Mutation {
    addUser(firstName:String!,lastName:String!,email:String!,password:String!): UserAuth
    loginUser(email:String!,password:String!): UserAuth
    updateUser(firstName:String,lastName:String,email:String): User
+   deleteUser(_id:ID): User
 }
 `;
 
