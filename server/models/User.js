@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 const Order = require('./Order');
 const bcrypt = require('bcrypt');
+const { assertAbstractType } = require('graphql');
 require('dotenv').config();
 const admin = process.env.ADMIN_EMAIL;
 
@@ -61,9 +62,17 @@ userSchema.pre('save', async function(next) {
     next();
 });
 
+
 userSchema.methods.isPasswordCorrect = async function(password) {
     return bcrypt.compare(password,this.password);
 };
+
+/**this should remove review if the user is deleted */
+userSchema.post("remove", function(doc) {
+   
+    console.log(doc,'removed');
+   
+  });
 
 const User = model('User', userSchema);
 

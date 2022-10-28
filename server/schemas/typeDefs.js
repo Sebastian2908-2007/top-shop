@@ -37,7 +37,7 @@ type Category {
  }
 
 type Review {
-   _Id: ID
+   _id: ID
    reviewText: String!
    rating: Int!
    author: User
@@ -76,6 +76,8 @@ type Mutation {
    loginUser(email:String!,password:String!): UserAuth
    updateUser(firstName:String,lastName:String,email:String): User
    deleteUser(_id:ID): User
+   addReview(reviewText:String! rating:Int!): Review
+   deleteReview(_id:ID): Review
 }
 `;
 
