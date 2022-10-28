@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 const Order = require('./Order');
 const bcrypt = require('bcrypt');
-const { assertAbstractType } = require('graphql');
 require('dotenv').config();
 const admin = process.env.ADMIN_EMAIL;
 

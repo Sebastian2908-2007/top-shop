@@ -67,8 +67,9 @@ type Query {
     getOrders:[Order]
     getBlogposts:[Blogpost]
     getUsers:[User]
-    getUserById(_id:ID): User
+    getUserById(_id:ID!): User
     getReviews:[Review]
+    getReviewById(_id:ID!):Review
 }
 
 type Mutation {
@@ -77,7 +78,8 @@ type Mutation {
    updateUser(firstName:String,lastName:String,email:String): User
    deleteUser(_id:ID): User
    addReview(reviewText:String! rating:Int!): Review
-   deleteReview(_id:ID): Review
+   deleteReview(_id:ID!): Review
+   updateReview(_id:ID!,reviewText:String!,rating:Int!): Review
 }
 `;
 
