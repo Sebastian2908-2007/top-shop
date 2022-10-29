@@ -5,7 +5,6 @@ const expiration = process.env.JWT_EXPIRATION;
 
 module.exports = {
     signToken: function({firstName, lastName,email,isAdmin,_id,hasLeftReview}) {
-        console.log(secret,expiration);
         const payload = {firstName, lastName,email,isAdmin,_id,hasLeftReview};
         return jwt.sign({data: payload},secret,{ expiresIn: expiration });
     },

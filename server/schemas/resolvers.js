@@ -34,6 +34,9 @@ const resolvers = {
         getReviewById: async (parent,{_id}) => {
             return await Review.findOne({_id:_id}).populate('author');
         },
+        getCategoryById: async (parent,{_id}) => {
+            return await Category.findOne({_id:_id});
+        },
     },
     Mutation: {
         addUser: async (parent,args) => {
@@ -155,6 +158,28 @@ const resolvers = {
                 }
             }
           throw new AuthenticationError('to edit a review you must have created it and be logged in!');
+        },
+        addCategory: async (parent,args,context) => {
+            if(context.user.isAdmin) {
+                return await Category.create(args);
+            }
+            throw new AuthenticationError('you must be an admin to create a new category');
+        },
+        updateCategory: async (parent,args,context) => {
+            if(context.user.isAdmin) {
+                return await Category.findByIdAndUpdate(
+                    {_id: args._id},
+                    {name: args.name},
+                    {new:true}
+                );
+            }
+            throw new AuthenticationError('you must be an admin to update a category!');
+        },
+        deleteCategory: async (parent,args,context) => {
+            if(context.user.isAdmin) {
+                return await Category.findByIdAndDelete(args._id);
+            }
+            throw new AuthenticationError('you must be an admin to delete a category');
         },
     }
 };

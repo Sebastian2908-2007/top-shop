@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
 type Category {
     _id: ID
-    name: String
+    name: String!
 }
  type FileUpload {
     _id: ID
@@ -70,6 +70,7 @@ type Query {
     getUserById(_id:ID!): User
     getReviews:[Review]
     getReviewById(_id:ID!):Review
+    getCategoryById(_id:ID!):Category
 }
 
 type Mutation {
@@ -80,6 +81,9 @@ type Mutation {
    addReview(reviewText:String! rating:Int!): Review
    deleteReview(_id:ID!): Review
    updateReview(_id:ID!,reviewText:String!,rating:Int!): Review
+   addCategory(name:String!):Category
+   updateCategory(_id:ID!,name:String!):Category
+   deleteCategory(_id: ID!): Category
 }
 `;
 
