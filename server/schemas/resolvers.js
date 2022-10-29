@@ -37,6 +37,9 @@ const resolvers = {
         getCategoryById: async (parent,{_id}) => {
             return await Category.findOne({_id:_id});
         },
+        getFileById: async (parent,{_id}) => {
+            return await FileUpload.findOne({_id:_id});
+        },
     },
     Mutation: {
         addUser: async (parent,args) => {
@@ -180,6 +183,20 @@ const resolvers = {
                 return await Category.findByIdAndDelete(args._id);
             }
             throw new AuthenticationError('you must be an admin to delete a category');
+        },
+        addFile: async (parent,args) => {
+         try{ 
+            return await FileUpload.create(args);
+         }catch(e) {
+            console.log(e);
+         }
+        },
+        deleteFile: async (parent,{_id}) => {
+            try{
+            return FileUpload.findByIdAndDelete({_id:_id});
+            }catch(e) {
+                console.log(e);
+            }
         },
     }
 };

@@ -71,6 +71,7 @@ type Query {
     getReviews:[Review]
     getReviewById(_id:ID!):Review
     getCategoryById(_id:ID!):Category
+    getFileById(_id:ID!):FileUpload
 }
 
 type Mutation {
@@ -84,6 +85,8 @@ type Mutation {
    addCategory(name:String!):Category
    updateCategory(_id:ID!,name:String!):Category
    deleteCategory(_id: ID!): Category
+   addFile(ETag:String!,Location:String!,key:String,Key:String!,Bucket:String!): FileUpload
+   deleteFile(_id:ID!): FileUpload
 }
 `;
 
