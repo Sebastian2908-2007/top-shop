@@ -14,15 +14,9 @@ const blogpostSchema = new Schema({
         trim: true 
     },
     blogPic: {
-        type: FileUpload.schema,
-        required: false,
-        default: () => ({
-            ETag:'fake etag',
-            Location: 'sybs crafty shack fake blog pic',
-            key:'fake small key tag',
-            Key: 'fake big Key',
-            Bucket:'fake Bucket'
-        }),
+      type: Schema.Types.ObjectId,
+      ref:'FileUpload',
+      required: true
     }
 });
 

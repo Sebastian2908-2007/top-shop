@@ -261,6 +261,19 @@ const resolvers = {
              }
              throw new AuthenticationError('you must be logged in to place an order!');
         },
+        addBlogpost: async (parent,args,context) => {
+             /*below checks to see if the context is empty*/
+             const isEmpty = Object.keys(context).length === 0;
+             /*if context is empty throw error meaning user is not logged in */
+             if(isEmpty) {
+                 throw new AuthenticationError('it appears you are not logged in');
+             }
+             if(context.user.isAdmin) {
+                return await (await Blogpost.create(args)).populate('blogPic');
+             }
+             throw new AuthenticationError('you must be an admin to create a blogpost');
+        },
+
     }
 };
 

@@ -92,6 +92,7 @@ type Mutation {
    updateProduct(_id:ID!,name:String,description:String,price:Int,quantity:Int): Product
    deleteProduct(_id:ID!): Product
    addOrder(products:[ID!]): Order
+   addBlogpost(title:String!,blogText:String!,blogPic:ID!): Blogpost
 }
 `;
 
