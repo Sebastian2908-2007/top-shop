@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
-const FileUpload = require('./FileUpload');
+
 
 const productSchema = new Schema({
     name: {
@@ -14,15 +14,9 @@ const productSchema = new Schema({
         trim: true
     },
     image: {
-        type: FileUpload.schema,
-        required: false,
-        default:() => ({
-            ETag: 'fake etag',
-            Location: 'fake location',
-            key:'fake small key',
-            Key:'fake big key',
-            Bucket:'fake Bucket'
-        }),
+        type: Schema.Types.ObjectId,
+        ref:'FileUpload',
+        required: true,
     },
     price:{
         type: Number,

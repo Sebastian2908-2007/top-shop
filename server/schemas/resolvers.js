@@ -14,7 +14,7 @@ const resolvers = {
             return await FileUpload.find().sort({createdAt: -1});
         },
         getProducts: async (parent,args) => {
-            return await Product.find().sort({createdAt: -1});
+            return await Product.find().populate('image').populate('category').sort({createdAt: -1});
         },
         getOrders: async (parent, args) => {
             return await Order.find().sort({createdAt: -1});
@@ -39,6 +39,9 @@ const resolvers = {
         },
         getFileById: async (parent,{_id}) => {
             return await FileUpload.findOne({_id:_id});
+        },
+        getProductById: async (parent,{_id},) => {
+            return await Product.findOne({_id:_id}).populate('image').populate('category');
         },
     },
     Mutation: {
@@ -193,10 +196,59 @@ const resolvers = {
         },
         deleteFile: async (parent,{_id}) => {
             try{
-            return FileUpload.findByIdAndDelete({_id:_id});
+            return await FileUpload.findByIdAndDelete({_id:_id});
             }catch(e) {
                 console.log(e);
             }
+        },
+        addProduct: async (parent,args,context) => {
+             /*below checks to see if the context is empty*/
+             const isEmpty = Object.keys(context).length === 0;
+             /*if context is empty throw error meaning user is not logged in */
+             if(isEmpty) {
+                 throw new AuthenticationError('it appears you are not logged in');
+             }
+             if(context.user.isAdmin) {
+                return await Product.create(args);
+             }
+             throw new AuthenticationError('you must be an admin to create a product!');
+        },
+        updateProduct: async (parent,{_id,name,description,price,quantity},context) => {
+            /*below checks to see if the context is empty*/
+            const isEmpty = Object.keys(context).length === 0;
+            /*if context is empty throw error meaning user is not logged in */
+            if(isEmpty) {
+                throw new AuthenticationError('it appears you are not logged in');
+            }
+            /**if user is logged in and is an admin do update stuff */
+            if(context.user.isAdmin) {
+                return await Product.findByIdAndUpdate(
+                    {_id:_id},
+                    {
+                 name: name,
+                description: description,
+                price: price,
+                quantity: quantity
+                    },
+                    {new:true}
+
+                ).populate('image').populate('category');
+            }
+/**if user is logged in but not an admin throw error */
+            throw new AuthenticationError('you must be an admin to update a product!');
+        
+        },
+        deleteProduct: async (parent,{_id},context) => {
+            /*below checks to see if the context is empty*/
+            const isEmpty = Object.keys(context).length === 0;
+            /*if context is empty throw error meaning user is not logged in */
+            if(isEmpty) {
+                throw new AuthenticationError('it appears you are not logged in');
+            }
+            if(context.user.isAdmin){ 
+            return await Product.findOneAndDelete(_id).populate('image').populate('category');
+            };
+            throw new AuthenticationError('you must be an admin to delete products');
         },
     }
 };

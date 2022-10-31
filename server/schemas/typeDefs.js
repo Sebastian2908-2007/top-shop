@@ -72,6 +72,7 @@ type Query {
     getReviewById(_id:ID!):Review
     getCategoryById(_id:ID!):Category
     getFileById(_id:ID!):FileUpload
+    getProductById(_id:ID!): Product
 }
 
 type Mutation {
@@ -87,6 +88,9 @@ type Mutation {
    deleteCategory(_id: ID!): Category
    addFile(ETag:String!,Location:String!,key:String,Key:String!,Bucket:String!): FileUpload
    deleteFile(_id:ID!): FileUpload
+   addProduct(name:String!,description:String!,image:ID!,price:Int!,quantity:Int!,category:ID!): Product
+   updateProduct(_id:ID!,name:String,description:String,price:Int,quantity:Int): Product
+   deleteProduct(_id:ID!): Product
 }
 `;
 
