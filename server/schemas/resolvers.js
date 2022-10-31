@@ -23,7 +23,10 @@ const resolvers = {
             return await Blogpost.find().sort({createdAt: -1});
         },
         getUsers: async (parent, args) => {
-            return await User.find().populate('review').sort({createdAt: -1});
+            return await User.find().populate('review').populate({
+                path:'orders.products',
+                populate:'category'
+            }).sort({createdAt: -1});
         },
         getUserById: async (parent,{_id}) => {
             return await User.findOne({_id:_id}).populate('review');
@@ -249,6 +252,14 @@ const resolvers = {
             return await Product.findOneAndDelete(_id).populate('image').populate('category');
             };
             throw new AuthenticationError('you must be an admin to delete products');
+        },
+        addOrder: async (parent,{products},context) => {
+             if(context.user) {
+          const order = new Order({ products });
+          await User.findOneAndUpdate(context.user._id,{$push: {orders: order}});
+          return order;
+             }
+             throw new AuthenticationError('you must be logged in to place an order!');
         },
     }
 };
