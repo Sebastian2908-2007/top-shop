@@ -20,7 +20,7 @@ const resolvers = {
             return await Order.find().sort({createdAt: -1});
         },
         getBlogposts: async (parent, args) => {
-            return await Blogpost.find().sort({createdAt: -1});
+            return await Blogpost.find().populate('blogPic').sort({createdAt: -1});
         },
         getUsers: async (parent, args) => {
             return await User.find().populate('review').populate({
@@ -45,6 +45,9 @@ const resolvers = {
         },
         getProductById: async (parent,{_id},) => {
             return await Product.findOne({_id:_id}).populate('image').populate('category');
+        },
+        getBlogpostById: async (parent ,{_id}) => {
+            return await Blogpost.findById({_id:_id}).populate('blogPic');
         },
     },
     Mutation: {
@@ -269,11 +272,68 @@ const resolvers = {
                  throw new AuthenticationError('it appears you are not logged in');
              }
              if(context.user.isAdmin) {
-                return await (await Blogpost.create(args)).populate('blogPic');
+                return await Blogpost.create(args)
              }
              throw new AuthenticationError('you must be an admin to create a blogpost');
         },
+     updateBlogpost: async (parent,{_id,title,blogText,blogPic},context) => {
+        // here we find the blogpost so we can get the old values
+        const oldBlogpost = await Blogpost.findById(_id);
+        console.log(oldBlogpost);
+        /*Below we check to see if all our data has been fed with values if not we set variables to the old data
+        so that we can run our update with the old data this allows a user to not need to fill out or change all data
+        these variables will be used in the update action*/
+        const titleToUse = title ? title : oldBlogpost.title;
+        const blogTextToUse = blogText ? blogText : oldBlogpost.blogText;
+        /**toHexString is used so it's not returning EXAMPLE:new ObjectId("834053408") */
+        const blogPicToUse = blogPic ? blogPic : oldBlogpost.blogPic.toHexString();
 
+         /*below checks to see if the context is empty*/
+         const isEmpty = Object.keys(context).length === 0;
+         /*if context is empty throw error meaning user is not logged in */
+         if(isEmpty) {
+             throw new AuthenticationError('it appears you are not logged in');
+         }
+
+         console.log(titleToUse);
+         console.log(blogPicToUse);
+         console.log(blogTextToUse);
+
+         if(context.user.isAdmin) {
+           // return oldBlogpost.populate('blogPic');
+            return await Blogpost.findOneAndUpdate(
+                {_id:_id},
+                {
+                    title: titleToUse,
+                    blogText: blogTextToUse,
+                    blogPic: blogPicToUse
+                },
+                {new:true}
+            ).populate('blogPic');
+         }
+         throw new AuthenticationError('you must be an admin to do this!');
+     },
+     deleteBlogpost: async (parent,{_id},context) => {
+         /*below checks to see if the context is empty*/
+         const isEmpty = Object.keys(context).length === 0;
+         /*if context is empty throw error meaning user is not logged in */
+         if(isEmpty) {
+             throw new AuthenticationError('it appears you are not logged in');
+         }
+         if(context.user.isAdmin) {
+            /**find the blogpost we want to delete so we can get blogpic _id */
+            const blogPost = await Blogpost.findById({_id:_id});
+            /**get the blogPic _id i.e. FileUpload _id */
+            const blogPic_id = blogPost.blogPic.toHexString()
+            console.log(blogPic_id);
+            /**here we delete the blogpic */
+       await FileUpload.findByIdAndDelete({_id: blogPic_id});
+       /**delete the blogpost*/
+            return await Blogpost.findByIdAndDelete({_id:_id});
+         }
+         throw new AuthenticationError('you must be an admin to do that!')
+
+     },
     }
 };
 

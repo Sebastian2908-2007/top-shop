@@ -73,6 +73,7 @@ type Query {
     getCategoryById(_id:ID!):Category
     getFileById(_id:ID!):FileUpload
     getProductById(_id:ID!): Product
+    getBlogpostById(_id:ID!): Blogpost
 }
 
 type Mutation {
@@ -93,6 +94,8 @@ type Mutation {
    deleteProduct(_id:ID!): Product
    addOrder(products:[ID!]): Order
    addBlogpost(title:String!,blogText:String!,blogPic:ID!): Blogpost
+   updateBlogpost(_id:ID!,title:String,blogText:String,blogPic:ID): Blogpost
+   deleteBlogpost(_id:ID!): Blogpost
 }
 `;
 
