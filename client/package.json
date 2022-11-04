@@ -1,0 +1,26 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.1",
+    "@stripe/stripe-js": "^1.42.1",
+    "aws-sdk": "^2.1246.0",
+    "deepmerge": "^4.2.2",
+    "env-cmd": "^10.1.0",
+    "eslint": "8.26.0",
+    "eslint-config-next": "13.0.1",
+    "graphql": "^16.6.0",
+    "jwt-decode": "^3.1.2",
+    "lodash": "^4.17.21",
+    "next": "13.0.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
