@@ -4,6 +4,7 @@ import { ThemeProvider } from '@mui/material';
 import { Header } from '../styles/Header.styled';
 import { Footer } from '../styles/Footer.styled';
 import { createTheme } from '@mui/material'; 
+import NavMenu from './NavMenu';
 
 
 export const danceScriptTheme = createTheme({
@@ -16,6 +17,7 @@ export const danceScriptTheme = createTheme({
 
 
 const Layout = ({ children }) => {
+  
    return (  
    <>
     <Header>
@@ -23,6 +25,7 @@ const Layout = ({ children }) => {
         <CssBaseline />
         <Typography component="h1" variant='h6' color='rgb(248, 248, 128)'>Sybs Crafty Shack</Typography>
         </ThemeProvider>
+        <NavMenu/>
     </Header>
     <main>
     {children}
