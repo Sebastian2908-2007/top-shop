@@ -11,5 +11,5 @@ width: 45%;
 display: flex;
 justify-content: center;
 background-color: rgb(248, 248, 128);
-border-radius: 8px;
+border-radius: 30%;
 `;
