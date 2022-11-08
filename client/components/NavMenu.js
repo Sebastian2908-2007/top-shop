@@ -3,6 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Link from 'next/link';
 
 
 
@@ -23,11 +24,11 @@ const menuItemStyles = {
     fontFamily: ['Dancing Script'],
     fontSize: '1.3rem'
 };
-/**text menu options for non logged in user */
+/**text menu options for non logged in user second item in each array is used for routing in next/link A.K.A <Link>*/
  const menuOptions = [
-    "About",
-    "Blog",
-    "login"
+    ["About","/about"],
+    ["Blog","/blog"],
+    ["login","/login"]
  ];
 
   return (
@@ -40,7 +41,7 @@ const menuItemStyles = {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreVertIcon style={{ color:'rgb(248, 248, 128)' }}/>
+        <MoreVertIcon style={{ color:'rgb(248, 248, 128)',fontSize:'2rem' }}/>
       </IconButton>
      
       <Menu
@@ -56,7 +57,7 @@ const menuItemStyles = {
         }}
       >
        {menuOptions.map((menuOption) => ( 
-        <MenuItem  key={menuOption} style={menuItemStyles} onClick={handleClose}>{menuOption}</MenuItem>
+        <MenuItem  key={menuOption} style={menuItemStyles} onClick={handleClose}><Link href={menuOption[1]}>{menuOption[0]}</Link></MenuItem>
        ))}
        
       </Menu>
