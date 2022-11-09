@@ -4,11 +4,11 @@ import { Header } from '../styles/Header.styled';
 import { Footer } from '../styles/Footer.styled';
 import {danceScriptTheme} from '../utils/themes'
 import NavMenu from './NavMenu';
+import Cart from './Cart';
 import { HeaderHomePageLink } from '../styles/Links.styled';
-import { FooterDiv } from '../styles/Div.styled';
+import { FooterDiv, HeaderCartMenuDiv  } from '../styles/Div.styled';
 import { SocialImgLink } from '../styles/Links.styled';
 import { SocialPic } from '../styles/Images.styled';
-
 
 
 
@@ -41,8 +41,11 @@ const Layout = ({ children }) => {
    <CssBaseline />
     <Header>  
        <HeaderHomePageLink href='/' ><Typography component="h1" variant='h6' sx={headerTitleStyle}>Sybs Crafty Shack</Typography></HeaderHomePageLink>
+       <HeaderCartMenuDiv>
+       <Cart/>
        {/**this is the material ui basic menu component */}
         <NavMenu/>
+        </HeaderCartMenuDiv>
     </Header>
     <main>
     {children}

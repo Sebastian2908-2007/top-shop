@@ -4,3 +4,6 @@ import styled from 'styled-components';
 export const SocialPic = styled.img`
 width:100%;
 `;
+export const CartPic = styled.img`
+max-width:100%;
+`;
