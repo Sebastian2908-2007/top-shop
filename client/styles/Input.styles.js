@@ -7,5 +7,5 @@ export const CartInput = styled.input`
   outline: none;
   border-radius: 3px;
   transition: box-shadow 0.2s;
- width: 100%;
+  width: 100%;
 `;

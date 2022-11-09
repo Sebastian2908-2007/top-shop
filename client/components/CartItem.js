@@ -1,17 +1,17 @@
 import { MenuItem } from "@mui/material";
-import { MenuItemMainDiv,MenuItem2MainDiv,CartImgDiv} from "../styles/Div.styled";
+import { MenuItemMainDiv,MenuItem2MainDiv,CartImgDiv,QtyInputTrashDiv} from "../styles/Div.styled";
 import { CartPic } from "../styles/Images.styled";
 import { CartInput } from "../styles/Input.styles";
 import { CartTrashSpan } from "../styles/Spans.styled";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const menuItemStyle = {
-    width:'50%'
+    width:'75%'
 };
 
 const CartItem = ({ item }) => {
 return (
-    <MenuItem >
+    <MenuItem style={menuItemStyle}>
     <MenuItemMainDiv>
       <CartImgDiv>
         <CartPic
@@ -21,7 +21,7 @@ return (
       </CartImgDiv>
       <MenuItem2MainDiv>
         <div>wreath, $100</div>
-        <div>
+        <QtyInputTrashDiv>
             <span>Qty</span>
          <CartInput
           type="number"
@@ -33,7 +33,7 @@ return (
          >
        <DeleteForeverIcon/>
          </CartTrashSpan>
-        </div>
+        </QtyInputTrashDiv>
       </MenuItem2MainDiv>
     
     </MenuItemMainDiv>

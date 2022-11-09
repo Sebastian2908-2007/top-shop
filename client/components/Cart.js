@@ -30,6 +30,12 @@ const Cart = () => {
     anchorEl={anchorEl}
     open={open}
     onClose={handleClose}
+    PaperProps={{
+      style: {
+        width: '31ch',
+        backgroundColor:'rgb(248, 248, 128)',
+      },
+    }}
     >
        <CartItem/> 
     </Menu>

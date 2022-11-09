@@ -22,14 +22,23 @@ export const MenuItemMainDiv = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-max-width: 50%;
+width: 100%;
 `;
 
-/**inner cart related divs */
 export const MenuItem2MainDiv = styled.div`
-max-width: 50%;
+padding: 3% 1% 3% 5%;
+max-width: 60%;
 `;
 
 export const CartImgDiv = styled.div`
-width: 25%;
+width: 55%;
+display: flex;
+flex-direction: row;
+align-items: center;
+`;
+export const QtyInputTrashDiv = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 100%;
 `;
