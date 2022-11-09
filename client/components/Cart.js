@@ -24,6 +24,15 @@ const Cart = () => {
       '&:hover': {backgroundColor:'rgba(0, 0, 0)'}
       
     };
+    /**more cart icon styles */
+const cartIconStyle = theme => ({ 
+  color:'rgb(248, 248, 128)',
+  fontSize:'2rem',
+  [theme.breakpoints.up('md')]:{
+      fontSize: '3rem'
+  }
+
+});
     return(
         <div>
         <IconButton
@@ -33,7 +42,7 @@ const Cart = () => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         >
-    <ShoppingCartIcon style={{ color:'rgb(248, 248, 128)',fontSize:'2rem' }}/>
+    <ShoppingCartIcon sx={cartIconStyle}/>
     </IconButton>
     <Menu
     id="long-menu"

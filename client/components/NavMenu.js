@@ -24,6 +24,15 @@ const menuItemStyles = {
     fontFamily: ['Dancing Script'],
     fontSize: '1.3rem'
 };
+/**more vert icon styles */
+const vertIconStyle = theme => ({ 
+  color:'rgb(248, 248, 128)',
+  fontSize:'2rem',
+  [theme.breakpoints.up('md')]:{
+      fontSize: '3.5rem'
+  }
+
+});
 /**text menu options for non logged in user second item in each array is used for routing in next/link A.K.A <Link>*/
  const menuOptions = [
     ["About","/about"],
@@ -41,7 +50,7 @@ const menuItemStyles = {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreVertIcon style={{ color:'rgb(248, 248, 128)',fontSize:'2rem' }}/>
+        <MoreVertIcon sx={vertIconStyle}/>
       </IconButton>
      
       <Menu

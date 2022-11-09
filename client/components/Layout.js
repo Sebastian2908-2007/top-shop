@@ -18,6 +18,9 @@ const headerTitleStyle = theme => ({
     fontSize:'1.45rem',
     [theme.breakpoints.up('sm')]:{
         fontSize: '2rem'
+    },
+    [theme.breakpoints.up('md')]:{
+        fontSize: '3rem'
     }
 });
 
@@ -28,6 +31,9 @@ const copyStyle = theme => ({
     padding:'3.2% 1% 3% 1%',
     [theme.breakpoints.up('sm')]:{
         fontSize: '1.2rem'
+    },
+    [theme.breakpoints.up('md')]:{
+        fontSize: '1.8rem'
     }
 });
 
@@ -41,6 +47,7 @@ const Layout = ({ children }) => {
    <CssBaseline />
     <Header>  
        <HeaderHomePageLink href='/' ><Typography component="h1" variant='h6' sx={headerTitleStyle}>Sybs Crafty Shack</Typography></HeaderHomePageLink>
+        {/**this div holds the menus */}
        <HeaderCartMenuDiv>
        <Cart/>
        {/**this is the material ui basic menu component */}

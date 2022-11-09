@@ -6,6 +6,12 @@ flex-direction: row;
 justify-content: space-between;
 height: 2rem;
 margin: 2% 1% 2% 1%;
+@media screen and (min-width: 768px) {
+    margin: 3% 1% 2% 1%;
+}
+@media screen and (min-width: 912px) {
+    height: 3.5rem;
+}
 `;
 
 export const HeaderCartMenuDiv = styled.div`

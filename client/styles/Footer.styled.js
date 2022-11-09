@@ -9,4 +9,7 @@ position: absolute;
 bottom: 0;
 width: 100%;
 padding: 1%;
+@media screen and (min-width: 768px) {
+    padding: 0%;
+}
 `;
