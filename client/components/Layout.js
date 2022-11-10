@@ -62,15 +62,13 @@ const Layout = ({ children }) => {
         <FooterDiv>
             <SocialImgLink href='https://www.facebook.com/groups/sybscraftyshack/?ref=share' target='_blank'>
                 <SocialPic 
-                 src='/fb_64px.png' 
-                 srcSet='/fb_48px.png 228w, /fb_48px.png' 
+                 src='/fb_48px.png' 
                  alt='fb link'
                 />
             </SocialImgLink>
             <SocialImgLink href='https://www.instagram.com/sybscraftyshack/?fbclid=IwAR3CNExLMc1B_S_y7EnY8JEQQlytD9Ac621Jaj0xlvf9FC7Pf2-Ez3HJg8Y' target='_blank'>
                 <SocialPic 
-                 src='/insta_64px.png' 
-                 srcSet='/insta_48px.png 228w, /insta_48px.png' 
+                 src='/insta_48px.png'  
                  alt='insta link'
                 />
             </SocialImgLink>

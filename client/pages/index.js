@@ -2,11 +2,17 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { HomeHeroPic } from '../styles/Images.styled'
+import { HomeHeroSection } from '../styles/Section.styled'
 
 export default function Home() {
   return (
     <div>
-     <h1>Sybs crafty shack</h1>
+     <HomeHeroSection>
+     <HomeHeroPic 
+     src='/sybs-banner2500.jpg'
+     />
+     </HomeHeroSection>
     </div>
   )
 }
