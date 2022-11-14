@@ -7,23 +7,23 @@ import { Card } from '@mui/material';
 
 export default function ProductCard({ product }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt={product.name}
         height="140"
         image={product.image.Location}
       />
-      <CardContent>
+      <CardContent sx={{display:'flex', flexDirection:'column',alignItems:'center'}} >
         <Typography gutterBottom variant="h5" component="div">
           {product.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" sx={{backgroundColor:'rgb(255,255,255,0.6)',padding:"1%",fontWeight:'bolder'}}>
          {product.description}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Add To Cart</Button>
+      <CardActions sx={{display:'flex', flexDirection:'column',alignItems:'center'}}>
+        <Button size="small" sx={{color:'rgb(255,255,255,0.8)', backgroundColor:'black'}}>Add To Cart</Button>
       </CardActions>
     </Card>
   );

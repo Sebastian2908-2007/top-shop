@@ -22,7 +22,7 @@ export default function Home() {
     return (
     <div>loading</div>
   )
-    };
+    }; 
  console.log(data);
  /**get data and store in products variable products from data */
 const products = data.getProducts;
