@@ -12,4 +12,5 @@ export const HomeHeroPic = styled.img`
 width: 100%;
 max-height: 100%;
 object-fit: fill;
+border-bottom: 2px solid black;
 `;

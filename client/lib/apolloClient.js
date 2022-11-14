@@ -1,9 +1,11 @@
 import { useMemo } from 'react'
 import { ApolloClient, HttpLink, InMemoryCache, from } from '@apollo/client'
+import { SchemaLink } from '@apollo/client/link/schema';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error'
 import merge from 'deepmerge'
 import isEqual from 'lodash/isEqual'
+//import schema from '../../server/schemas'
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__'
 
@@ -20,26 +22,39 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`)
 })
 
+/**paths need to be absolute so using a proxy like in react wont work It should be easy to get absolute
+ * path once starting the app in production though ffrom my logs in the server.js file so then I can edit it here
+ */
 const httpLink = new HttpLink({
-  uri: '/graphql', // Server URL (must be absolute)
+  uri: process.env.NEXT_PUBLIC_APOLLO_URI, // Server URL (must be absolute)
   credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
 })
+/*const schemaLink = new SchemaLink({schema});*/
 
 const authLink = setContext((_, { headers }) => {
+  if (typeof window !== 'undefined') {
     const token = localStorage.getItem('id_token');
+    console.log('endpoint running on client');
     return {
       headers: {
         ...headers,
         authorization: token ? `Bearer ${token}` : '',
       },
     };
+  }else{
+    console.log('endpoint running on sever');
+  }
+    
+ 
+  
   });
   
+
 
 function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
-    link: from([errorLink,authLink,httpLink]),
+    link: from([errorLink,authLink,httpLink]) ,
     cache: new InMemoryCache()
   })
 }

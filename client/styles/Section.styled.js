@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const HomeHeroSection = styled.section`
 width: 100%;
-height: 55vh;
+`;
 
+export const ProductSection = styled.section`
+padding: 3%;
+padding-bottom: 4rem;
 `;

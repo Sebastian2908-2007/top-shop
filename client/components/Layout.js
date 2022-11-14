@@ -9,6 +9,7 @@ import { HeaderHomePageLink } from '../styles/Links.styled';
 import { FooterDiv, HeaderCartMenuDiv  } from '../styles/Div.styled';
 import { SocialImgLink } from '../styles/Links.styled';
 import { SocialPic } from '../styles/Images.styled';
+import { Main } from '../styles/Main.styled';
 
 
 

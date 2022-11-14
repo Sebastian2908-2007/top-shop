@@ -48,3 +48,8 @@ flex-direction: row;
 justify-content: space-between;
 width: 100%;
 `;
+
+/**product section product div 
+export const ProductContainerDiv = styled.div`
+
+`;*/
