@@ -3,6 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Menu, Button, MenuItem } from '@mui/material';
 import CartItem from './CartItem';
+import { checkoutAdd2CartBtnStyle } from '../styles/commonMuiStyles/muiButtonStyles';
 
 
 
@@ -17,13 +18,13 @@ const Cart = () => {
     };
     const ITEM_HEIGHT = 48;
     /**checkout button style */
-    const checkoutBtnStyle ={
+   /* const checkoutBtnStyle ={
       backgroundColor:' rgb(0,0,0,0.6)',
       color: 'rgb(248, 248, 128)',
       
       '&:hover': {backgroundColor:'rgba(0, 0, 0)'}
       
-    };
+    };*/
     /**more cart icon styles */
 const cartIconStyle = theme => ({ 
   color:'rgb(248, 248, 128)',
@@ -64,7 +65,7 @@ const cartIconStyle = theme => ({
        <CartItem/> 
        <CartItem/> 
        <CartItem/> 
-       <MenuItem><Button sx={checkoutBtnStyle}>Checkout</Button></MenuItem>
+       <MenuItem><Button sx={checkoutAdd2CartBtnStyle}>Checkout</Button></MenuItem>
     </Menu>
     </div>
     );

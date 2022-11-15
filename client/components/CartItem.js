@@ -1,5 +1,6 @@
 import { MenuItem } from "@mui/material";
-import { MenuItemMainDiv,MenuItem2MainDiv,CartImgDiv,QtyInputTrashDiv} from "../styles/Div.styled";
+import { MenuItemMainDiv,MenuItem2MainDiv,CartImgDiv,QtyInputTrashDiv, ProductPriceDiv} from "../styles/Div.styled";
+import { ProductPriceSpan } from "../styles/Spans.styled";
 import { CartPic } from "../styles/Images.styled";
 import { CartInput } from "../styles/Input.styles";
 import { CartTrashSpan } from "../styles/Spans.styled";
@@ -20,7 +21,7 @@ return (
         />
       </CartImgDiv>
       <MenuItem2MainDiv>
-        <div>wreath, $100</div>
+       <ProductPriceDiv><ProductPriceSpan>wreath, $100</ProductPriceSpan></ProductPriceDiv> 
         <QtyInputTrashDiv>
             <span>Qty</span>
          <CartInput

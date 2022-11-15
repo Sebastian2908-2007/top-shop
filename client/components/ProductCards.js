@@ -4,10 +4,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Card } from '@mui/material';
+import { checkoutAdd2CartBtnStyle } from '../styles/commonMuiStyles/muiButtonStyles';
 
 export default function ProductCard({ product }) {
   return (
-    <Card sx={{ maxWidth: 345, backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
+    <Card sx={{ maxWidth: '100%', backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
       <CardMedia
         component="img"
         alt={product.name}
@@ -15,15 +16,16 @@ export default function ProductCard({ product }) {
         image={product.image.Location}
       />
       <CardContent sx={{display:'flex', flexDirection:'column',alignItems:'center'}} >
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" component="div" sx={{textShadow: '0 0 10px rgb(248, 248, 128)'}}>
           {product.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{backgroundColor:'rgb(255,255,255,0.6)',padding:"1%",fontWeight:'bolder'}}>
+        <Typography variant="body2" color="text.secondary"
+         sx={{backgroundColor:'rgb(248, 248, 128,0.4)',padding:"2%",fontWeight:'bolder',fontSize:'1.1rem'}}>
          {product.description}
         </Typography>
       </CardContent>
       <CardActions sx={{display:'flex', flexDirection:'column',alignItems:'center'}}>
-        <Button size="small" sx={{color:'rgb(255,255,255,0.8)', backgroundColor:'black'}}>Add To Cart</Button>
+        <Button size="small" sx={checkoutAdd2CartBtnStyle}>Add To Cart</Button>
       </CardActions>
     </Card>
   );

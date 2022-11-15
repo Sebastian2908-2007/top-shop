@@ -49,6 +49,12 @@ justify-content: space-between;
 width: 100%;
 `;
 
+
+export const ProductPriceDiv = styled.div`
+margin-bottom: 11%;
+
+`;
+
 /**product section product div 
 export const ProductContainerDiv = styled.div`
 

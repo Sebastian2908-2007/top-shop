@@ -37,15 +37,17 @@ const products = data.getProducts;
      </HomeHeroSection>
      <ProductSection>
       <MainTitle>Buy Handmade Crafts Online</MainTitle>
-      <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+      <Box>
+      <Grid container rowSpacing={{xs:2,sm:3,md:4}} columnSpacing={{xs:0,sm:4,md:4}} >
 {products.map(product => (
-  <Grid item xs={12} key={product._id}>
+  
+  <Grid item xs={12} sm={6} xl={3}   key={product._id}>
     <ProductCard product={product}/>
   </Grid>
 ))}
       </Grid>
-    </Box>
+      </Box>
+   
      </ProductSection>
     </div>
   )
