@@ -8,7 +8,7 @@ import { checkoutAdd2CartBtnStyle } from '../styles/commonMuiStyles/muiButtonSty
 
 export default function ProductCard({ product }) {
   return (
-    <Card sx={{ maxWidth: '100%', backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
+    <Card sx={{ height:'100%',maxWidth: '100%', backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
       <CardMedia
         component="img"
         alt={product.name}
@@ -16,11 +16,12 @@ export default function ProductCard({ product }) {
         image={product.image.Location}
       />
       <CardContent sx={{display:'flex', flexDirection:'column',alignItems:'center'}} >
-        <Typography gutterBottom variant="h5" component="div" sx={{textShadow: '0 0 10px rgb(248, 248, 128)'}}>
+        <Typography gutterBottom variant="h5" component="div" 
+        sx={{textShadow: '0 0 10px rgb(248, 248, 128)',fontSize:{xs:'1.5rem',xl:'1.8rem'}}}>
           {product.name}
         </Typography>
         <Typography variant="body2" color="text.secondary"
-         sx={{backgroundColor:'rgb(248, 248, 128,0.4)',padding:"2%",fontWeight:'bolder',fontSize:'1.1rem'}}>
+         sx={{backgroundColor:'rgb(248, 248, 128,0.4)',padding:"2%",fontWeight:'bolder',fontSize:{xs:'1.3rem',xl:'1.5rem'}}}>
          {product.description}
         </Typography>
       </CardContent>

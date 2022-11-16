@@ -41,7 +41,7 @@ const products = data.getProducts;
       <Grid container rowSpacing={{xs:2,sm:3,md:4}} columnSpacing={{xs:0,sm:4,md:4}} >
 {products.map(product => (
   
-  <Grid item xs={12} sm={6} xl={3}   key={product._id}>
+  <Grid item xs={12} sm={6} lg={4} xl={3}   key={product._id}>
     <ProductCard product={product}/>
   </Grid>
 ))}
