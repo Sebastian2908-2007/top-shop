@@ -55,6 +55,19 @@ margin-bottom: 11%;
 
 `;
 
+export const CategoryDiv = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: center;
+flex-flow: row wrap;
+margin-bottom: 1em;
+background-color: rgb(255,255,255,0.4);
+padding-top: 5%;
+border: 1px solid black;
+border-radius: 11px;
+box-shadow:  0 0 50px black;
+`;
+
 /**product section product div 
 export const ProductContainerDiv = styled.div`
 

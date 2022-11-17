@@ -14,3 +14,12 @@ export const GET_ALL_PRODUCTS_HOMEPAGE = gql`
   }
 }
 `;
+
+export const GET_CATEGORIES = gql`
+query getCategories {
+  getCategories {
+    _id
+    name
+  }
+}
+`;

@@ -2,12 +2,13 @@
 //import Head from 'next/head'
 //import Image from 'next/image'
 //import styles from '../styles/Home.module.css'
-import { HomeHeroPic } from '../styles/Images.styled'
-import { HomeHeroSection,ProductSection } from '../styles/Section.styled'
-import ProductCard from '../components/ProductCards'
-import { useQuery } from '@apollo/client'
-import { GET_ALL_PRODUCTS_HOMEPAGE } from '../utils/queries'
-import { MainTitle } from '../styles/H1.styled'
+import CategoryList from '../components/CategoryList';
+import { HomeHeroPic } from '../styles/Images.styled';
+import { HomeHeroSection,ProductSection } from '../styles/Section.styled';
+import ProductCard from '../components/ProductCards';
+import { useQuery } from '@apollo/client';
+import { GET_ALL_PRODUCTS_HOMEPAGE } from '../utils/queries';
+import { MainTitle } from '../styles/H1.styled';
 /**grid components mui*/
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -23,7 +24,7 @@ export default function Home() {
     <div>loading</div>
   )
     }; 
- console.log(data);
+ //console.log(data);
  /**get data and store in products variable products from data */
 const products = data.getProducts;
 
@@ -37,6 +38,7 @@ const products = data.getProducts;
      </HomeHeroSection>
      <ProductSection>
       <MainTitle>Buy Handmade Crafts Online</MainTitle>
+      <CategoryList/>
       <Box>
       <Grid container rowSpacing={{xs:2,sm:3,md:4}} columnSpacing={{xs:0,sm:4,md:4}} >
 {products.map(product => (

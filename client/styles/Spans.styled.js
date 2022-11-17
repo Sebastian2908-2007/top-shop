@@ -7,6 +7,6 @@ export const CartTrashSpan = styled.span`
 export const ProductPriceSpan = styled.span`
 background-color: rgb(255,255,255,0.6);
 font-size: 1.3rem;
-padding: 6%;
-
+padding: ${props => props.padding ? props.padding: '6%'};
+margin-bottom: ${props => props.marginBottom};
 `;
