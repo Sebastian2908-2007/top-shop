@@ -4,12 +4,15 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Menu, Button, MenuItem } from '@mui/material';
 import CartItem from './CartItem';
 import { checkoutAdd2CartBtnStyle } from '../styles/commonMuiStyles/muiButtonStyles';
+import { useStoreContext } from '../utils/Globalstate';
 
 
 
 const Cart = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    const [ state, dispatch ] = useStoreContext();
+    const { cart } = state;
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
@@ -17,15 +20,7 @@ const Cart = () => {
       setAnchorEl(null);
     };
     const ITEM_HEIGHT = 48;
-    /**checkout button style */
-   /* const checkoutBtnStyle ={
-      backgroundColor:' rgb(0,0,0,0.6)',
-      color: 'rgb(248, 248, 128)',
-      
-      '&:hover': {backgroundColor:'rgba(0, 0, 0)'}
-      
-    };*/
-    /**more cart icon styles */
+ 
 const cartIconStyle = theme => ({ 
   color:'rgb(248, 248, 128)',
   fontSize:'2rem',
@@ -58,13 +53,12 @@ const cartIconStyle = theme => ({
       },
     }}
     >
-       <CartItem/> 
-       <CartItem/> 
-       <CartItem/> 
-       <CartItem/> 
-       <CartItem/> 
-       <CartItem/> 
-       <CartItem/> 
+     {  cart.length ?  ( 
+        cart.map(item => (
+        <CartItem key={item._id} item={item}/>
+       ))):(<div>Nothing in cart</div>)
+       }
+
        <MenuItem><Button sx={checkoutAdd2CartBtnStyle}>Checkout</Button></MenuItem>
     </Menu>
     </div>

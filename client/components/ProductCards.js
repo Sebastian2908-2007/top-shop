@@ -27,11 +27,7 @@ Location
 
   /**destructure watch basically is useReducer for state and dispatch access */
   const [state,dispatch] = useStoreContext();
-
-  /**destructure cart from state */
-  const { cart } = state;
-  console.log(cart);
-
+  
   const addToCart = () => {
     dispatch({
       type: ADD_TO_CART,
@@ -40,7 +36,7 @@ Location
   };
 
   return (
-    <Card sx={{ height:'100%',maxWidth: '100%', backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
+    <Card sx={{ boxShadow:' 0 0 5px black',height:'100%',maxWidth: '100%', backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
       <CardMedia
         component="img"
         alt={product.name}

@@ -60,12 +60,16 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 flex-flow: row wrap;
-margin-bottom: 1em;
+margin-bottom: 1.5em;
 background-color: rgb(255,255,255,0.4);
 padding-top: 5%;
 border: 1px solid black;
 border-radius: 11px;
-box-shadow:  0 0 50px black;
+box-shadow:  0 0 10px black;
+`;
+
+export const ProductCartNameDiv = styled.div`
+padding: 1%;
 `;
 
 /**product section product div 

@@ -6,6 +6,9 @@ export const GET_ALL_PRODUCTS_HOMEPAGE = gql`
     _id
     name
     description
+    category{
+      _id
+    }
     image {
       Location
     }

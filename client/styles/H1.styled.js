@@ -28,6 +28,7 @@ font-family: 'dancing script';
 text-align: center;
 border-radius: 8px;
 font-weight: bolder;  
+box-shadow:  0 0 10px black;
 @media screen and (min-width: 1366px) {
 animation: ${rotateScaleUp} 2s linear 1;
 font-size: 2.2em;

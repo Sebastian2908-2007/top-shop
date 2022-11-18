@@ -28,6 +28,7 @@ background-color: rgb(248, 248, 128);
 font-family: 'dancing script';
 font-size: 1.2em;
 padding: 2%;
+box-shadow:  0 0 7px black;
 &:hover {
 animation: ${buttonPopUp} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 color: rgb(245 245 6);
