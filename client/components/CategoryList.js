@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { CategoryDiv } from '../styles/Div.styled';
+import { CategoryDiv, NoCategoryDiv } from '../styles/Div.styled';
 import { CategoryButton } from '../styles/Button.styled';
 import { GET_CATEGORIES } from '../utils/queries';
 import { useQuery } from '@apollo/client';
@@ -28,7 +28,7 @@ const setCurrentCategory = (currentCategory) => {
         type: UPDATE_CURRENT_CATEGORY,
         currentCategory: currentCategory
     });
-    console.log(state.products);
+    
 };
 
    return(
@@ -36,6 +36,7 @@ const setCurrentCategory = (currentCategory) => {
 {categories.map(category => (
     <CategoryButton key={category._id} onClick={() => {setCurrentCategory(category._id)}}>{category.name}</CategoryButton>
 ))}
+{!categories.length ? <NoCategoryDiv>No Categories yet</NoCategoryDiv>:null}
     </CategoryDiv>
    );
 };

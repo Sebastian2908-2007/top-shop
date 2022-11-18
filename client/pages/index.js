@@ -16,6 +16,7 @@ import { useStoreContext } from '../utils/Globalstate';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { UPDATE_PRODUCTS } from '../utils/actions';
+import { NoProductDiv } from '../styles/Div.styled';
 /**grid components mui */
 //import { initializeApollo } from '../lib/apolloClient'
 
@@ -63,12 +64,12 @@ if(data) {
       <CategoryList/>
       <Box>
       <Grid container rowSpacing={{xs:3,md:4}} columnSpacing={{xs:0,sm:4,md:4}} >
-{filterProducts().map(product => (
+{products.length ? (  filterProducts().map(product => (
   
   <Grid item xs={12} sm={6} lg={4} xl={3}   key={product._id}>
     <ProductCard product={product}/>
   </Grid>
-))}
+))):(<NoProductDiv>no products yet</NoProductDiv>)}
       </Grid>
       </Box>
    

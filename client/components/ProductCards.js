@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -10,6 +11,7 @@ import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../utils/actions';
 import { ProductPriceSpan } from '../styles/Spans.styled';
 
 export default function ProductCard({product}) {
+  const [crtBtnTxt, setCrtBtnTxt] = useState('Add To Cart');
   /**destructure product */
   const {
     description,
@@ -27,12 +29,26 @@ Location
 
   /**destructure watch basically is useReducer for state and dispatch access */
   const [state,dispatch] = useStoreContext();
-  
+  /**destructure cart from state */
+  const { cart } = state;
   const addToCart = () => {
+   const isItemInCart = cart.find((cartItem) => cartItem._id === _id);
+   if(isItemInCart) { 
+    dispatch({
+      type: UPDATE_CART_QUANTITY,
+      _id: _id,
+      quantity: parseInt(isItemInCart.quantity) + 1
+    });
+    setCrtBtnTxt('quantity updated !');
+    setTimeout(() => {setCrtBtnTxt('Add To Cart')},3000)
+   }else { 
     dispatch({
       type: ADD_TO_CART,
       product: { ...product }
     });
+    setCrtBtnTxt('Added to cart!');
+    setTimeout(() => {setCrtBtnTxt('Add To Cart')},3000)
+  }
   };
 
   return (
@@ -57,7 +73,7 @@ Location
       <ProductPriceSpan padding='3%' marginBottom='.55em'>
         ${price}
       </ProductPriceSpan>
-        <Button size="small" sx={checkoutAdd2CartBtnStyle} onClick={addToCart}>Add To Cart</Button>
+        <Button size="small" sx={checkoutAdd2CartBtnStyle} onClick={addToCart}>{crtBtnTxt}</Button>
       </CardActions>
     </Card>
   );

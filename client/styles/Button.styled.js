@@ -40,4 +40,9 @@ border: 1px solid rgb(245 245 6);
     margin-left: .7em;
     border: 2px solid black;
 }
+@media screen and (min-width: 912px) {
+  font-size: 1.8em ;
+  margin-right: 1em;
+margin-left: 1em;
+}
 `;

@@ -6,7 +6,7 @@ import { CartInput } from "../styles/Input.styles";
 import { CartTrashSpan } from "../styles/Spans.styled";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useStoreContext } from '../utils/Globalstate';
-import { REMOVE_FROM_CART } from "../utils/actions";
+import { REMOVE_FROM_CART,  UPDATE_CART_QUANTITY } from "../utils/actions";
 
 const menuItemStyle = {
     width:'75%'
@@ -28,12 +28,29 @@ const CartItem = ({ item }) => {
 
  /**function to remove items from cart */
  const removeFromCart = () => {
-  console.log(_id);
   dispatch({
     type: REMOVE_FROM_CART,
     _id: _id
   })
  };
+ 
+ /**function to update the item quantity as well as remove item from cart if number is zero in input box */
+ const onChange = (e) => {
+  const value = e.target.value;
+
+  if (value === '0' ) {
+      dispatch({
+          type: REMOVE_FROM_CART,
+          _id: _id
+      });
+  }else {
+      dispatch({
+          type: UPDATE_CART_QUANTITY,
+          _id: _id,
+          quantity: parseInt(value)
+      });
+  }
+};
 
 return (
     <MenuItem style={menuItemStyle}>
@@ -52,6 +69,8 @@ return (
          <CartInput
           type="number"
           placeholder={quantity}
+          value={quantity}
+          onChange={onChange}
          />
          <CartTrashSpan
          role="img"

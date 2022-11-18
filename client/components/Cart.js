@@ -29,6 +29,17 @@ const cartIconStyle = theme => ({
   }
 
 });
+
+/**function to calculate the total */
+function calculateTotal() {
+  let sum = 0;
+  state.cart.forEach(item => {
+      sum += item.price * item.quantity;
+  });
+  // toFixed will set the number of digits to appear after decimal point
+  return sum.toFixed(2);
+};
+
     return(
         <div>
         <IconButton
@@ -54,12 +65,20 @@ const cartIconStyle = theme => ({
     }}
     >
      {  cart.length ?  ( 
+      
         cart.map(item => (
         <CartItem key={item._id} item={item}/>
-       ))):(<div>Nothing in cart</div>)
+       ))
+       
+       ):(<div>Nothing in cart</div>)
        }
-
-       <MenuItem><Button sx={checkoutAdd2CartBtnStyle}>Checkout</Button></MenuItem>
+{cart.length ?  
+<>
+<strong>Total: ${isNaN(calculateTotal()) ? '0': calculateTotal()}</strong>
+<MenuItem><Button sx={checkoutAdd2CartBtnStyle}>Checkout</Button></MenuItem>
+</>
+:null}
+      
     </Menu>
     </div>
     );

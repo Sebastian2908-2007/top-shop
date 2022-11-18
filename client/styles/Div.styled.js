@@ -66,13 +66,25 @@ padding-top: 5%;
 border: 1px solid black;
 border-radius: 11px;
 box-shadow:  0 0 10px black;
+@media screen and (min-width: 768px) {
+   padding-top: 2.5%;
+}
+@media screen and (min-width: 912px) {
+   padding-top: 2%;
+}
 `;
 
 export const ProductCartNameDiv = styled.div`
 padding: 1%;
 `;
 
-/**product section product div 
-export const ProductContainerDiv = styled.div`
+/**product section product div */
 
-`;*/
+export const NoProductDiv = styled.div`
+font-size: 3em;
+margin-top: 1em;
+`;
+export const NoCategoryDiv = styled.div`
+font-size: 3em;
+margin-top: 1em;
+`;
