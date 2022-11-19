@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../utils/mutations";
-import { FormButton, FormInput, LoginForm } from "../styles/Forms.styled";
-import { LoginSection } from "../styles/Section.styled";
+import { FormButton, FormInput, Form } from "../styles/Forms.styled";
+import { FormSection } from "../styles/Section.styled";
 import auth from "../utils/auth";
 
 const login = () => {
@@ -45,13 +45,13 @@ const login = () => {
  };
 
     return(
-        <LoginSection>
-            <LoginForm onSubmit={submitLogin}>
+        <FormSection>
+            <Form onSubmit={submitLogin}>
                 <FormInput onChange={handleChange} placeholder="Your Email" name="email" type='email'  marginTop='.5em'/>
                 <FormInput onChange={handleChange} placeholder="Password" name="password" type='password'/>
                 <FormButton type="submit">Login</FormButton>
-            </LoginForm>
-        </LoginSection>
+            </Form>
+        </FormSection>
     );
 };
 export default login;

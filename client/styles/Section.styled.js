@@ -32,7 +32,7 @@ align-items: center;
 };
 `;
 
-export const LoginSection = styled.section`
+export const FormSection = styled.section`
 padding: 4%;
 @media screen and (min-width: 768px) {
     display: flex;

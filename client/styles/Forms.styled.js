@@ -1,35 +1,42 @@
 import styled from "styled-components";
 
-export const LoginForm = styled.form`
+export const Form = styled.form`
+/**all transform props were added for the create user form and that is where they are being used */
 display: flex;
 flex-direction: column;
 justify-content: center;
 padding: 7%;
 border: 3px solid rgb(0,0,0);
 border-radius: 11px;
-transform: translateY(50%);
+transform: ${props => props.transform ? props.transform:'translateY(50%)'};
 @media screen and (min-width: 390px) {
-    transform: translateY(70%);
+    transform: ${props => props.transform390 ? props.transform390:'translateY(70%)'};
 }
 @media screen and (min-width: 540px) {
-    transform: translateY(50%);
+    transform: ${props => props.transform540 ? props.transform540:'translateY(50%)'};
 }
 @media screen and (min-width: 768px) {
-    transform: translateY(60%);
+    transform: ${props => props.transform768 ? props.transform768:'translateY(60%)'};
     width: 70%
 }
 @media screen and (min-width: 1024px) {
-    transform: translateY(0%);
+    padding: ${props => props.padding1024 };
+    transform: ${props => props.transform1024 ? props.transform1024:'translateY(0%)'};
+}
+/*this media query was made only for add user form */
+@media screen and (min-width: 1280px) {
+    transform: ${props => props.transform1280};
 }
 @media screen and (min-width: 1366px) {
     padding: 4%;
     width: 50%;
-    transform: translateY(20%);
+    transform: ${props => props.transform1366 ? props.transform1366:'translateY(20%)'};
 }
 @media screen and (min-width: 1920px) {
     padding: 3%;
     width: 45%;
     transform: translateY(45%);
+    transform: ${props => props.transform1920 ? props.transform1920:'translateY(45%)'};
 }
 `;
 

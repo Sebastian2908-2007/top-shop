@@ -37,7 +37,8 @@ const vertIconStyle = theme => ({
  const menuOptions = [
     ["About","/about"],
     ["Blog","/blog"],
-    ["login","/login"]
+    ["login","/login"],
+    ["new account","/newuser"]
  ];
 
   return (
@@ -63,7 +64,7 @@ const vertIconStyle = theme => ({
         onClose={handleClose}
         PaperProps={{
           style: {
-            width: '11ch',
+            width: 'auto',
             backgroundColor:'rgb(248, 248, 128)',
           },
         }}
