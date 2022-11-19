@@ -31,3 +31,13 @@ align-items: center;
     padding-bottom: 12rem;
 };
 `;
+
+export const LoginSection = styled.section`
+padding: 4%;
+@media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+`;
