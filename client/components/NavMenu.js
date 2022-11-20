@@ -4,6 +4,9 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Link from 'next/link';
+import { AdminDashboardLink } from '../styles/Links.styled';
+import auth from '../utils/auth';
+import { MenuLogoutButton } from '../styles/Button.styled';
 
 
 
@@ -22,7 +25,12 @@ export default function NavMenu() {
  /**style for menu Items */
 const menuItemStyles = {
     fontFamily: ['Dancing Script'],
-    fontSize: '1.3rem'
+    fontSize: '1.3rem',
+    color: 'orange',
+    textShadow: '0 0 1px black' ,
+      '&:hover': {
+    color: 'black'
+  }
 };
 /**more vert icon styles */
 const vertIconStyle = theme => ({ 
@@ -39,6 +47,12 @@ const vertIconStyle = theme => ({
     ["Blog","/blog"],
     ["login","/login"],
     ["new account","/newuser"]
+ ];
+
+ /**menu options for logged in user */
+ const loggedInMenuOptions = [
+  ["About","/about"],
+  ["Blog","/blog"],
  ];
 
   return (
@@ -69,10 +83,35 @@ const vertIconStyle = theme => ({
           },
         }}
       >
-       {menuOptions.map((menuOption) => ( 
-        <MenuItem  key={menuOption} style={menuItemStyles} onClick={handleClose}><Link href={menuOption[1]}>{menuOption[0]}</Link></MenuItem>
-       ))}
-       
+        {/**if logged in display loggedinmenuoptions if not display"menuOptions' */}
+       {auth.loggedIn() ? (
+        
+            loggedInMenuOptions.map((menuOption) => (
+              <MenuItem  key={menuOption} sx={menuItemStyles} onClick={handleClose}>
+              <Link href={menuOption[1]}>{menuOption[0]}</Link>
+            </MenuItem>
+            ))
+          ):( 
+       menuOptions.map((menuOption) => (   
+        <MenuItem  key={menuOption} sx={menuItemStyles} onClick={handleClose}>
+          <Link href={menuOption[1]}>{menuOption[0]}</Link>
+        </MenuItem>
+          )) 
+
+          )
+            }    
+       {/**menu options teranary ends */}   
+     {auth.loggedIn() ? 
+     (  
+     <MenuItem>
+     <MenuLogoutButton onClick={() => auth.logout()}>Logout</MenuLogoutButton>
+     </MenuItem>
+     ):(null) 
+     }
+     {
+     auth.loggedIn() && auth.getProfile().data.isAdmin ?
+       (<MenuItem style={menuItemStyles}><AdminDashboardLink href='/admindashboard'>Dashboard</AdminDashboardLink></MenuItem>):(null)
+     }
       </Menu>
     </div>
   );

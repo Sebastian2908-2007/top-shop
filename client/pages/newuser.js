@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import {Form,FormInput,FormButton } from "../styles/Forms.styled";
@@ -6,13 +6,12 @@ import { FormSection } from "../styles/Section.styled";
 import auth from "../utils/auth";
 
 const CreateUser = () => {
-    useEffect(() => {console.log(addUserFormState)});
      /**form state to be set in handleChange function */
      const [addUserFormState,setAddUserFormState] = useState({email:'',password:'',firstName:'',lastName:''});
      /**add user mutation creation */
      const [addUser,{error}] = useMutation(ADD_USER);
 
-     /**login function */
+     /**add user function function */
     const submitAddUser = async (event) => {
         event.preventDefault();
         try{ 

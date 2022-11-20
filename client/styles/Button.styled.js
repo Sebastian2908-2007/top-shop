@@ -46,3 +46,16 @@ border: 1px solid rgb(245 245 6);
 margin-left: 1em;
 }
 `;
+
+export const MenuLogoutButton = styled.button`
+border: 1px solid rgb(0,0,0);
+background: linear-gradient(to right, rgb(0,0,0),rgb(0,0,0,0.4));
+color:  rgb(245 245 6);
+padding: 8%;
+font-family: 'dancing script';
+font-size: 1.3em;
+&:hover {
+        background: linear-gradient(to left, rgb(0,0,0),rgb(0,0,0,0.4));
+        font-family:'sans serrif';
+}
+`;
