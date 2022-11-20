@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../utils/mutations";
 import { FormButton, FormInput, Form } from "../styles/Forms.styled";
@@ -6,7 +6,6 @@ import { FormSection } from "../styles/Section.styled";
 import auth from "../utils/auth";
 
 const login = () => {
-    useEffect(() => {console.log(loginFormState)})
     /**form state to be set in handleChange function */
     const [loginFormState,setLoginFormState] = useState({email:'',password:''});
     /**create mutation function login our current user as well as destructuing error functionality from useMutation */
