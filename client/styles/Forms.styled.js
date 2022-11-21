@@ -9,6 +9,7 @@ padding: 7%;
 border: 3px solid rgb(0,0,0);
 border-radius: 11px;
 transform: ${props => props.transform ? props.transform:'translateY(50%)'};
+background: ${props => props.errorColor };
 @media screen and (min-width: 390px) {
     transform: ${props => props.transform390 ? props.transform390:'translateY(70%)'};
 }

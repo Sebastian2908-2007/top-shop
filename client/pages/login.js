@@ -4,10 +4,13 @@ import { LOGIN } from "../utils/mutations";
 import { FormButton, FormInput, Form } from "../styles/Forms.styled";
 import { FormSection } from "../styles/Section.styled";
 import auth from "../utils/auth";
+import { LoginSignupErrorDiv } from "../styles/Div.styled";
 
 const login = () => {
     /**form state to be set in handleChange function */
     const [loginFormState,setLoginFormState] = useState({email:'',password:''});
+    /*state for error message */
+    const [errorMsg,setErrorMsg] = useState('');
     /**create mutation function login our current user as well as destructuing error functionality from useMutation */
     const [userLogin,{error}] = useMutation(LOGIN);
 
@@ -25,7 +28,8 @@ const login = () => {
         auth.login(token);
         console.log(token);
     }catch(e) {
-        console.log(e);
+        setErrorMsg(e.message);
+        console.log(e.message);
     }
     };
 
@@ -44,8 +48,9 @@ const login = () => {
  };
 
     return(
-        <FormSection>
-            <Form onSubmit={submitLogin}>
+        <FormSection flxDirErr={error && 'column'} alignItemsErr={error &&'center'} pdngBtmErr={error && '9em'}>
+            {error && <LoginSignupErrorDiv>{errorMsg} Please Try again!</LoginSignupErrorDiv> }
+            <Form onSubmit={submitLogin} errorColor={error && 'linear-gradient(rgb(0,0,0,0.8),rgb(170, 74, 68))'}>
                 <FormInput onChange={handleChange} placeholder="Your Email" name="email" type='email'  marginTop='.5em'/>
                 <FormInput onChange={handleChange} placeholder="Password" name="password" type='password'/>
                 <FormButton type="submit">Login</FormButton>

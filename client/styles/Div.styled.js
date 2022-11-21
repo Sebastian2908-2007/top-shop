@@ -88,3 +88,15 @@ export const NoCategoryDiv = styled.div`
 font-size: 3em;
 margin-top: 1em;
 `;
+
+export const LoginSignupErrorDiv = styled.div`
+font-size: .8em;
+border: 1px solid black;
+background: linear-gradient(to right ,rgb(0,0,0,0.8),rgb(170, 74, 68));
+color:rgb(245 245 6);
+padding: 3%;
+text-align: center;
+@media screen and (min-width: 768px) {
+    font-size: 1em;
+}
+`;
