@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { AdminSection } from "../styles/Section.styled";
+import { MainAdminSection } from "../styles/Section.styled";
 import { AdminDashTitle } from "../styles/H1.styled";
 /*format date function*/
 import dateFormat from "../utils/dateFormat";
@@ -22,7 +22,7 @@ const admindashboard = () => {
     const unixDate = Date.now()
     const todaysDate = dateFormat(unixDate);
     return(
-        <AdminSection>
+        <MainAdminSection>
             <AdminDashTitle>{todaysDate}</AdminDashTitle>
         <Swiper
           effect={"cards"}
@@ -36,7 +36,7 @@ const admindashboard = () => {
           <SwiperSlide>Slide 4</SwiperSlide>
           <SwiperSlide>Slide 5</SwiperSlide>
         </Swiper>
-        </AdminSection>
+        </MainAdminSection>
     );
 };
 

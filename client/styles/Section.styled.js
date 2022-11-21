@@ -47,7 +47,22 @@ padding-bottom: ${props => props.pdngBtmErr};
 }
 `;
 
-export const AdminSection = styled.section`
+export const MainAdminSection = styled.section`
 padding: 2%;
 height: auto;
+`;
+
+export const CarouselAdminSection = styled.section`
+display: flex;
+flex-direction: column;
+padding: 2%;
+height: 100%;
+width: 100%;
+`;
+
+export const AdminCategoriesSection = styled.section`
+height: 50%;
+width: 100%;
+margin-top: 3%;
+border: 2px solid rgba(223,223,16,1);
 `;

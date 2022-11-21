@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+/*forms for adding user and logging in */
 export const Form = styled.form`
 /**all transform props were added for the create user form and that is where they are being used */
 display: flex;
@@ -59,3 +60,31 @@ background-color: rgb(0,0,0,0.4);
 border: 1px solid rgb(245 245 6);
 };
 `;
+/*forms for adding user and logging in end */
+
+/**forms related to Admin dash begin */
+export const AdminForm = styled.form`
+width: 100%;
+height: 18%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+`;
+
+export const AdminFormInput = styled.input`
+width: 100%;
+border: 2px solid rgba(223,223,16,1);
+background: rgba(223,223,16,0.4);
+color: black;
+`;
+
+export const AdminFormButton = styled.button`
+width: 30%;
+border-radius: 11px;
+padding: 1%;
+border: 1px solid rgba(223,223,16,1);
+color: rgba(223,223,16,1);
+background: linear-gradient(to left, rgb(199, 197, 104),rgb(0,0,0));
+`;
+/**forms related to Admin dash end*/

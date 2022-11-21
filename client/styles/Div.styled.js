@@ -100,3 +100,11 @@ text-align: center;
     font-size: 1em;
 }
 `;
+
+export const CurrentCategoryDiv = styled.div`
+display: flex;
+flex-flow: row wrap;
+justify-content:center;
+width: 100%;
+max-height: 100%;
+`;

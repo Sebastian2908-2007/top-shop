@@ -47,6 +47,16 @@ margin-left: 1em;
 }
 `;
 
+export const AdminCategoryButton = styled.button`
+font-size:.8rem;
+margin-right:2%;
+margin-bottom: 3%;
+border: 1px solid rgba(223,223,16,1);
+color: rgba(223,223,16,1);
+background: linear-gradient(to left, rgb(199, 197, 104),rgb(0,0,0));
+border-radius: 5px;
+`;
+
 export const MenuLogoutButton = styled.button`
 border: 1px solid rgb(0,0,0);
 background: linear-gradient(to right, rgb(0,0,0),rgb(0,0,0,0.4));
