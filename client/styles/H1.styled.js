@@ -37,3 +37,12 @@ animation: ${rotateScaleUp} 2s linear 1;
 font-size: 2.8em;
 }
 `;
+
+export const AdminDashTitle = styled.h1`
+font-size: 1.5em;
+border-radius: 11px;
+padding: 2%;
+background: linear-gradient(to left, rgb(0,0,0,0.9),rgb(0,0,0,0.6));
+color: rgba(223,223,16,1);
+text-align: center;
+`;

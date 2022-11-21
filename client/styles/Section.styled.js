@@ -45,5 +45,9 @@ padding-bottom: ${props => props.pdngBtmErr};
     /**used only when a form error is present */
     align-items: ${props => props.alignItemsErr};
 }
+`;
 
+export const AdminSection = styled.section`
+padding: 2%;
+height: auto;
 `;
