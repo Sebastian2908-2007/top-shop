@@ -45,6 +45,9 @@ padding: 2%;
 background:  linear-gradient(to left, rgb(199, 197, 104),rgb(0,0,0));
 color: rgba(223,223,16,1);
 text-align: center;
+@media screen and (min-width:768px) {
+    font-size: 2em;
+}
 `;
 
 /**linear-gradient(to left, rgb(0,0,0,0.9),rgb(0,0,0,0.6)); */

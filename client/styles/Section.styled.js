@@ -50,7 +50,13 @@ padding-bottom: ${props => props.pdngBtmErr};
 export const MainAdminSection = styled.section`
 padding: 2%;
 height: auto;
-padding-bottom: 8em;
+padding-bottom: 5em;
+@media screen and (min-width:1024px){
+    padding-bottom: 10em;
+}
+@media screen and (min-width:1920px){
+    padding-bottom: 15em;
+}
 `;
 
 /*this should be re usable in each section */

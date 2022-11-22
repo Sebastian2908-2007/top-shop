@@ -55,6 +55,10 @@ border: 1px solid rgba(223,223,16,1);
 color: rgba(223,223,16,1);
 background: linear-gradient(to left, rgb(199, 197, 104),rgb(0,0,0));
 border-radius: 5px;
+@media screen and (min-width:768px) {
+    font-size: .9em;
+    padding: 1%;
+}
 `;
 
 export const MenuLogoutButton = styled.button`

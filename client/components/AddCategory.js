@@ -14,9 +14,15 @@ import { AdminForm, AdminFormInput,AdminFormButton } from "../styles/Forms.style
 /**imported styled components end */
 /**import mui icon */
 import ClearIcon from '@mui/icons-material/Clear';
-import { removeClientSetsFromDocument } from "@apollo/client/utilities";
+
 
 const AddCategory = () => {
+    /**clear icon styles*/
+    const clearIconStyle = {
+        fontSize:{xs:'1rem',sm:'1.5rem'},fontWeight:'bold',transform:'translate(55%,-26%)',
+        color:'rgb(245 245 6)','&:hover':{color:'rgb(170, 74, 68)'}
+        
+    }
     /**call category query refetch will happen when form is submitted*/
     const {loading,data,refetch} = useQuery(GET_CATEGORIES);
     /**name use mutation function and destructure error from use mutation hook */
@@ -75,7 +81,7 @@ const AddCategory = () => {
          <CurrentCategoryDiv>
          {loading ? (<div>loading...</div>):( 
            data.getCategories.map(category => (
-            <AdminCategoryButton onClick={() =>{deleteCategoryOnClick(category._id)}} key={category._id}>{category.name}<ClearIcon sx={{fontSize:'1rem',fontWeight:'bold',transform:'translate(55%,-26%)',color:'rgb(245 245 6)','&:hover':{color:'rgb(170, 74, 68)'}}}/></AdminCategoryButton>
+            <AdminCategoryButton onClick={() =>{deleteCategoryOnClick(category._id)}} key={category._id}>{category.name}<ClearIcon sx={clearIconStyle}/></AdminCategoryButton>
            ))    )
          }
          </CurrentCategoryDiv>

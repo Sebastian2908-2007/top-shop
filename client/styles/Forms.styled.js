@@ -78,6 +78,18 @@ border: 2px solid rgba(223,223,16,1);
 background: rgba(223,223,16,0.4);
 color: black;
 border-radius: 11px;
+@media screen and (min-width:540px) {
+    width: 70%;
+}
+@media screen and (min-width:768px) {
+    font-size: 1em;
+}
+@media screen and (min-width:1024px){
+   width: 50%;
+}
+@media screen and (min-width:1366px){
+   width: 40%;
+}
 `;
 
 export const AdminFormButton = styled.button`
@@ -88,5 +100,8 @@ padding: 1%;
 border: 1px solid rgba(223,223,16,1);
 color: rgba(223,223,16,1);
 background: linear-gradient(to left, rgb(199, 197, 104),rgb(0,0,0));
+@media screen and (min-width:768px) {
+    font-size: .9em;
+}
 `;
 /**forms related to Admin dash end*/
