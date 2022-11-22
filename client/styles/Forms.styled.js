@@ -65,7 +65,7 @@ border: 1px solid rgb(245 245 6);
 /**forms related to Admin dash begin */
 export const AdminForm = styled.form`
 width: 100%;
-height: 18%;
+height: 12%;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
@@ -77,11 +77,13 @@ width: 100%;
 border: 2px solid rgba(223,223,16,1);
 background: rgba(223,223,16,0.4);
 color: black;
+border-radius: 11px;
 `;
 
 export const AdminFormButton = styled.button`
 width: 30%;
 border-radius: 11px;
+margin-top: 1%;
 padding: 1%;
 border: 1px solid rgba(223,223,16,1);
 color: rgba(223,223,16,1);

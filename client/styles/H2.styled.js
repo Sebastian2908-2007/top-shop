@@ -5,4 +5,6 @@ padding: 2%;
 max-width: 100%;
 font-size: 1.2em;
 text-align: center;
+margin-top: 0.1%;
+margin-bottom: 1%
 `;

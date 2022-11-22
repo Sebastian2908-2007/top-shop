@@ -50,7 +50,7 @@ margin-left: 1em;
 export const AdminCategoryButton = styled.button`
 font-size:.8rem;
 margin-right:2%;
-margin-bottom: 3%;
+margin-bottom: 5%;
 border: 1px solid rgba(223,223,16,1);
 color: rgba(223,223,16,1);
 background: linear-gradient(to left, rgb(199, 197, 104),rgb(0,0,0));

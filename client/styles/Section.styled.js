@@ -50,8 +50,10 @@ padding-bottom: ${props => props.pdngBtmErr};
 export const MainAdminSection = styled.section`
 padding: 2%;
 height: auto;
+padding-bottom: 8em;
 `;
 
+/*this should be re usable in each section */
 export const CarouselAdminSection = styled.section`
 display: flex;
 flex-direction: column;
@@ -61,8 +63,9 @@ width: 100%;
 `;
 
 export const AdminCategoriesSection = styled.section`
-height: 50%;
+height: 70%;
 width: 100%;
 margin-top: 3%;
 border: 2px solid rgba(223,223,16,1);
+border-radius: 11px;
 `;
