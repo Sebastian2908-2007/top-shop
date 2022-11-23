@@ -72,12 +72,13 @@ function calculateTotal() {
        
        ):(<div>Nothing in cart</div>)
        }
-{cart.length ?  
-<>
+{cart.length ? ( 
+<div>
 <strong>Total: ${isNaN(calculateTotal()) ? '0': calculateTotal()}</strong>
 <MenuItem><Button sx={checkoutAdd2CartBtnStyle}>Checkout</Button></MenuItem>
-</>
-:null}
+</div>
+)
+:(null)}
       
     </Menu>
     </div>

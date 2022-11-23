@@ -32,3 +32,19 @@ mutation deleteCategory($_id:ID!) {
   }
 }
 `;
+
+export const ADD_FILE = gql`
+mutation addFile($ETag:String!,$Location:String!,$key:String,$Key:String!,$Bucket:String!) {
+  addFile(ETag:$ETag,Location:$Location,key:$key,Key:$Key,Bucket:$Bucket) {
+    _id
+  }
+}
+`;
+
+export const ADD_PRODUCT = gql`
+mutation addProduct($name:String!,$description:String!,$image:ID!,$price:Int!,$quantity:Int,$category:ID!) {
+  addProduct(name:$name,description:$description,image:$image,price:$price,quantity:$quantity,category:$category) {
+    _id
+ }
+}
+`;

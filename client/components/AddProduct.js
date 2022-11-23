@@ -14,7 +14,11 @@ import { CssBaseline,ThemeProvider  } from '@mui/material';
 import { SelectDropdownTheme } from "../utils/themes";
 /**mui select imports end*/
 /**import S3 function for uploading images */
-import s3Upload from '../utils/s3';
+import {s3Upload} from '../utils/s3';
+/**import required mutations to add a product*/
+import { ADD_FILE, ADD_PRODUCT } from "../utils/mutations";
+/**apollo client useMutation hook import*/
+import { useMutation } from "@apollo/client";
 
 const AddProduct = ({data,loading}) => {
 /**menu item styles */
@@ -23,6 +27,11 @@ const menuItemStyle = {
     background:'linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0));',
     color:'rgba(223,223,16,1)'
 };
+
+/**name mutation for uploading a file and grab error from use mutation*/
+const [addProductImage,{fileError}] = useMutation(ADD_FILE);
+/**name mutation for adding a product and grab error from use mutation*/
+const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
 
     /**mui select related */
     const [category, setCategory] = useState('');
@@ -37,8 +46,12 @@ const menuItemStyle = {
     const [productImage,setProductImage] = useState(null);
     /**state for product form fields*/
     const [formData,setFormData] = useState({name:'',description:'',price:'',quantity:''});
-useEffect(()=>{console.log(productImage),console.log(category),console.log(formData)},[formData,category,productImage]);
+//useEffect(()=>{console.log(productImage),console.log(category),console.log(formData)},[formData,category,productImage]);
     /**change function to grab product image for the product upload*/
+
+    /**state for error message*/
+    const [formError,setFormError] = useState(null);
+
     const fileChange = (event) => {
         setProductImage(event.target.files[0]);
     };
@@ -49,6 +62,49 @@ useEffect(()=>{console.log(productImage),console.log(category),console.log(formD
             ...formData,
             [name]:value 
         });
+    };
+
+    const handleProductSubmit = async (event) => {
+        event.preventDefault();
+        try{
+            /**upload image to s3 and store return data to a varible so it can be used for upload to my db*/
+        const s3ReturnData = await s3Upload(productImage);
+        console.log('data before fileupload mutation',s3ReturnData);
+        /**use s3 return data to give my file upload data what it needs in my db */
+        const imageData = await addProductImage({
+            variables:{
+              ETag: s3ReturnData.ETag,
+              Location:s3ReturnData.Location,
+              key:s3ReturnData.key,
+              Key:s3ReturnData.Key,
+              Bucket:s3ReturnData.Bucket
+            }
+        });
+        console.log('data after file upload to my db',imageData);
+
+        /**get returned _id from mutation to feed to the add product mutation */
+        const productImgId = imageData.data.addFile._id;
+
+        /**now its time to use our category _id from the state variable and the _id above to 
+         * in conjunction with the form data
+         * to upload a product to our data base 
+         */
+     const productUpload = await addProduct({
+        variables:{
+            name: formData.name,
+            description: formData.description,
+            price: parseInt(formData.price),
+            quantity: parseInt(formData.quantity),
+            image: productImgId,
+            category: category
+        }
+     });
+     console.log('sucessful product upload',productUpload);
+        
+        }catch(e){
+            console.log(e);
+            setFormError(e.message);
+        }
     };
 
     return(
@@ -80,13 +136,14 @@ useEffect(()=>{console.log(productImage),console.log(category),console.log(formD
       </ThemeProvider>
         {/****************!!!!!!!!Mui select ends!!!!!!!********************/}
 
-        <AdminForm marginTop='11%' height='50%'>
+        <AdminForm onSubmit={handleProductSubmit} marginTop='11%' height='50%'>
+          {productError && <div>{formError}</div>}
             <AdminFormInput onChange={handleFormData} name="name" placeholder="enter product name"/>
             <AdminFormInput onChange={handleFormData} name="description" placeholder="enter product description"/>
             <AdminFormInput onChange={handleFormData} name="price" placeholder="enter product price"/>
             <AdminFormInput onChange={handleFormData} name="quantity" placeholder="enter product quantity"/>
-            <AdminFormInput name='image' type='file' accept='/image' onChange={fileChange}/>
-            <AdminFormButton>Add product</AdminFormButton>
+            <AdminFormInput name='image' type='file' accept='/image' onChange={fileChange}/>{fileError && <div>{formError}</div>}
+            <AdminFormButton type="submit">Add product</AdminFormButton>
         </AdminForm>
        </CarouselAdminSection>
     );
