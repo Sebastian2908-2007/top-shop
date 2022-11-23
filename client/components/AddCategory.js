@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import {useQuery, useMutation} from '@apollo/client';
-/**import query to get categories */
-import { GET_CATEGORIES } from "../utils/queries";
+import {useMutation} from '@apollo/client';
 /**import mutation to add and delete a category */
 import { ADD_CATEGORY, DELETE_CATEGORY } from "../utils/mutations";
 /**imported styled components */
@@ -15,16 +13,15 @@ import { AdminForm, AdminFormInput,AdminFormButton } from "../styles/Forms.style
 /**import mui icon */
 import ClearIcon from '@mui/icons-material/Clear';
 
-
-const AddCategory = () => {
+/**these props come in from data queried in adminDashboard its passed because products component also needs this data */
+const AddCategory = ({data,refetch,loading}) => {
     /**clear icon styles*/
     const clearIconStyle = {
         fontSize:{xs:'1rem',sm:'1.5rem'},fontWeight:'bold',transform:'translate(55%,-26%)',
         color:'rgb(245 245 6)','&:hover':{color:'rgb(170, 74, 68)'}
         
     }
-    /**call category query refetch will happen when form is submitted*/
-    const {loading,data,refetch} = useQuery(GET_CATEGORIES);
+  
     /**name use mutation function and destructure error from use mutation hook */
     const [addCategory,{error}] = useMutation(ADD_CATEGORY);
     /**name mutation that wil delete a category */
@@ -32,9 +29,9 @@ const AddCategory = () => {
     /**create the state for the add category data */
     const [categoryFormData,setCategoryFormData] = useState({name:''});
     /**funtion to set category data state */
-    const onFormChange = (e) => {
+    const onFormChange = (event) => {
         /**destructure name and value from the event target*/
-        const {name,value} = e.target;
+        const {name,value} = event.target;
       /*set the form state*/
         setCategoryFormData({
             [name]:value
@@ -42,8 +39,8 @@ const AddCategory = () => {
     };
 
     /**function that will submit our form data when form is submitted */
-    const submitNewCategory = async (e) => {
-       e.preventDefault();
+    const submitNewCategory = async (event) => {
+       event.preventDefault();
        try{
         await addCategory({variables:{name: categoryFormData.name}});
         /**clear form input*/

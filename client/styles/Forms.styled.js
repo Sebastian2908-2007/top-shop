@@ -65,11 +65,12 @@ border: 1px solid rgb(245 245 6);
 /**forms related to Admin dash begin */
 export const AdminForm = styled.form`
 width: 100%;
-height: 12%;
+height:${props => props.height ? props.height:'12%'};
 display: flex;
 flex-direction: column;
 justify-content: space-between;
 align-items: center;
+margin-top: ${props => props.marginTop};
 `;
 
 export const AdminFormInput = styled.input`
@@ -78,6 +79,10 @@ border: 2px solid rgba(223,223,16,1);
 background: rgba(223,223,16,0.4);
 color: black;
 border-radius: 11px;
+text-align: center;
+&::placeholder {
+   color: rgba(223,223,16,1);
+  }
 @media screen and (min-width:540px) {
     width: 70%;
 }

@@ -7,3 +7,22 @@ import { createTheme } from "@mui/material";
         fontFamily: ['Dancing Script'],
       },
 });
+
+export const SelectDropdownTheme = createTheme({
+  components: {
+    MuiSelect: {
+      
+      defaultProps: {
+        variant: 'standard',
+      },
+     
+    
+  }
+  }
+});
+
+/**
+  defaultProps: {
+        variant: 'standard',
+      },
+ */

@@ -26,7 +26,7 @@ const productSchema = new Schema({
     quantity: {
         type: Number,
         min: 0,
-        default: 0
+        default: 1
     },
     category: {
         type: Schema.Types.ObjectId,
