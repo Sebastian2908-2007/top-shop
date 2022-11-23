@@ -20,6 +20,7 @@ export default function ProductCard({product}) {
     price,
     _id
   } = product;
+  console.log(product);
 
   /**destructure Location from image that is nested in the product */
   const {
@@ -31,6 +32,8 @@ Location
   const [state,dispatch] = useStoreContext();
   /**destructure cart from state */
   const { cart } = state;
+
+  /**this function adds to the cart and updates the global state with a product */
   const addToCart = () => {
    const isItemInCart = cart.find((cartItem) => cartItem._id === _id);
    if(isItemInCart) { 

@@ -19,6 +19,7 @@ const CartItem = ({ item }) => {
     image,
     name,
     price,
+    /**will not need quantity here */
     quantity,
     _id
   } = item;

@@ -99,6 +99,8 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
             category: category
         }
      });
+     /**this will reset the product form*/
+     document.getElementById('add-product-form').reset();
      console.log('sucessful product upload',productUpload);
         
         }catch(e){
@@ -136,7 +138,7 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
       </ThemeProvider>
         {/****************!!!!!!!!Mui select ends!!!!!!!********************/}
 
-        <AdminForm onSubmit={handleProductSubmit} marginTop='11%' height='50%'>
+        <AdminForm id="add-product-form" onSubmit={handleProductSubmit} marginTop='11%' height='50%'>
           {productError && <div>{formError}</div>}
             <AdminFormInput onChange={handleFormData} name="name" placeholder="enter product name"/>
             <AdminFormInput onChange={handleFormData} name="description" placeholder="enter product description"/>
