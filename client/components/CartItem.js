@@ -19,8 +19,7 @@ const CartItem = ({ item }) => {
     image,
     name,
     price,
-    /**will not need quantity here */
-    quantity,
+    purchaseQuantity,
     _id
   } = item;
 
@@ -45,10 +44,20 @@ const CartItem = ({ item }) => {
           _id: _id
       });
   }else {
+    /**below if keeps error from going off this still throws a warning when value
+     *  is momentarily absent the problen is the empty value '?' being fed to input value*/
+    if(value === '') {
+      dispatch({
+        type: UPDATE_CART_QUANTITY,
+        _id: _id,
+        purchaseQuantity: '?'
+    });
+      return;
+    }
       dispatch({
           type: UPDATE_CART_QUANTITY,
           _id: _id,
-          quantity: parseInt(value)
+          purchaseQuantity: parseInt(value)
       });
   }
 };
@@ -69,8 +78,8 @@ return (
             <span>Qty</span>
          <CartInput
           type="number"
-          placeholder={quantity}
-          value={quantity}
+          placeholder={purchaseQuantity}
+         value={purchaseQuantity}
           onChange={onChange}
          />
          <CartTrashSpan

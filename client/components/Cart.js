@@ -34,7 +34,7 @@ const cartIconStyle = theme => ({
 function calculateTotal() {
   let sum = 0;
   state.cart.forEach(item => {
-      sum += item.price * item.quantity;
+      sum += item.price * item.purchaseQuantity;
   });
   // toFixed will set the number of digits to appear after decimal point
   return sum.toFixed(2);

@@ -11,6 +11,7 @@ import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../utils/actions';
 import { ProductPriceSpan } from '../styles/Spans.styled';
 
 export default function ProductCard({product}) {
+  /**this is state for the text that resides in the product item buttons so that it can be changed when adding to cart */
   const [crtBtnTxt, setCrtBtnTxt] = useState('Add To Cart');
   /**destructure product */
   const {
@@ -18,9 +19,10 @@ export default function ProductCard({product}) {
     image,
     name,
     price,
+    /**quantity un note later for in Stock*/
     _id
   } = product;
-  console.log(product);
+  //console.log(product);
 
   /**destructure Location from image that is nested in the product */
   const {
@@ -40,15 +42,18 @@ Location
     dispatch({
       type: UPDATE_CART_QUANTITY,
       _id: _id,
-      quantity: parseInt(isItemInCart.quantity) + 1
+      purchaseQuantity: parseInt(isItemInCart.purchaseQuantity) + 1
     });
+    /**this sets button text momentarily when an item is added twice*/
     setCrtBtnTxt('quantity updated !');
     setTimeout(() => {setCrtBtnTxt('Add To Cart')},3000)
    }else { 
     dispatch({
       type: ADD_TO_CART,
-      product: { ...product }
+      /**purchaseQuantity is not on data from db its created right here for the global state */
+      product: { ...product, purchaseQuantity: 1 }
     });
+    /**this sets button text momentarily when an item is added*/
     setCrtBtnTxt('Added to cart!');
     setTimeout(() => {setCrtBtnTxt('Add To Cart')},3000)
   }

@@ -40,7 +40,6 @@ if(data) {
 
    /**get data from global state and store in products variable*/
    const products = state.products;
-console.log(products);
    function filterProducts() {
      if(!currentCategory) {
       return products;
