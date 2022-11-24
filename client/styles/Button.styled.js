@@ -73,3 +73,10 @@ font-size: 1.3em;
         font-family:'sans serrif';
 }
 `;
+/**related to logged in admin only */
+export const DeleteProductButton = styled.button`
+border-radius: 11px;
+`;
+export const EditProductButton = styled.button`
+border-radius: 11px;
+`;

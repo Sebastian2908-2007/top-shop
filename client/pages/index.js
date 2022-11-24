@@ -8,7 +8,7 @@ import { HomeHeroPic } from '../styles/Images.styled';
 import { HomeHeroSection,ProductSection } from '../styles/Section.styled';
 import ProductCard from '../components/ProductCards';
 import { useQuery } from '@apollo/client';
-import { GET_ALL_PRODUCTS_HOMEPAGE } from '../utils/queries';
+import { GET_ALL_PRODUCTS} from '../utils/queries';
 import { MainTitle } from '../styles/H1.styled';
 /**import state and dispatch basically */
 import { useStoreContext } from '../utils/Globalstate';
@@ -22,7 +22,7 @@ import { NoProductDiv } from '../styles/Div.styled';
 
 export default function Home() {
   const [state, dispatch] = useStoreContext();
-  const {loading,data} = useQuery(GET_ALL_PRODUCTS_HOMEPAGE);
+  const {loading,data} = useQuery(GET_ALL_PRODUCTS);
   /***destructure current category from state*/
   const { currentCategory } = state;
  

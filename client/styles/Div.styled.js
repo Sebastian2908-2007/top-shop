@@ -108,3 +108,10 @@ justify-content:center;
 width: 100%;
 max-height: 100%;
 `;
+/**product card divs related to admin product card functionality */
+export const ProductCardCategoryDiv = styled.div`
+font-weight: bolder;
+padding: 2%;
+background-color: rgb(248, 248, 128);
+`;
+

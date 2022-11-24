@@ -27,7 +27,7 @@ const AddProduct = ({data,loading}) => {
 /**this query gets all products but only returns their ids since it exists really only to get a product count*/
 const {data: productData,refetch} = useQuery(GET_PRODUCTS_FOR_ADMIN_LINK);
 
-console.log(productData);
+//console.log(productData);
 
 /**menu item styles */
 const menuItemStyle = {

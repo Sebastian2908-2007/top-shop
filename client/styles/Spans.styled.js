@@ -10,3 +10,8 @@ font-size: 1.3rem;
 padding: ${props => props.padding ? props.padding: '6%'};
 margin-bottom: ${props => props.marginBottom};
 `;
+/**related to product card admin only */
+export const AdminItemNameSpan = styled.span`
+font-weight: bolder;
+font-family: 'Courier New', Courier, monospace;
+`;

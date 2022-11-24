@@ -9,10 +9,33 @@ import { checkoutAdd2CartBtnStyle } from '../styles/commonMuiStyles/muiButtonSty
 import { useStoreContext } from '../utils/Globalstate';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../utils/actions';
 import { ProductPriceSpan } from '../styles/Spans.styled';
+/**import token functionality to use for conditionals */
+import auth from '../utils/auth';
+/**styled components related only to admin functionality start */
+import { ProductCardCategoryDiv } from '../styles/Div.styled';
+import { AdminItemNameSpan } from '../styles/Spans.styled';
+import { DeleteProductButton, EditProductButton } from '../styles/Button.styled';
+/**styled components related only to admin functionality end*/
 
+/**although this is the same component used on the homepage certain data will not be accessible there for the
+ * admin namely category name also even if delete button shows the key and bucket properties will not be present
+ * because as of now the queries that feed the card on each page differ I will probably need to do something about this 
+ * but im taking note of the issue here for now
+ */
 
 export default function ProductCard({product}) {
+  /**here we declare an empty variable that will be set to true or false if a user is logged in
+   * and is or isnt an admin if nobody is logged in its just set false
+   */
+  let isAdmin;
+  /**this if statement sets isAdmin variable*/
+  if(auth.loggedIn()) { 
+  isAdmin = auth.getProfile().data.isAdmin;
+  }else{
+    isAdmin = false
+  };
 
+  //console.log(isAdmin);
   /**this is state for the text that resides in the product item buttons so that it can be changed when adding to cart */
   const [crtBtnTxt, setCrtBtnTxt] = useState('Add To Cart');
   /**destructure product */
@@ -70,21 +93,38 @@ Location
         image={Location}
       />
       <CardContent sx={{display:'flex', flexDirection:'column',alignItems:'center'}} >
+        {isAdmin && <ProductCardCategoryDiv>Category: {product.category.name}</ProductCardCategoryDiv>}
         <Typography gutterBottom variant="h5" component="div" 
         sx={{textShadow: '0 0 10px rgb(248, 248, 128)',fontSize:{xs:'1.5rem',xl:'1.8rem'}}}>
-          {name}
+         {isAdmin && <AdminItemNameSpan>Product Name:</AdminItemNameSpan>} {name}
         </Typography>
         <Typography variant="body2" color="text.secondary"
          sx={{backgroundColor:'rgb(248, 248, 128,0.4)',padding:"2%",fontWeight:'bolder',fontSize:{xs:'1.3rem',xl:'1.5rem'}}}>
-         {description}
+        {isAdmin && <AdminItemNameSpan>Product description:</AdminItemNameSpan>} {description}
         </Typography>
       </CardContent>
       <CardActions sx={{display:'flex', flexDirection:'column',alignItems:'center'}}>
       <ProductPriceSpan padding='3%' marginBottom='.55em'>
-        ${price}
+      {isAdmin && <AdminItemNameSpan>Product Price:</AdminItemNameSpan>} ${price}
       </ProductPriceSpan>
-        <Button size="small" sx={checkoutAdd2CartBtnStyle} onClick={addToCart}>{crtBtnTxt}</Button>
+      {/**Below if not admin display regular button for checkout */}
+      {!isAdmin ? (<Button size="small" sx={checkoutAdd2CartBtnStyle} onClick={addToCart}>{crtBtnTxt}</Button>):(null)}
+       {/**Below if admin display edit and delete buttons for */}
+      {isAdmin &&   <DeleteProductButton>Delete</DeleteProductButton>}            
+      {isAdmin &&   <EditProductButton>Edit</EditProductButton>}   
       </CardActions>
     </Card>
   );
 }
+/**
+ 
+  {isAdmin ? (
+       <EditDeleteProdBtnDiv>           
+      <DeleteProductButton>Delete</DeleteProductButton>
+      <EditProductButton>Edit</EditProductButton>
+      <EditDeleteProdBtnDiv/>
+      ) 
+        :(<Button size="small" sx={checkoutAdd2CartBtnStyle} onClick={addToCart}>{crtBtnTxt}</Button>)
+      }
+
+ */

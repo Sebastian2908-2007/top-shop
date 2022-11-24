@@ -4,7 +4,12 @@ class AuthService {
   getProfile() {
    /**this if will keep errors from being thrown with ssr */
    if (typeof window === 'undefined') {
-    return null;
+    /**I did this so that I will not get an error using token properties outside the jsx with ssr
+     * I specifically did this for admin products page and product cards to begin with but im sure it will
+     * be handy elsewhere
+     */
+    let data = {data:{isAdmin:null}}
+  return data;
   }
 
     return decode(this.getToken());
