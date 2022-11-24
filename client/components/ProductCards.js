@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -10,7 +10,9 @@ import { useStoreContext } from '../utils/Globalstate';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../utils/actions';
 import { ProductPriceSpan } from '../styles/Spans.styled';
 
+
 export default function ProductCard({product}) {
+
   /**this is state for the text that resides in the product item buttons so that it can be changed when adding to cart */
   const [crtBtnTxt, setCrtBtnTxt] = useState('Add To Cart');
   /**destructure product */

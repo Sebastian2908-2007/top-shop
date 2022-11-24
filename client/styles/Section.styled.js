@@ -75,3 +75,10 @@ margin-top: 3%;
 border: 2px solid rgba(223,223,16,1);
 border-radius: 11px;
 `;
+
+export const AdminProductPageSection = styled.section`
+height: 100%;
+width: 100%;
+padding: 5%;
+padding-bottom: 5em;
+`;

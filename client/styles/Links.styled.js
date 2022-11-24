@@ -22,3 +22,13 @@ text-shadow: 0 0 1px black ;
 color: black;
 }
 `;
+
+export const AdminProductLink = styled(Link)`
+text-align: center;
+color: rgb(245 245 6);
+text-decoration: underline;
+margin-top: 11%;
+&:hover {
+color:rgb(248, 248, 128);
+}
+`;

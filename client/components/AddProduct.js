@@ -17,10 +17,18 @@ import { SelectDropdownTheme } from "../utils/themes";
 import {s3Upload} from '../utils/s3';
 /**import required mutations to add a product*/
 import { ADD_FILE, ADD_PRODUCT } from "../utils/mutations";
-/**apollo client useMutation hook import*/
-import { useMutation } from "@apollo/client";
+/**import query to get product count for LINK */
+import { GET_PRODUCTS_FOR_ADMIN_LINK } from "../utils/queries";
+/**apollo client useMutation useQuery hook import*/
+import { useMutation, useQuery } from "@apollo/client";
+import { AdminProductLink } from "../styles/Links.styled";
 
 const AddProduct = ({data,loading}) => {
+/**this query gets all products but only returns their ids since it exists really only to get a product count*/
+const {data: productData,refetch} = useQuery(GET_PRODUCTS_FOR_ADMIN_LINK);
+
+console.log(productData);
+
 /**menu item styles */
 const menuItemStyle = {
     border:'1px solid rgba(223,223,16,1)',
@@ -101,6 +109,10 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
      });
      /**this will reset the product form*/
      document.getElementById('add-product-form').reset();
+     /**refetch the products to update the number in the link */
+     refetch();
+     /**this resets our select menu*/
+     setCategory('');
      console.log('sucessful product upload',productUpload);
         
         }catch(e){
@@ -147,6 +159,7 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
             <AdminFormInput name='image' type='file' accept='/image' onChange={fileChange}/>{fileError && <div>{formError}</div>}
             <AdminFormButton type="submit">Add product</AdminFormButton>
         </AdminForm>
+        <AdminProductLink href='/adminproducts'>There are {loading ? 'loading':productData.getProducts.length} Products ➯</AdminProductLink>
        </CarouselAdminSection>
     );
 };
