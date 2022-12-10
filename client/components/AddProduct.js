@@ -150,13 +150,14 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
       </ThemeProvider>
         {/****************!!!!!!!!Mui select ends!!!!!!!********************/}
 
-        <AdminForm id="add-product-form" onSubmit={handleProductSubmit} marginTop='11%' height='50%'>
+        <AdminForm id="add-product-form" onSubmit={handleProductSubmit} marginTop='11%' 
+        height='50%' height1280="60%" marginTop1280="1%">
           {productError && <div>{formError}</div>}
-            <AdminFormInput onChange={handleFormData} name="name" placeholder="enter product name"/>
-            <AdminFormInput onChange={handleFormData} name="description" placeholder="enter product description"/>
-            <AdminFormInput onChange={handleFormData} name="price" placeholder="enter product price"/>
-            <AdminFormInput onChange={handleFormData} name="quantity" placeholder="enter product quantity"/>
-            <AdminFormInput name='image' type='file' accept='/image' onChange={fileChange}/>{fileError && <div>{formError}</div>}
+            <AdminFormInput onChange={handleFormData} name="name" placeholder="enter product name" marginTop1280="2%"/>
+            <AdminFormInput onChange={handleFormData} name="description" placeholder="enter product description" marginTop1280="2%"/>
+            <AdminFormInput onChange={handleFormData} name="price" placeholder="enter product price" marginTop1280="2%"/>
+            <AdminFormInput onChange={handleFormData} name="quantity" placeholder="enter product quantity" marginTop1280="2%"/>
+            <AdminFormInput name='image' type='file' accept='/image' onChange={fileChange} marginTop1280="2%"/>{fileError && <div>{formError}</div>}
             <AdminFormButton type="submit">Add product</AdminFormButton>
         </AdminForm>
         <AdminProductLink href='/adminproducts'>There are {loading ? 'loading':productData.getProducts.length} Products ➯</AdminProductLink>

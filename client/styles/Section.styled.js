@@ -63,6 +63,7 @@ padding-bottom: 5em;
 export const CarouselAdminSection = styled.section`
 display: flex;
 flex-direction: column;
+align-items: center;
 padding: 2%;
 height: 100%;
 width: 100%;
@@ -81,4 +82,16 @@ height: 100%;
 width: 100%;
 padding: 5%;
 padding-bottom: 5em;
+@media screen and (min-width: 768px){
+    padding-bottom: 8em; 
+}
+@media screen and (min-width: 1280px){
+    padding-bottom: 11em; 
+}
+@media screen and (min-width: 1920px){
+    padding-bottom: 13em; 
+}
+@media screen and (min-width: 2560px){
+    padding-bottom: 18em; 
+}
 `;

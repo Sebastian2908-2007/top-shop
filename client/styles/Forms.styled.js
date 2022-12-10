@@ -71,6 +71,11 @@ flex-direction: column;
 justify-content: space-between;
 align-items: center;
 margin-top: ${props => props.marginTop};
+@media screen and (min-width:1280px){
+   /**this prop was specifically made for the admin form*/
+   height:${props => props.height1280};
+   margin-top: ${props => props.marginTop1280};
+}
 `;
 
 export const AdminFormInput = styled.input`
@@ -92,8 +97,11 @@ text-align: center;
 @media screen and (min-width:1024px){
    width: 50%;
 }
-@media screen and (min-width:1366px){
+@media screen and (min-width:1280px){
    width: 40%;
+   /**this prop was specifically made for the admin form*/
+   margin-top: ${props => props.marginTop1280};
+   margin-bottom: ${props => props.marginBtm1280};
 }
 `;
 

@@ -5,6 +5,9 @@ import { useState, useEffect } from 'react';
  import { GET_ALL_PRODUCTS } from "../utils/queries";
  import ProductCard from "../components/ProductCards";
 import { AdminProductPageSection } from "../styles/Section.styled";
+/**grid components mui*/
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 
  export default function AdminProductsPage () {
@@ -22,9 +25,16 @@ console.log(products);
 return (
     /**if stuff is not loading display all products */
     <AdminProductPageSection>
-    {products.map(product => (
-        <ProductCard key={product._id} product={product}/>
-    ))}
+        <Box>
+      <Grid container rowSpacing={{xs:3,md:4}} columnSpacing={{xs:0,sm:4,md:4}} >
+{products.length ? (  products.map(product => (
+  
+  <Grid item xs={12} sm={6} lg={4} xl={3}   key={product._id}>
+    <ProductCard product={product}/>
+  </Grid>
+))):(<NoProductDiv>no products yet</NoProductDiv>)}
+      </Grid>
+      </Box>
 </AdminProductPageSection>
   
 );
