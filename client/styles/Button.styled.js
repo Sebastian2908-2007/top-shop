@@ -75,8 +75,17 @@ font-size: 1.3em;
 `;
 /**related to logged in admin only */
 export const DeleteProductButton = styled.button`
+padding: 6%;
+color:rgb(199, 197, 104) ;
 border-radius: 11px;
+border: none;
+background-color: rgb(255, 0, 0);
 `;
 export const EditProductButton = styled.button`
+padding: 6%;
+color:rgb(199, 197, 104) ;
 border-radius: 11px;
+border: none;
+//background-color: rgb(0, 0, 50.2);
+background-color: #000080 ;
 `;

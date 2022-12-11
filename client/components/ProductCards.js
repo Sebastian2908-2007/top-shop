@@ -12,7 +12,7 @@ import { ProductPriceSpan } from '../styles/Spans.styled';
 /**import token functionality to use for conditionals */
 import auth from '../utils/auth';
 /**styled components related only to admin functionality start */
-import { ProductCardCategoryDiv } from '../styles/Div.styled';
+import { ProductCardCategoryDiv,AdminProductBtnDiv } from '../styles/Div.styled';
 import { AdminItemNameSpan } from '../styles/Spans.styled';
 import { DeleteProductButton, EditProductButton } from '../styles/Button.styled';
 /**styled components related only to admin functionality end*/
@@ -110,8 +110,9 @@ Location
       {/**Below if not admin display regular button for checkout */}
       {!isAdmin ? (<Button size="small" sx={checkoutAdd2CartBtnStyle} onClick={addToCart}>{crtBtnTxt}</Button>):(null)}
        {/**Below if admin display edit and delete buttons for */}
-      {isAdmin &&   <DeleteProductButton>Delete</DeleteProductButton>}            
-      {isAdmin &&   <EditProductButton>Edit</EditProductButton>}   
+      {isAdmin &&   <AdminProductBtnDiv><DeleteProductButton>Delete</DeleteProductButton>
+      <EditProductButton>Edit</EditProductButton></AdminProductBtnDiv>}            
+      {/*isAdmin &&   <EditProductButton>Edit</EditProductButton>*/}   
       </CardActions>
     </Card>
   );

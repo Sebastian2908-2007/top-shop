@@ -115,3 +115,17 @@ padding: 2%;
 background-color: rgb(248, 248, 128);
 `;
 
+export const AdminProductBtnDiv = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 6%;
+width: 60%;
+background-color: rgb(248, 248, 128);
+box-shadow: 0 0 10px black;
+@media screen and (min-width: 540px) {
+    width: 40%;
+    padding: 4%;
+}
+`;
+
