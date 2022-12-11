@@ -252,7 +252,14 @@ const resolvers = {
                 throw new AuthenticationError('it appears you are not logged in');
             }
             if(context.user.isAdmin){ 
+             try {
+                const productToDelete = await Product.findById({_id: _id});
+                const productImg_id = productToDelete.image.toHexString();
+                await FileUpload.findByIdAndDelete({_id: productImg_id});
             return await Product.findOneAndDelete(_id).populate('image').populate('category');
+            }catch(e) {
+                console.log(e);
+            }
             };
             throw new AuthenticationError('you must be an admin to delete products');
         },
