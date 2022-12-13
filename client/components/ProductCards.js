@@ -23,7 +23,7 @@ import { DeleteProductButton, EditProductButton } from '../styles/Button.styled'
  * but im taking note of the issue here for now
  */
 
-export default function ProductCard({product}) {
+export default function ProductCard({product,setOpen,setEditOrDelete,setModalInfo}) {
   /**here we declare an empty variable that will be set to true or false if a user is logged in
    * and is or isnt an admin if nobody is logged in its just set false
    */
@@ -44,14 +44,16 @@ export default function ProductCard({product}) {
     image,
     name,
     price,
-    /**quantity un note later for in Stock*/
+    quantity,
     _id
   } = product;
   //console.log(product);
 
   /**destructure Location from image that is nested in the product */
   const {
-Location
+Location,
+Bucket,
+Key
   } = image;
 
 
@@ -84,6 +86,20 @@ Location
   }
   };
 
+  /**delete product function to open modal and set relivent data*/
+  const deleteProduct = () => {
+    setOpen(true);
+    setEditOrDelete('delete');
+    setModalInfo({_id:_id,Bucket:Bucket,Key:Key});
+  };
+
+  /**edit product function to open modal and set relivent data*/
+  const editProduct = () => {
+    setOpen(true);
+    setEditOrDelete('edit');
+    setModalInfo({_id:_id,name:name,description:description,price:price,quantity:quantity});
+  };
+
   return (
     <Card sx={{ boxShadow:' 0 0 5px black',height:'100%',maxWidth: '100%', backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
       <CardMedia
@@ -110,8 +126,8 @@ Location
       {/**Below if not admin display regular button for checkout */}
       {!isAdmin ? (<Button size="small" sx={checkoutAdd2CartBtnStyle} onClick={addToCart}>{crtBtnTxt}</Button>):(null)}
        {/**Below if admin display edit and delete buttons for */}
-      {isAdmin &&   <AdminProductBtnDiv><DeleteProductButton>Delete</DeleteProductButton>
-      <EditProductButton>Edit</EditProductButton></AdminProductBtnDiv>}            
+      {isAdmin &&   <AdminProductBtnDiv><DeleteProductButton onClick={deleteProduct}>Delete</DeleteProductButton>
+      <EditProductButton onClick={editProduct}>Edit</EditProductButton></AdminProductBtnDiv>}            
       {/*isAdmin &&   <EditProductButton>Edit</EditProductButton>*/}   
       </CardActions>
     </Card>

@@ -48,3 +48,20 @@ mutation addProduct($name:String!,$description:String!,$image:ID!,$price:Int!,$q
  }
 }
 `;
+
+/**used in EditDeleteModal.js */
+export const DELETE_PRODUCT = gql`
+mutation deleteProduct($_id:ID!) {
+  deleteProduct(_id:$_id) {
+    _id
+  }
+}
+`;
+export const EDIT_PRODUCT = gql`
+mutation updateProduct($_id:ID!,$name:String,$description:String,$price:Int,$quantity:Int) {
+  updateProduct(_id:$_id,name:$name,description:$description,price:$price,quantity:$quantity) {
+    _id
+  }
+}
+`;
+/**used in EditDeleteModal.js */

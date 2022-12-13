@@ -253,10 +253,14 @@ const resolvers = {
             }
             if(context.user.isAdmin){ 
              try {
+                /**find the product */
                 const productToDelete = await Product.findById({_id: _id});
+                /**get image _id from product */
                 const productImg_id = productToDelete.image.toHexString();
+                /**delete associated product image from our db */
                 await FileUpload.findByIdAndDelete({_id: productImg_id});
-            return await Product.findOneAndDelete(_id).populate('image').populate('category');
+                /**delete the product */
+            return await Product.findOneAndDelete(_id).populate('category');
             }catch(e) {
                 console.log(e);
             }
