@@ -29,7 +29,7 @@ import Grid from '@mui/material/Grid';
      */
     const [modalInfo,setModalInfo] = useState({});
     /**query for products*/
-    const {loading,data,refetch} = useQuery(GET_ALL_PRODUCTS);
+    const {loading,data} = useQuery(GET_ALL_PRODUCTS);
     /**if query is not finished display loading */
 if(loading) {
     return (
@@ -45,7 +45,7 @@ return (
         <EditDeleteModal open={open} setOpen={setOpen}
         setEditOrDelete={setEditOrDelete} editOrDelete={editOrDelete}
         setModalInfo={setModalInfo} modalInfo={modalInfo}
-        refetch={refetch}/>
+        />
         <Box>
       <Grid container rowSpacing={{xs:3,md:4}} columnSpacing={{xs:0,sm:4,md:4}} >
 {products.length ? (  products.map(product => (

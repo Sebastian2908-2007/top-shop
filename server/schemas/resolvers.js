@@ -260,7 +260,7 @@ const resolvers = {
                 /**delete associated product image from our db */
                 await FileUpload.findByIdAndDelete({_id: productImg_id});
                 /**delete the product */
-            return await Product.findOneAndDelete(_id).populate('category');
+            return await Product.findByIdAndDelete({_id:_id}).populate('category');
             }catch(e) {
                 console.log(e);
             }

@@ -9,6 +9,7 @@ import { s3Delete } from '../utils/s3';
 import { DELETE_PRODUCT, EDIT_PRODUCT } from '../utils/mutations';
 import { DeleteProductButton, EditProductButton } from '../styles/Button.styled';
 import { Form,FormInput } from '../styles/Forms.styled';
+import { GET_ALL_PRODUCTS } from '../utils/queries';
 
 const style = {
     position: 'absolute',
@@ -29,14 +30,17 @@ const style = {
     editOrDelete,
     setModalInfo,
     modalInfo,
-    refetch
     }) 
 
     {
-/**name mutation for deleting a product */
-const [deleteProduct,{deleteProductError}] = useMutation(DELETE_PRODUCT);
-/**name edit mutation */
-const [editProduct] = useMutation(EDIT_PRODUCT);
+/**name mutation for deleting a product we also instruct get all products to be run each time this is */
+const [deleteProduct] = useMutation(DELETE_PRODUCT,{
+    refetchQueries:[{query: GET_ALL_PRODUCTS}]
+});
+/**name edit mutation we also instruct get all products to be run each time this is */
+const [editProduct] = useMutation(EDIT_PRODUCT,{
+    refetchQueries:[{query: GET_ALL_PRODUCTS}]
+});
 
     
     /*closes modal and sets other state back to default */
@@ -44,14 +48,20 @@ const [editProduct] = useMutation(EDIT_PRODUCT);
 
     /**delete function to run onClick when a user chooses to delete*/
     const deleteProductClick = async () => {
+        
         try{
+            console.log(modalInfo._id);
          await deleteProduct({variables:{_id: modalInfo._id}});
-         s3Delete(modalInfo.Bucket,modalInfo.Key);
-         refetch();
          handleClose();
         }catch(e){
             console.log(e);
+            return;
         }
+       try{
+         s3Delete(modalInfo.Bucket,modalInfo.Key);
+       }catch(e) {
+        console.log(e);
+       }
     };
 
     /**form data change handler function*/
@@ -64,8 +74,8 @@ const [editProduct] = useMutation(EDIT_PRODUCT);
                 [name]:value
             }
         );
-        console.log(modalInfo);
-        /**dont forget to parseInt the price and quantitiy in you update mutation data*/
+        
+       
     };
     /**function that will implement edit functionality for the edit button 'to be called onClick' */
     const submitEdit = async (event) => {
@@ -80,8 +90,8 @@ const [editProduct] = useMutation(EDIT_PRODUCT);
                 quantity: parseInt(modalInfo.quantity)
             }
         });
+        //refetch();
         handleClose();
-        refetch();
     }catch(e){
         console.log(e);
     };

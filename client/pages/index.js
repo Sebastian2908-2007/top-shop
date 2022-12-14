@@ -2,6 +2,7 @@
 //import Head from 'next/head'
 //import Image from 'next/image'
 //import styles from '../styles/Home.module.css'
+import { useState } from 'react';
 import CategoryList from '../components/CategoryList';
 import { useEffect } from 'react';
 import { HomeHeroPic } from '../styles/Images.styled';
@@ -19,10 +20,26 @@ import { UPDATE_PRODUCTS } from '../utils/actions';
 import { NoProductDiv } from '../styles/Div.styled';
 /**grid components mui */
 //import { initializeApollo } from '../lib/apolloClient'
+/**import the edit and delete modal*/
+import EditDeleteModal from '../components/EditDeleteModal';
 
 export default function Home() {
   const [state, dispatch] = useStoreContext();
-  const {loading,data} = useQuery(GET_ALL_PRODUCTS);
+ 
+
+    /**this state opens edit delete modal it is passed to the modal as well as the product cards*/
+    const [open, setOpen] = useState(false);
+    /**this state is used to tell the modal whether this is an edit or delete action its passed to product cards as well as the modal
+     * its set in the product cards
+     */
+    const [editOrDelete,setEditOrDelete] = useState(null);
+    /**modal info this state will hold the information I need to either delete or edit a product it will be set in product card
+     * its passed to both modal and product card
+     */
+    const [modalInfo,setModalInfo] = useState({});
+
+    const {loading,data,refetch} = useQuery(GET_ALL_PRODUCTS);
+
   /***destructure current category from state*/
   const { currentCategory } = state;
  
@@ -33,8 +50,9 @@ if(data) {
     type: UPDATE_PRODUCTS,
     products: data.getProducts
   });
+  console.log(data);
 }
-},[loading,dispatch]);
+},[loading,dispatch,data]);
 
 
 
@@ -53,6 +71,11 @@ if(data) {
   return (
     <div>
      <HomeHeroSection>
+     <EditDeleteModal open={open} setOpen={setOpen}
+        setEditOrDelete={setEditOrDelete} editOrDelete={editOrDelete}
+        setModalInfo={setModalInfo} modalInfo={modalInfo}
+        refetch={refetch}/>
+
      <HomeHeroPic 
      src='/sybs-banner1024.jpg'
      srcSet='/sybs-banner1024.jpg 1024w, /sybs-banner1280.jpg 1280w, /sybs-banner2500.jpg 2500w'
@@ -66,7 +89,8 @@ if(data) {
 {products.length ? (  filterProducts().map(product => (
   
   <Grid item xs={12} sm={6} lg={4} xl={3}   key={product._id}>
-    <ProductCard product={product}/>
+    <ProductCard product={product} setEditOrDelete={setEditOrDelete} setOpen={setOpen}
+    setModalInfo={setModalInfo}/>
   </Grid>
 ))):(<NoProductDiv>no products yet</NoProductDiv>)}
       </Grid>
