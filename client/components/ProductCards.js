@@ -91,7 +91,6 @@ Key
     setOpen(true);
     setEditOrDelete('delete');
     setModalInfo({_id:_id,Bucket:Bucket,Key:Key});
-    console.log(_id,Bucket,Key);
   };
 
   /**edit product function to open modal and set relivent data*/

@@ -50,7 +50,6 @@ const [editProduct] = useMutation(EDIT_PRODUCT,{
     const deleteProductClick = async () => {
         
         try{
-            console.log(modalInfo._id);
          await deleteProduct({variables:{_id: modalInfo._id}});
          handleClose();
         }catch(e){
@@ -66,7 +65,6 @@ const [editProduct] = useMutation(EDIT_PRODUCT,{
 
     /**form data change handler function*/
     const handleFormChange = event => {
-       
         const {name,value} = event.target;
         setModalInfo(
             {

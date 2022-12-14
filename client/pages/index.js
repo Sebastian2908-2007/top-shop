@@ -50,7 +50,6 @@ if(data) {
     type: UPDATE_PRODUCTS,
     products: data.getProducts
   });
-  console.log(data);
 }
 },[loading,dispatch,data]);
 

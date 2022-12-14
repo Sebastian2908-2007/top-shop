@@ -77,7 +77,6 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
         try{
             /**upload image to s3 and store return data to a varible so it can be used for upload to my db*/
         const s3ReturnData = await s3Upload(productImage);
-        console.log('data before fileupload mutation',s3ReturnData);
         /**use s3 return data to give my file upload data what it needs in my db */
         const imageData = await addProductImage({
             variables:{
@@ -88,7 +87,7 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
               Bucket:s3ReturnData.Bucket
             }
         });
-        console.log('data after file upload to my db',imageData);
+        
 
         /**get returned _id from mutation to feed to the add product mutation */
         const productImgId = imageData.data.addFile._id;
@@ -113,8 +112,6 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
      refetch();
      /**this resets our select menu*/
      setCategory('');
-     console.log('sucessful product upload',productUpload);
-        
         }catch(e){
             console.log(e);
             setFormError(e.message);
