@@ -10,6 +10,8 @@ import dateFormat from "../utils/dateFormat";
 import AddCategory from "../components/AddCategory";
 /**import add product component*/
 import AddProduct from "../components/AddProduct";
+/**im port add bl;ogpost component*/
+import AddBlogpost from "../components/AddBlogpost";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -40,7 +42,7 @@ const admindashboard = () => {
         >
           <SwiperSlide><AddCategory data={data} refetch={refetch} loading={loading}/></SwiperSlide>
           <SwiperSlide><AddProduct data={data} loading={loading}/></SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide><AddBlogpost/></SwiperSlide>
           <SwiperSlide>Slide 4</SwiperSlide>
           <SwiperSlide>Slide 5</SwiperSlide>
         </Swiper>

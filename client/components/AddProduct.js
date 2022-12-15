@@ -25,7 +25,7 @@ import { AdminProductLink } from "../styles/Links.styled";
 
 const AddProduct = ({data,loading}) => {
 /**this query gets all products but only returns their ids since it exists really only to get a product count*/
-const {data: productData,refetch} = useQuery(GET_PRODUCTS_FOR_ADMIN_LINK);
+const {loading: productsLoading,data: productData,refetch} = useQuery(GET_PRODUCTS_FOR_ADMIN_LINK);
 
 //console.log(productData);
 
@@ -157,7 +157,7 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
             <AdminFormInput name='image' type='file' accept='/image' onChange={fileChange} marginTop1280="2%"/>{fileError && <div>{formError}</div>}
             <AdminFormButton type="submit">Add product</AdminFormButton>
         </AdminForm>
-        <AdminProductLink href='/adminproducts'>There are {loading ? 'loading':productData.getProducts.length} Products ➯</AdminProductLink>
+       <AdminProductLink href='/adminproducts'>There are {productsLoading ? 'loading':productData.getProducts.length} Products ➯</AdminProductLink>
        </CarouselAdminSection>
     );
 };

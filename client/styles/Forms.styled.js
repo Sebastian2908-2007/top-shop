@@ -105,6 +105,17 @@ text-align: center;
 }
 `;
 
+export const AdminTextArea = styled.textarea`
+width: 100%;
+border-radius: 11px;
+border: 2px solid rgba(223,223,16,1);
+background: rgba(223,223,16,0.4);
+color: black;
+&::placeholder {
+   color: rgba(223,223,16,1);
+  }
+`;
+
 export const AdminFormButton = styled.button`
 width: 30%;
 border-radius: 11px;

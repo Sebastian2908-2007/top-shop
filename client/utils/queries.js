@@ -45,3 +45,31 @@ query getCategories {
 }
 `;
 
+/**blogpost wuery used to display number of blogposts in admin dash*/
+export const GET_BLOGPOSTS_ADMIN = gql`
+query getBlogposts {
+  getBlogposts {
+    _id
+  }
+}
+`;
+/**this query will get blogposts and return all the data about them so 
+ * this will be used on main blogposts page
+ */
+export const GET_BLOGPOSTS_ALL_DATA = gql`
+query getBlogposts {
+  getBlogposts {
+    _id
+    title
+    blogText
+    blogPic {
+      _id
+      ETag
+      Location
+      key
+      Key
+      Location
+    }
+  }
+}
+`;

@@ -65,3 +65,15 @@ mutation updateProduct($_id:ID!,$name:String,$description:String,$price:Int,$qua
 }
 `;
 /**used in EditDeleteModal.js */
+
+/**add blogpost mutation*/
+export const ADD_BLOGPOST = gql`
+mutation addBlogpost($title:String!,$blogText:String!,$blogPic:ID!) {
+  addBlogpost(title:$title,blogText:$blogText,blogPic:$blogPic) {
+    blogText
+    title
+    blogPic {
+     _id
+    }
+  }
+}`;
