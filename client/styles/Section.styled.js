@@ -100,5 +100,17 @@ export const BlogpostSection = styled.section`
 height: 100%;
 width: 100%;
 padding: 5%;
-padding-bottom: 5em;
+padding-bottom: 11em;
+`;
+
+export const BlogPostHeroSection = styled.section`
+width: 100%;
+@media screen and (min-width: 1366px) {
+  padding: 4%;
+ // background-color: rgb(248, 248, 128);
+  //border-bottom: 50px solid black;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+};
 `;

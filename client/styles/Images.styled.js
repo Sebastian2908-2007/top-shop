@@ -174,3 +174,19 @@ box-shadow:  0 0 50px black;
 transform: skew(10deg, -8deg);
 }
 `;
+export const BlogHeroPic = styled.img`
+width: 100%;
+max-height: 100%;
+object-fit: fill;
+border-bottom: 2px solid black;
+animation: ${bounceIn} 2s linear 1;
+@media screen and (min-width: 1366px) {
+animation: ${flickerIn} 2s linear 1;
+margin-top: 3%;
+width: 70%;
+border: 7px solid black;
+border-radius:11px;
+box-shadow:  0 0 50px black;
+transform: skew(10deg, -8deg);
+}
+`;

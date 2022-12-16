@@ -43,5 +43,8 @@ color:rgb(248, 248, 128);
 `;
 
 export const FullBlogPostLink = styled(Link)`
+background-color:rgba(0,0,0,0.7);
+padding: 3%;
+border-radius: 11px;
 color: rgb(245 245 6);
 `;

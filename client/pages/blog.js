@@ -7,8 +7,12 @@ import { NoProductDiv } from "../styles/Div.styled";
 /**styled component imports end*/
 /**mui imports */
 import Grid from '@mui/material/Grid';
-
 /**mui imports ends*/
+/**styled components imports*/
+import { BlogPostHeroSection } from "../styles/Section.styled";
+import { BlogHeroPic } from "../styles/Images.styled";
+import { MainTitle } from "../styles/H1.styled";
+/**styled components imports ends*/
 //import { initializeApollo } from "../lib/apolloClient"; 
 //import { GET_BLOGPOSTS_ADMIN } from "../utils/queries";
 const blog = () => {
@@ -21,6 +25,14 @@ const blog = () => {
     //console.log(blogPosts);
     
 return(
+    <div>
+        <BlogPostHeroSection>
+<BlogHeroPic
+src="/blogposts_hero.jpeg"
+alt="hero banner of a cute handmade knome in a jail suit"
+/>
+<MainTitle>Sybs Crafty Blog</MainTitle>
+        </BlogPostHeroSection>
     <BlogpostSection>
        <Grid container rowSpacing={{xs:3,md:4}} columnSpacing={{xs:0,sm:4,md:4}}>
         { blogPosts.length ? (blogPosts.map(blogPost => (
@@ -29,8 +41,8 @@ return(
             </Grid>
         ))):(<NoProductDiv>no products</NoProductDiv>)}
         </Grid>
-
     </BlogpostSection>
+    </div>
 )
 };
 
