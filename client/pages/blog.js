@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 /**mui imports ends*/
 /**styled components imports*/
 import { BlogPostHeroSection } from "../styles/Section.styled";
-import { BlogHeroPic } from "../styles/Images.styled";
+import { AiImage, BlogHeroPic } from "../styles/Images.styled";
 import { MainTitle } from "../styles/H1.styled";
 /**styled components imports ends*/
 //import { initializeApollo } from "../lib/apolloClient"; 

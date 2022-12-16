@@ -43,8 +43,12 @@ color:rgb(248, 248, 128);
 `;
 
 export const FullBlogPostLink = styled(Link)`
-background-color:rgba(0,0,0,0.7);
+background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0));;
 padding: 3%;
 border-radius: 11px;
 color: rgb(245 245 6);
+&:hover {
+//background-color: rgb(255,255,255,0.8);
+background: linear-gradient(to left, rgb(199, 197, 104),rgb(0,0,0));;
+}
 `;

@@ -21,7 +21,7 @@ const BlogPostPrieviewCard = ({blogPost}) => {
             />
             <CardContent sx={{display:'flex',flexDirection:'column',alignItems:'center'}}>
         <BlogPreviewTitle>{title}</BlogPreviewTitle>
-      <FullBlogPostLink href={`/blogpost/${_id}`}> <div>{blogText.substring(0,32)}...</div> </FullBlogPostLink>
+      <FullBlogPostLink href={`/blogpost/${_id}`}> <div>{blogText.substring(0,32)}. . .Continue Reading</div> </FullBlogPostLink>
            </CardContent>
         </Card>
     );

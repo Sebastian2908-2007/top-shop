@@ -32,8 +32,14 @@ return {
 };
 
 export default function blogPost ({blogPost})  {
+    /**destructure static props */
+    const {_id, title,blogText} = blogPost.getBlogpostById;
     console.log(blogPost);
+    console.log(_id, title,blogText);
 return(
-    <div><h1>single blogPost</h1></div>
+    <div>
+        <h1>{title}</h1>
+        <p>{blogText}</p>
+    </div>
 );
 };
