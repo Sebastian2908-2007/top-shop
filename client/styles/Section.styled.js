@@ -95,3 +95,10 @@ padding-bottom: 5em;
     padding-bottom: 18em; 
 }
 `;
+
+export const BlogpostSection = styled.section`
+height: 100%;
+width: 100%;
+padding: 5%;
+padding-bottom: 5em;
+`;

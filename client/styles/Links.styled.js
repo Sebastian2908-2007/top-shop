@@ -41,3 +41,7 @@ margin-top: 11%;
 color:rgb(248, 248, 128);
 }
 `;
+
+export const FullBlogPostLink = styled(Link)`
+color: rgb(245 245 6);
+`;

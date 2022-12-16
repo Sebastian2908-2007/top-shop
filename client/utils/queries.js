@@ -73,3 +73,21 @@ query getBlogposts {
   }
 }
 `;
+/**get blogpost by _id used on single blogpost page */
+export const GET_BLOG_POST_BY_ID = gql`
+query getBlogpostById($_id:ID!) {
+  getBlogpostById(_id: $_id) {
+    _id
+    title
+    blogText
+    blogPic {
+      _id
+      ETag
+      Bucket
+      Location
+      key
+      Key
+    }
+  }
+}
+`;
