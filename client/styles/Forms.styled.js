@@ -108,12 +108,33 @@ text-align: center;
 export const AdminTextArea = styled.textarea`
 width: 100%;
 border-radius: 11px;
+height: 55%;
 border: 2px solid rgba(223,223,16,1);
 background: rgba(223,223,16,0.4);
 color: black;
 &::placeholder {
    color: rgba(223,223,16,1);
   }
+  @media screen and (min-width:540px) {
+    width: 70%;
+    font-size: 1.1rem;
+}
+  @media screen and (min-width:768px) {
+    
+    font-size: 1.4rem;
+}
+@media screen and (min-width:1024px){
+    width: 50%;
+   height: 35%;
+}
+@media screen and (min-width:1280px){
+  
+   width: 40%;
+}
+@media screen and (min-width:1366px){
+   
+   height: 55%;
+}
 `;
 
 export const AdminFormButton = styled.button`

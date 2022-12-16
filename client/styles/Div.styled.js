@@ -129,3 +129,18 @@ box-shadow: 0 0 10px black;
 }
 `;
 
+/**div for form errors on admin side */
+export const AdminFormErrDiv = styled.div`
+font-size: .5em;
+border: 1px solid black;
+margin-top: 1rem;
+border-radius: 11px;
+background: linear-gradient(to right ,rgb(0,0,0,0.8),rgb(170, 74, 68));
+color:rgb(245 245 6);
+padding: 3%;
+text-align: center;
+@media screen and (min-width: 768px) {
+    font-size: 1em;
+}
+`;
+

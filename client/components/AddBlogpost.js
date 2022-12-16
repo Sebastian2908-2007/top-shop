@@ -9,6 +9,7 @@ import { AdminForm, AdminFormInput, AdminFormButton,AdminTextArea } from "../sty
 import { AdminSectionTitle } from "../styles/H2.styled";
 import { CarouselAdminSection } from "../styles/Section.styled";
 import { AdminBlogpostLink } from "../styles/Links.styled";
+import { AdminFormErrDiv } from "../styles/Div.styled";
 /*styled components imports ends*/
 /**import s3 upload function to upload blog pics*/
 import { s3Upload } from "../utils/s3";
@@ -16,12 +17,16 @@ import { s3Upload } from "../utils/s3";
 const AddBlogpost = () => {
     /**this query is used to display number of blogposts in the AdminBlogpostLink at bottom of component*/
     const {loading, data: getBlogpostCount,refetch} = useQuery(GET_BLOGPOSTS_ADMIN);
-    /**mutations to upload a blogpost*/
+    /**mutations to upload a blogpost image*/
     const [addBlogPic] = useMutation(ADD_FILE);
+     /**mutations to upload a blogpost */
     const [addBlogPost] = useMutation(ADD_BLOGPOST);
     /**state of form fields */
     const [blogPostData,setBlogPostData] = useState({title:'',blogText:''});
+    /**state of blogPic data */
     const [blogPic,setBlogPic] = useState(null);
+    /**form error state */
+    const [formErr,setFormErr] = useState(null);
     /**change function to keep track of text fields */
     const handleFormChange = event => {
         const {name,value} = event.target;
@@ -69,20 +74,27 @@ console.log(blogPostUpload);
  refetch();
 
         }catch(e){
-            console.log(e);
+            console.log(e.message);
+            setFormErr(e.message);
+            /**sets error message null so it will dissapear from the ui */
+           setTimeout(() => {setFormErr(null)},3000)
         };
         
     };
+
+    useEffect(() => {console.log(formErr);},[formErr]);
     
     return( 
    <CarouselAdminSection>
     <AdminSectionTitle>Create Blog Post</AdminSectionTitle>
-    <AdminForm id="blogpost-form" onSubmit={submitForm} height='50%'>
+    <AdminForm id="blogpost-form" onSubmit={submitForm} height='50%' height1280="80%">
         <AdminFormInput onChange={handleFormChange} name="title" placeholder="Blog Post Title" type='text'/>
         <AdminTextArea onChange={handleFormChange}  name="blogText" placeholder="Blog Post Text"/>
         <AdminFormInput onChange={handleFileChange} name="blogPic" type="file" accept='/image'/>
         <AdminFormButton type="submit">Submit</AdminFormButton>
     </AdminForm>
+       {/**shows err messsage if its text data error */}
+       {formErr && <AdminFormErrDiv>{formErr}</AdminFormErrDiv>}
     <AdminBlogpostLink href='/blog'>There are {loading ? 'loading': getBlogpostCount.getBlogposts.length} blogposts ➯</AdminBlogpostLink>
    </CarouselAdminSection>
     );

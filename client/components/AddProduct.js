@@ -22,6 +22,7 @@ import { GET_PRODUCTS_FOR_ADMIN_LINK } from "../utils/queries";
 /**apollo client useMutation useQuery hook import*/
 import { useMutation, useQuery } from "@apollo/client";
 import { AdminProductLink } from "../styles/Links.styled";
+import { AdminFormErrDiv } from "../styles/Div.styled";
 
 const AddProduct = ({data,loading}) => {
 /**this query gets all products but only returns their ids since it exists really only to get a product count*/
@@ -115,6 +116,8 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
         }catch(e){
             console.log(e);
             setFormError(e.message);
+            /**sets error message null so it will dissapear from the ui */
+            setTimeout(() => {setFormError(null)},3000)
         }
     };
 
@@ -149,7 +152,8 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
 
         <AdminForm id="add-product-form" onSubmit={handleProductSubmit} marginTop='11%' 
         height='50%' height1280="60%" marginTop1280="1%">
-          {productError && <div>{formError}</div>}
+         {/**shows err messsage if its text data error */}
+       {formError && <AdminFormErrDiv>{formError}</AdminFormErrDiv>}
             <AdminFormInput onChange={handleFormData} name="name" placeholder="enter product name" marginTop1280="2%"/>
             <AdminFormInput onChange={handleFormData} name="description" placeholder="enter product description" marginTop1280="2%"/>
             <AdminFormInput onChange={handleFormData} name="price" placeholder="enter product price" marginTop1280="2%"/>
