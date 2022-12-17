@@ -33,8 +33,8 @@ return {
 
 export default function blogPost ({blogPost})  {
     /**destructure static props */
-    const {_id, title,blogText} = blogPost.getBlogpostById;
-    console.log(blogPost);
+    const {_id, title,blogText,blogPic} = blogPost.getBlogpostById;
+    console.log(blogPic);
     console.log(_id, title,blogText);
 return(
     <div>

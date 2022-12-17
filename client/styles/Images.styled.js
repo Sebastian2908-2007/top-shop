@@ -176,11 +176,16 @@ transform: skew(10deg, -8deg);
 `;
 export const BlogHeroPic = styled.img`
 width: 100%;
-max-height: 100%;
+height: 40vh;
+//max-height: 100%;
 object-fit: fill;
 border-bottom: 2px solid black;
 animation: ${bounceIn} 2s linear 1;
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 768px) {
+  height: 50vh;
+}
+
+@media screen and (min-width: 1024px) {
 animation: ${flickerIn} 2s linear 1;
 margin-top: 8%;
 width: 50%;

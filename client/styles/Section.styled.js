@@ -105,7 +105,9 @@ padding-bottom: 11em;
 
 export const BlogPostHeroSection = styled.section`
 width: 100%;
-@media screen and (min-width: 1366px) {
+background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
+padding-bottom: .1%;
+@media screen and (min-width: 1024px) {
  // background-color: rgb(248, 248, 128);
   //border-bottom: 50px solid black;
   padding: 4%;
