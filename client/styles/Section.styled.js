@@ -121,3 +121,28 @@ padding-bottom: .1%;
   background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
 };
 `;
+export const SingleBlogpostSection = styled.section`
+height: 100%;
+width: 100%;
+padding: 5%;
+padding-bottom: 11em;
+`;
+
+export const SingleBlogPostHeroSection = styled.section`
+width: 100%;
+background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
+padding-bottom: .1%;
+@media screen and (min-width: 1024px) {
+ // background-color: rgb(248, 248, 128);
+  //border-bottom: 50px solid black;
+  padding: 4%;
+  padding-bottom: 8%;
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
+}
+`;

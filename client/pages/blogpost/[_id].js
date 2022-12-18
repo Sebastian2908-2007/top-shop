@@ -1,6 +1,11 @@
 import { initializeApollo } from "../../lib/apolloClient"; 
 import { GET_BLOGPOSTS_ADMIN,GET_BLOG_POST_BY_ID } from "../../utils/queries";
 import BlogText from "../../components/HotLinkBlogText";
+/**styled componenets import */
+import { SingleBlogPostHeroSection,SingleBlogpostSection  } from "../../styles/Section.styled";
+import { BlogHeroPic } from "../../styles/Images.styled";
+import { SingleBlogpostTitle } from "../../styles/H1.styled";
+/**styled componenets import ends */
 
 export async function getStaticPaths () {
     const client = initializeApollo();
@@ -37,9 +42,17 @@ export default function blogPost ({blogPost})  {
     console.log(blogPic);
     console.log(_id, title,blogText);
 return(
-    <div>
-        <h1>{title}</h1>
+    <>
+    <SingleBlogPostHeroSection>
+        <BlogHeroPic
+        alt="the blogpost's vibe"
+        src={blogPic.Location}
+        />
+          <SingleBlogpostTitle>{title}</SingleBlogpostTitle>
+    </SingleBlogPostHeroSection>
+    <SingleBlogpostSection>
         <BlogText content={blogText} />
-    </div>
+    </SingleBlogpostSection>
+    </>
 );
 };
