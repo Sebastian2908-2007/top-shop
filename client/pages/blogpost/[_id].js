@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
 import { initializeApollo } from "../../lib/apolloClient"; 
 import { GET_BLOGPOSTS_ADMIN,GET_BLOG_POST_BY_ID } from "../../utils/queries";
+import BlogText from "../../components/HotLinkBlogText";
 
 export async function getStaticPaths () {
     const client = initializeApollo();
@@ -39,7 +39,7 @@ export default function blogPost ({blogPost})  {
 return(
     <div>
         <h1>{title}</h1>
-        <p>{blogText}</p>
+        <BlogText content={blogText} />
     </div>
 );
 };
