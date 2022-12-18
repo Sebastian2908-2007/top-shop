@@ -15,3 +15,7 @@ export const AdminItemNameSpan = styled.span`
 font-weight: bolder;
 font-family: 'Courier New', Courier, monospace;
 `;
+
+export const BackSpan = styled.span`
+color: rgb(245 245 6);
+`;

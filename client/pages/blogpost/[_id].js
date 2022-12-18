@@ -1,3 +1,4 @@
+import Router from 'next/router'
 import { initializeApollo } from "../../lib/apolloClient"; 
 import { GET_BLOGPOSTS_ADMIN,GET_BLOG_POST_BY_ID } from "../../utils/queries";
 import BlogText from "../../components/HotLinkBlogText";
@@ -5,9 +6,11 @@ import BlogText from "../../components/HotLinkBlogText";
 import { SingleBlogPostHeroSection,SingleBlogpostSection  } from "../../styles/Section.styled";
 import { BlogHeroPic } from "../../styles/Images.styled";
 import { SingleBlogpostTitle } from "../../styles/H1.styled";
+import { BackSpan } from "../../styles/Spans.styled";
 /**styled componenets import ends */
 
 export async function getStaticPaths () {
+    
     const client = initializeApollo();
  const {data} =  await client.query({
       query: GET_BLOGPOSTS_ADMIN
@@ -48,6 +51,7 @@ return(
         alt="the blogpost's vibe"
         src={blogPic.Location}
         />
+        <BackSpan onClick={() => Router.back()}>&#x2b05;</BackSpan>
           <SingleBlogpostTitle>{title}</SingleBlogpostTitle>
     </SingleBlogPostHeroSection>
     <SingleBlogpostSection>
