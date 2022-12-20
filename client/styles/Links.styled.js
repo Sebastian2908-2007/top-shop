@@ -52,3 +52,51 @@ color: rgb(245 245 6);
 background: linear-gradient(to left, rgb(199, 197, 104),rgb(0,0,0));;
 }
 `;
+
+export const ExternalLink = styled.a`
+color: #017698;
+text-decoration: underline;
+&:hover {
+color:rgb(248, 248, 128);
+background-color: black;
+border-radius: 8px;
+padding: .5%;
+}
+`;
+
+export const ShopNowLink = styled(Link)`
+color:rgb(248, 248, 128);
+background-color: black;
+border-radius: 8px;
+padding: .4%;
+border: 1px solid rgb(248, 248, 128);
+@media screen and (min-width: 375px) {
+    padding: 2%;
+}
+@media screen and (min-width: 1366px) {
+    padding: 1%;
+}
+&:hover {
+background-color: transparent;
+color: #017698;
+}
+`;
+
+export const BackToTopLink = styled.a`
+color:rgb(248, 248, 128);
+background-color: black;
+border-radius: 8px;
+padding: .4%;
+border: 1px solid rgb(248, 248, 128);
+@media screen and (min-width: 375px) {
+    padding: 2%;
+}
+@media screen and (min-width: 1366px) {
+    padding: 1%;
+}
+&:hover {
+background-color: transparent;
+color: #017698;
+}
+`;
+

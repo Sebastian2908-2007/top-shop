@@ -9,7 +9,8 @@ import { HeaderHomePageLink } from '../styles/Links.styled';
 import { FooterDiv, HeaderCartMenuDiv  } from '../styles/Div.styled';
 import { SocialImgLink } from '../styles/Links.styled';
 import { SocialPic } from '../styles/Images.styled';
-import { Main } from '../styles/Main.styled';
+
+
 
 
 
@@ -39,8 +40,8 @@ const copyStyle = theme => ({
 });
 
 
-const Layout = ({ children }) => {
-  
+const Layout = ({ children}) => {
+ 
    return (  
    <>
    {/**this provider is giving dancing script font to footer an header */}
@@ -79,5 +80,6 @@ const Layout = ({ children }) => {
     </>
    );
 };
+
 
 export default Layout;

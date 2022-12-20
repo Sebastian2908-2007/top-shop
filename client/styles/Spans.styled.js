@@ -17,5 +17,23 @@ font-family: 'Courier New', Courier, monospace;
 `;
 
 export const BackSpan = styled.span`
-color: rgb(245 245 6);
+color:rgb(248, 248, 128);
+background-color: black;
+border-radius: 8px;
+padding: .4%;
+border: 2px solid rgb(248, 248, 128);
+@media screen and (min-width: 375px) {
+    padding: 2%;
+}
+@media screen and (min-width: 1366px) {
+    padding: 1%;
+}
+&:hover {
+background-color: transparent;
+color: #017698;
+}
+`;
+export const ContinueReadSpan = styled.span`
+color:#017698;
+font-size: .8em;
 `;

@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 /**material ui ends*/
 import { BlogPreviewTitle} from "../styles/H1.styled";
 import { FullBlogPostLink } from "../styles/Links.styled";
+import { ContinueReadSpan } from "../styles/Spans.styled";
 const BlogPostPrieviewCard = ({blogPost}) => {
     const {_id,title,blogText,blogPic} = blogPost;
    // console.log(_id,title,blogText);
@@ -21,7 +22,8 @@ const BlogPostPrieviewCard = ({blogPost}) => {
             />
             <CardContent sx={{display:'flex',flexDirection:'column',alignItems:'center'}}>
         <BlogPreviewTitle>{title}</BlogPreviewTitle>
-      <FullBlogPostLink href={`/blogpost/${_id}`}> <div>{blogText.substring(0,32)}. . .Continue Reading</div> </FullBlogPostLink>
+        {/**blogtext toSubstring just sets how many chars from blogtext appear in the preview */}
+      <FullBlogPostLink href={`/blogpost/${_id}`}> <div>{blogText.substring(0,32)}<ContinueReadSpan>. . .Continue Reading</ContinueReadSpan></div> </FullBlogPostLink>
            </CardContent>
         </Card>
     );

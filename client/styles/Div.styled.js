@@ -144,3 +144,28 @@ text-align: center;
 }
 `;
 
+export const SingleBlogLinkDiv = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 100%;
+padding: ${props => props.padding ? props.padding : '2%'};
+margin-top: ${props => props.marginTop};
+border-radius: ${props => props.borderRadius};
+background: ${props => props.background};
+@media screen and (min-width: 1024px){
+    padding: 3%;
+}
+`;
+export const BlogLinkDiv = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 100%;
+padding:2%;
+
+@media screen and (min-width: 1024px){
+    padding: 3%;
+}
+`;
+

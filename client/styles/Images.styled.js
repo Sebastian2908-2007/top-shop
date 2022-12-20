@@ -183,12 +183,18 @@ border-bottom: 2px solid black;
 animation: ${bounceIn} 2s linear 1;
 @media screen and (min-width: 768px) {
   height: 50vh;
+  width: 80%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border: 2px solid black;
+  border-radius:11px;
 }
 
 @media screen and (min-width: 1024px) {
 animation: ${flickerIn} 2s linear 1;
-margin-top: 8%;
-width: 50%;
+margin-top: 1%;
+margin-bottom: 3%;
+width: 60%;
 height: 100%;
 border: 7px solid black;
 border-radius:11px;

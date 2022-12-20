@@ -13,8 +13,8 @@ import { BlogPostHeroSection } from "../styles/Section.styled";
 import {  BlogHeroPic } from "../styles/Images.styled";
 import { MainTitle } from "../styles/H1.styled";
 /**styled components imports ends*/
-//import { initializeApollo } from "../lib/apolloClient"; 
-//import { GET_BLOGPOSTS_ADMIN } from "../utils/queries";
+import BottomLinkPack from "../components/BottomLinkPack";
+import TopLinkPack from "../components/TopLinkPack";
 const blog = () => {
     
     const {loading,data} = useQuery(GET_BLOGPOSTS_ALL_DATA);
@@ -32,6 +32,7 @@ src="/blogposts_hero.jpeg"
 alt="hero banner of a cute handmade knome in a jail suit"
 />
 <MainTitle>Sybs Crafty Blog</MainTitle>
+<TopLinkPack/>
         </BlogPostHeroSection>
     <BlogpostSection>
        <Grid container rowSpacing={{xs:3,md:4}} columnSpacing={{xs:0,sm:4,md:4}}>
@@ -41,6 +42,7 @@ alt="hero banner of a cute handmade knome in a jail suit"
             </Grid>
         ))):(<NoProductDiv>no products</NoProductDiv>)}
         </Grid>
+        <BottomLinkPack/>
     </BlogpostSection>
     </div>
 )

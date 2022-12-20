@@ -107,13 +107,13 @@ export const BlogPostHeroSection = styled.section`
 width: 100%;
 background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
 padding-bottom: .1%;
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
  // background-color: rgb(248, 248, 128);
   //border-bottom: 50px solid black;
   padding: 4%;
-  padding-bottom: 8%;
+  padding-bottom: 1%;
   width: 100%;
-  height: 70vh;
+  height: auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -131,18 +131,21 @@ padding-bottom: 11em;
 export const SingleBlogPostHeroSection = styled.section`
 width: 100%;
 background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
-padding-bottom: .1%;
+padding: 4%;
+padding-bottom: 1%;
+@media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+  flex-direction: column;
+  align-items: center; 
+}
 @media screen and (min-width: 1024px) {
  // background-color: rgb(248, 248, 128);
   //border-bottom: 50px solid black;
   padding: 4%;
-  padding-bottom: 8%;
+  padding-bottom: 2%;
   width: 100%;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  height: auto;
   background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
 }
 `;

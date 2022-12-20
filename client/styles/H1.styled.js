@@ -90,6 +90,9 @@ box-shadow:  0 0 10px black;
 @media screen and (min-width: 912px) {
   font-size: 2.5em ;
 }
+@media screen and (min-width: 1024px){
+    margin-bottom: 0%;
+}
 @media screen and (min-width: 1366px) {
 font-size: 2.8em;
 }
