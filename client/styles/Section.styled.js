@@ -126,6 +126,9 @@ height: 100%;
 width: 100%;
 padding: 5%;
 padding-bottom: 11em;
+display: flex;
+flex-direction: column;
+align-items: center;
 `;
 
 export const SingleBlogPostHeroSection = styled.section`

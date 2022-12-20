@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import { initializeApollo } from "../../lib/apolloClient"; 
 import { GET_BLOGPOSTS_ADMIN,GET_BLOG_POST_BY_ID } from "../../utils/queries";
@@ -10,7 +11,12 @@ import { BlogHeroPic } from "../../styles/Images.styled";
 import { SingleBlogpostTitle } from "../../styles/H1.styled";
 import { SingleBlogLinkDiv } from "../../styles/Div.styled";
 import TopLinkPack from "../../components/TopLinkPack";
+import { DeleteProductButton, EditProductButton } from '../../styles/Button.styled';
+import { AdminProductBtnDiv } from '../../styles/Div.styled';
+
 /**styled componenets import ends */
+import auth from "../../utils/auth";
+import { BackSpan } from "../../styles/Spans.styled";
 
 export async function getStaticPaths () {
     
@@ -46,6 +52,17 @@ export default function blogPost ({blogPost})  {
     /**destructure static props */
     const {_id,title,blogText,blogPic} = blogPost.getBlogpostById;
    
+  /**checks to see if the user is an admin*/
+  const [isAdmin,setIsAdmin] = useState(true);
+  /**set admin data at runtime with useEffect*/
+  useEffect(() => {
+    if(auth.loggedIn()) { 
+      setIsAdmin ( auth.getProfile().data.isAdmin);
+      }else{
+        setIsAdmin (false);
+      };
+  },[])
+
 return(
     <>
     <Head>
@@ -60,12 +77,25 @@ return(
         src={blogPic.Location}
         />
           <SingleBlogpostTitle>{title}</SingleBlogpostTitle>
-         <TopLinkPack/>
+          {!isAdmin ? <TopLinkPack/>:<BackSpan>&#x2b05; Go back</BackSpan>}
     </SingleBlogPostHeroSection>
     <SingleBlogpostSection>
+        
+          {/**Below if admin display edit and delete buttons for */}
+  {isAdmin &&   <AdminProductBtnDiv><DeleteProductButton >Delete</DeleteProductButton>
+      <EditProductButton >Edit</EditProductButton></AdminProductBtnDiv>}
+
         <BlogText content={blogText} />
-    <BottomLinkPack/>
+      {!isAdmin && <BottomLinkPack/>}
     </SingleBlogpostSection>
     </>
 );
 };
+
+/**
+ import { DeleteProductButton, EditProductButton } from '../../styles/Button.styled';
+import { AdminProductBtnDiv } from '../../styles/Div.styled';
+
+        {isAdmin &&   <AdminProductBtnDiv><DeleteProductButton onClick={deleteProduct}>Delete</DeleteProductButton>
+      <EditProductButton onClick={editProduct}>Edit</EditProductButton></AdminProductBtnDiv>}            
+      {/*isAdmin &&   <EditProductButton>Edit</EditProductButton>*/
