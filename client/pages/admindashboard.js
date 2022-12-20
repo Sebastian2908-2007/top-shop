@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {useQuery} from '@apollo/client';
 import { MainAdminSection } from "../styles/Section.styled";
 import { AdminDashTitle } from "../styles/H1.styled";
@@ -14,6 +14,10 @@ import AddProduct from "../components/AddProduct";
 import AddBlogpost from "../components/AddBlogpost";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+/**Token stuff */
+import auth from '../utils/auth';
+/**not admin component it displays if non admin user somehow comes here*/
+import NotAdmin from "../components/NotAdmin";
 
 
 // Import Swiper styles
@@ -25,15 +29,29 @@ import "swiper/css/effect-cards";
 // import required modules
 import { EffectCards } from "swiper";
 
+
 const admindashboard = () => {
     /**call category query refetch will happen when form is submitted*/
     const {loading,data,refetch} = useQuery(GET_CATEGORIES);
     // todays date\
     const unixDate = Date.now()
     const todaysDate = dateFormat(unixDate);
+    /**checks to see if the user is an admin*/
+    const [isAdmin,setIsAdmin] = useState(true);
+    /**set admin data at runtime with useEffect*/
+    useEffect(() => {
+      if(auth.loggedIn()) { 
+        setIsAdmin ( auth.getProfile().data.isAdmin);
+        }else{
+          setIsAdmin (false);
+        };
+    },[])
+    
     return(
+       
         <MainAdminSection>
             <AdminDashTitle>{todaysDate}</AdminDashTitle>
+            {isAdmin ? ( 
         <Swiper
           effect={"cards"}
           grabCursor={true}
@@ -45,9 +63,10 @@ const admindashboard = () => {
           <SwiperSlide><AddBlogpost/></SwiperSlide>
           <SwiperSlide>Slide 4</SwiperSlide>
           <SwiperSlide>Slide 5</SwiperSlide>
-        </Swiper>
+        </Swiper>):(<NotAdmin/>)}
         </MainAdminSection>
     );
+       
 };
 
 export default admindashboard;

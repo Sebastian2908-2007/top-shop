@@ -26,7 +26,7 @@ const blog = () => {
     
 return(
     <div>
-        <BlogPostHeroSection>
+        <BlogPostHeroSection id="Hero">
 <BlogHeroPic
 src="/blogposts_hero.jpeg"
 alt="hero banner of a cute handmade knome in a jail suit"

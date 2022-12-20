@@ -1,3 +1,4 @@
+import Router from "next/router";
 import { BlogLinkDiv } from "../styles/Div.styled";
 import { ShopNowLink } from "../styles/Links.styled";
 import { BackSpan } from "../styles/Spans.styled";

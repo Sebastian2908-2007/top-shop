@@ -169,3 +169,12 @@ padding:2%;
 }
 `;
 
+export const NotAdminDiv = styled.div`
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+text-align: center;
+`;
+
