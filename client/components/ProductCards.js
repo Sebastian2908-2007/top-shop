@@ -89,15 +89,15 @@ Key
   /**delete product function to open modal and set relivent data*/
   const deleteProduct = () => {
     setOpen(true);
-    setEditOrDelete('delete');
-    setModalInfo({_id:_id,Bucket:Bucket,Key:Key});
+   // setEditOrDelete('delete');
+    setModalInfo({_id:_id,Bucket:Bucket,Key:Key,itemType:'product',EditOrDelete:'delete'});
   };
 
   /**edit product function to open modal and set relivent data*/
   const editProduct = () => {
     setOpen(true);
-    setEditOrDelete('edit');
-    setModalInfo({_id:_id,name:name,description:description,price:price,quantity:quantity});
+    //setEditOrDelete('edit');
+    setModalInfo({_id:_id,name:name,description:description,price:price,quantity:quantity,itemType:'product',EditOrDelete:"edit"});
   };
 
   return (
