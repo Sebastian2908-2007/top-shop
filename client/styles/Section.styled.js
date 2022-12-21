@@ -152,3 +152,24 @@ padding-bottom: 1%;
   background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
 }
 `;
+/**A section for the reviews originally cloned from the Products section styled component */
+export const ReviewSection = styled.section`
+padding: 3%;
+padding-bottom: 5rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+@media screen and (min-width: 768px) {
+    padding-bottom: 7rem;
+};
+@media screen and (min-width: 912px) {
+    padding-bottom: 9rem;
+};
+@media screen and (min-width: 1366px) {
+    padding-bottom: 11rem;
+};
+@media screen and (min-width: 1920px) {
+    padding-bottom: 12rem;
+};
+`;

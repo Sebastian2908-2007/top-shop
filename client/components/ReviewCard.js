@@ -9,13 +9,21 @@ import { ReviewCardNameSpan } from '../styles/Spans.styled';
 import { ReviewTextParagraph } from '../styles/P.styled';
 /**styled Components imports end */
 const ReviewCard = ({review}) => {
-    console.log(review);
     /**destructure the review*/
     const {reviewText,author,rating} = review;
     /**destructure author data from destructured review data*/
     const {firstName,lastName} = author;
 return (
-    <Card>
+    <Card sx={{display:'flex',
+    flexDirection:'column',
+    justifyContent:'space-evenly',
+    textAlign:'center',
+    boxShadow:' 0 0 10px black',
+    height:'100%',
+    maxWidth: '100%',
+    backgroundColor: "rgb(255,255,255,0.6)",
+    border: '1px solid black'
+    }}>
         <CardContent>
             <ReviewCardTitle>
                 <ReviewCardNameSpan>{firstName}</ReviewCardNameSpan>

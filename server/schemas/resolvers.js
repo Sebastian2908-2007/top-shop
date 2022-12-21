@@ -110,7 +110,7 @@ const resolvers = {
         },
         addReview: async (parent,{reviewText,rating},context) => {
             const currentUser = await User.findOne({_id:context.user._id});
-           if(currentUser.hasLeftReview === false) {
+           //if(currentUser.hasLeftReview === false) {
                 const usersReview = await Review.create(
                     {        
                     reviewText: reviewText,
@@ -127,7 +127,7 @@ const resolvers = {
                    {new:true}  
                 );
                 return usersReview;
-            }
+           // }
             throw new AuthenticationError('looks like you have already left a review!');
         },
         deleteReview: async (parent,{_id},context) => {
