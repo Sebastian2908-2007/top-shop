@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import { initializeApollo } from "../../lib/apolloClient"; 
+/**queris to get blogposts */
 import { GET_BLOGPOSTS_ADMIN,GET_BLOG_POST_BY_ID } from "../../utils/queries";
 /**COMPONENT: for the blog text its integral in generating the hot links associated with the blog post*/
 import BlogText from "../../components/HotLinkBlogText";
@@ -109,7 +110,7 @@ return(
         src={blogPic.Location}
         />
           <SingleBlogpostTitle>{title}</SingleBlogpostTitle>
-          {!isAdmin ? <TopLinkPack/>:<BackSpan>&#x2b05; Go back</BackSpan>}
+          <TopLinkPack/>
     </SingleBlogPostHeroSection>
     <SingleBlogpostSection>
         {isAdmin && <EditDeleteModal

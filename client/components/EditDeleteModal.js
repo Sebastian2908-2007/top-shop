@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
+import Router from "next/router";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -7,10 +8,14 @@ import Modal from '@mui/material/Modal';
 import { s3Delete } from '../utils/s3';
 /**import mutation to delete and edit a Product */
 import { DELETE_PRODUCT, EDIT_PRODUCT } from '../utils/mutations';
+/**styled components */
 import { DeleteProductButton, EditProductButton } from '../styles/Button.styled';
 import { Form,FormInput } from '../styles/Forms.styled';
-import { GET_ALL_PRODUCTS } from '../utils/queries';
-
+import { AdminTextArea, AdminFormInput } from "../styles/Forms.styled";
+/**styled components end*/
+import { GET_ALL_PRODUCTS, GET_BLOGPOSTS_ALL_DATA,GET_BLOG_POST_BY_ID } from '../utils/queries';
+/*Mutation to delete and edit blogposts*/
+import { DELETE_BLOGPOST, EDIT_BLOG_POST } from "../utils/mutations";
 /**need switch cases in submit edit and delete clock functions that find out which mutation should be ran
  * based on modelInfo.itemType eventually there will be one for products blogposts
  * users and reviews so four different potential try catch blocks in each function "deleteClick & submitEdit"
@@ -42,7 +47,7 @@ const style = {
 
     {
       console.log(modalInfo);
-      /**get our itemType for our data rendering and operations*/
+      /**get our itemType for our data rendering and operations it will be set in useEffect with the modalInfo.itemType data*/
       const [itemType,SetItemType] = useState('');
       useEffect(() => {SetItemType(modalInfo.itemType)},[open]);
 /**name mutation for deleting a product we also instruct get all products to be run each time this is */
@@ -53,6 +58,12 @@ const [deleteProduct] = useMutation(DELETE_PRODUCT,{
 const [editProduct] = useMutation(EDIT_PRODUCT,{
     refetchQueries:[{query: GET_ALL_PRODUCTS}]
 });
+/*name blogpost mutation to delete blogposts*/
+const [deleteBlogPost] = useMutation(DELETE_BLOGPOST,{
+  refetchQueries:[{query: GET_BLOGPOSTS_ALL_DATA}]
+});
+/**name mutation to edit blogposts*/
+const [editBlogPost] = useMutation(EDIT_BLOG_POST);
 
     
     /*closes modal and sets other state back to default */
@@ -60,7 +71,9 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
 
     /**delete function to run onClick when a user chooses to delete*/
     const deleteClick = async () => {
+      /**use a switch case to determine which type of item we are dealing with and run the valid operation for it*/
         switch(modalInfo.itemType) { 
+          /**product case begins */
           case 'product':
         try{
          await deleteProduct({variables:{_id: modalInfo._id}});
@@ -75,9 +88,26 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
         console.log(e);
        }
        break;
+       /**product case ends */
+
+/**blogpost case starts */
        case 'blogpost':
         console.log('your deleting a blogpost!!!');
+        try{
+          await deleteBlogPost({variables:{_id: modalInfo._id}});
+          handleClose();
+        }catch(e){
+          console.log(e);
+          return;
+        }
+        try{
+          s3Delete(modalInfo.Bucket,modalInfo.Key);
+          Router.back();
+        }catch(e) {
+          console.log(e);
+        }
         break;
+        /**blogpost case ends */
 
       };
     };
@@ -92,7 +122,7 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
             }
         );
         
-       
+       console.log(modalInfo);
     };
     /**function that will implement edit functionality for the edit button 'to be called onClick' */
     const submitEdit = async (event) => {
@@ -116,7 +146,20 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
     };
     break;
     case 'blogpost':
-      console.log('you have edited a blogpost imaginitively');
+      console.log(modalInfo.title, modalInfo.blogText);
+      try{
+        await editBlogPost({variables:{
+          _id: modalInfo._id,
+          title: modalInfo.title,
+          blogText: modalInfo.blogText
+        }})
+        handleClose();
+        Router.reload();
+      }catch(e) {
+        console.log(e);
+        return;
+      };
+      console.log('congrats it ran through!');
       break;
   };
     };
@@ -157,7 +200,11 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
                 <FormInput onChange={handleFormChange} type='number' name="quantity" placeholder='edit quantity'/>
                 </>
             }
-            {itemType === 'blogpost' && <div>this will be a blogpost form when it grows up</div>}
+            {itemType === 'blogpost' && 
+            <>
+            <AdminFormInput  onChange={handleFormChange} name='title' placeholder='edit blog title'/>
+            <AdminTextArea  onChange={handleFormChange}  name="blogText" placeholder="Blog Post Text"/>
+            </>}
             <DeleteProductButton onClick={handleClose}>Cancel</DeleteProductButton>
             <EditProductButton type='submit'>submit</EditProductButton>
             </Form>

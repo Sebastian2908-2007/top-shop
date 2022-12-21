@@ -77,3 +77,25 @@ mutation addBlogpost($title:String!,$blogText:String!,$blogPic:ID!) {
     }
   }
 }`;
+
+/**mutation to delete single blogpost its first use is in the [_id].js file in the blogpost dir inside pages dir */
+export const DELETE_BLOGPOST = gql`
+mutation deleteBlogpost($_id:ID!) {
+  deleteBlogpost(_id: $_id) {
+    _id
+  }
+}
+`;
+/**mutation to edit a blogPost*/
+export const EDIT_BLOG_POST = gql`
+mutation updateBlogpost($_id:ID!,$title:String,$blogText:String,$blogPic:ID) {
+  updateBlogpost(_id: $_id,title:$title,blogText:$blogText,blogPic:$blogPic) {
+    _id
+    title
+    blogPic {
+      _id
+    }
+    
+  }
+}
+`;
