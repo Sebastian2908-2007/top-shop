@@ -37,3 +37,7 @@ export const ContinueReadSpan = styled.span`
 color:#017698;
 font-size: .8em;
 `;
+
+export const ReviewCardNameSpan = styled.span`
+padding: 1%;
+`;

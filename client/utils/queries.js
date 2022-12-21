@@ -91,3 +91,22 @@ query getBlogpostById($_id:ID!) {
   }
 }
 `;
+
+/**get all reviews query for review page*/
+export const GET_REVIEWS = gql`
+query getReviews {
+  getReviews {
+    _id
+    reviewText
+    rating
+    author {
+      _id
+      email
+      lastName
+      firstName
+      hasLeftReview
+    }
+
+  }
+}
+`;

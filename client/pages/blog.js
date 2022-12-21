@@ -40,7 +40,7 @@ alt="hero banner of a cute handmade knome in a jail suit"
             <Grid item xs={12} sm={6} lg={4} xl={3}  key={blogPost._id} >
             <BlogPostPrieviewCard blogPost={blogPost}/>
             </Grid>
-        ))):(<NoProductDiv>no products</NoProductDiv>)}
+        ))):(<NoProductDiv>no blog posts 😭</NoProductDiv>)}
         </Grid>
         <BottomLinkPack/>
     </BlogpostSection>
