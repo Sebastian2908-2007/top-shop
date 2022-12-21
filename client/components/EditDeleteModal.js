@@ -5,9 +5,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 /**import s3Delete function so s3images can be removed when a product is removed*/
-import { s3Delete } from '../utils/s3';
+import { s3Delete, s3Upload } from '../utils/s3';
 /**import mutation to delete and edit a Product */
-import { DELETE_PRODUCT, EDIT_PRODUCT } from '../utils/mutations';
+import { DELETE_PRODUCT, EDIT_PRODUCT,ADD_FILE } from '../utils/mutations';
 /**styled components */
 import { DeleteProductButton, EditProductButton } from '../styles/Button.styled';
 import { Form,FormInput } from '../styles/Forms.styled';
@@ -46,10 +46,11 @@ const style = {
     }) 
 
     {
-      console.log(modalInfo);
+      //console.log(modalInfo);
       /**get our itemType for our data rendering and operations it will be set in useEffect with the modalInfo.itemType data*/
       const [itemType,SetItemType] = useState('');
       useEffect(() => {SetItemType(modalInfo.itemType)},[open]);
+     // useEffect(() => {console.log(modalInfo)},[modalInfo]);
 /**name mutation for deleting a product we also instruct get all products to be run each time this is */
 const [deleteProduct] = useMutation(DELETE_PRODUCT,{
     refetchQueries:[{query: GET_ALL_PRODUCTS}]
@@ -64,6 +65,8 @@ const [deleteBlogPost] = useMutation(DELETE_BLOGPOST,{
 });
 /**name mutation to edit blogposts*/
 const [editBlogPost] = useMutation(EDIT_BLOG_POST);
+/**mutation to add a file or a picture in this case for editing a blogpost*/
+const [addNewPicture] = useMutation(ADD_FILE);
 
     
     /*closes modal and sets other state back to default */
@@ -71,9 +74,9 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
 
     /**delete function to run onClick when a user chooses to delete*/
     const deleteClick = async () => {
-      /**use a switch case to determine which type of item we are dealing with and run the valid operation for it*/
+      /**use a switch case to determine which type of item we are dealing with and run the valid LOGIC for it*/
         switch(modalInfo.itemType) { 
-          /**product case begins */
+          /**PRODUCT LOGIC STARTS */
           case 'product':
         try{
          await deleteProduct({variables:{_id: modalInfo._id}});
@@ -88,9 +91,8 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
         console.log(e);
        }
        break;
-       /**product case ends */
-
-/**blogpost case starts */
+       /**PRODUCT LOGIC ENDS */
+/**BLOGPOST LOGIC STARTS */
        case 'blogpost':
         console.log('your deleting a blogpost!!!');
         try{
@@ -107,7 +109,7 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
           console.log(e);
         }
         break;
-        /**blogpost case ends */
+       /**BLOGPOST LOGIC ENDS */
 
       };
     };
@@ -121,13 +123,20 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
                 [name]:value
             }
         );
-        
-       console.log(modalInfo);
     };
+
+       /**this is used to capture the file or picture from form*/
+       const handleFileChange = event => {
+        /**if a file is added add blogPic property to the modalInfo with the value of the current file*/
+        setModalInfo({...modalInfo,blogPic:event.target.files[0]});
+    };
+
     /**function that will implement edit functionality for the edit button 'to be called onClick' */
     const submitEdit = async (event) => {
         event.preventDefault();
+        /**DETERMINE WHICH ITEM WE ARE DEALING WITH PRODUCT, BLOGPOST ETC. and run the proper LOGIC */
         switch(modalInfo.itemType) { 
+      /**PRODUCT LOGIC STARTS */
           case 'product':
     try{
         await editProduct({
@@ -139,28 +148,65 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
                 quantity: parseInt(modalInfo.quantity)
             }
         });
-        //refetch();
         handleClose();
     }catch(e){
         console.log(e);
     };
     break;
+  /**PRODUCT LOGIC ENDS */
+
+  /**BLOGPOST LOGIC STARTS */
     case 'blogpost':
       console.log(modalInfo.title, modalInfo.blogText);
+
+      /**the below if statement only happens if there is new blog pic info detected */
+if(modalInfo.blogPic) {
+  try{
+    /**send new file to s3 for upload and to get required data for our fileUpload mutation a.k.a addNewPicture*/
+    const newBlogPicInfo = await s3Upload(modalInfo.blogPic);
+    /**destructure returned s3 data for ease of use*/
+    const {ETag,Location,Bucket,key,Key} = newBlogPicInfo;
+    /**run our file upload mutation with returned s3 data as variables put operation as a variable so the id can be extracted for out edit blogPost mutation*/
+    const newBlogPic = await addNewPicture({
+      variables:{
+        ETag: ETag,
+        Location: Location,
+        Bucket: Bucket,
+        key: key,
+        Key: Key
+      }
+    });
+    /**extract the _id for our editBlogpost mutation*/
+    const newBlogPicId = newBlogPic.data.addFile._id;
+    /**run editBlogPost to update the blogPic*/
+    await editBlogPost({
+      variables: {
+        _id: modalInfo._id,
+        blogPic: newBlogPicId
+      }
+    });
+    s3Delete(modalInfo.Bucket,modalInfo.Key);
+  }catch(e){
+    console.log(e);
+  }
+}
+/**below will edit only text fields of blogposts but it runs each time */
       try{
         await editBlogPost({variables:{
           _id: modalInfo._id,
           title: modalInfo.title,
           blogText: modalInfo.blogText
         }})
+        /**close Modal once done */
         handleClose();
+        /**reload the page to displayt new data since its statically generated refetch will not work*/
         Router.reload();
       }catch(e) {
         console.log(e);
         return;
       };
-      console.log('congrats it ran through!');
       break;
+  /**BLOGPOST LOGIC ENDS */
   };
     };
 
@@ -204,6 +250,7 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
             <>
             <AdminFormInput  onChange={handleFormChange} name='title' placeholder='edit blog title'/>
             <AdminTextArea  onChange={handleFormChange}  name="blogText" placeholder="Blog Post Text"/>
+            <AdminFormInput  onChange={handleFileChange} type='file' name='blogPic' placeholder='edit blog picture'/>
             </>}
             <DeleteProductButton onClick={handleClose}>Cancel</DeleteProductButton>
             <EditProductButton type='submit'>submit</EditProductButton>

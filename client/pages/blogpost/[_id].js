@@ -59,6 +59,9 @@ return {
 export default function blogPost ({blogPost})  {
     /**destructure static props */
     const {_id,title,blogText,blogPic} = blogPost.getBlogpostById;
+    /**further desstructure for pertinent blogPic info like Key Bucket which are instrumental in deleting from s3
+     * all of these destructured props are used in setModalInfo();
+     */
    const {Key,Bucket} = blogPic;
   /**checks to see if the user is an admin*/
   const [isAdmin,setIsAdmin] = useState(true);
@@ -75,10 +78,6 @@ export default function blogPost ({blogPost})  {
 
     /**this state opens edit delete modal it is passed to the modal as well as the product cards*/
     const [open, setOpen] = useState(false);
-    /**this state is used to tell the modal whether this is an edit or delete action its passed to product cards as well as the modal
-     * its set in the product cards
-     */
-    const [editOrDelete,setEditOrDelete] = useState(null);
     /**modal info this state will hold the information I need to either delete or edit a product it will be set in product card
      * its passed to both modal and product card
      */
@@ -90,8 +89,14 @@ export default function blogPost ({blogPost})  {
         setModalInfo({_id:_id,Bucket:Bucket,Key:Key,itemType:'blogpost',EditOrDelete:'delete'});
      };
      const editBlogPost = ()=> {
+        /**when edit btn is clicked open the editDeleteModal */
         setOpen(true);
-        setModalInfo({_id:_id,title:title,blogText:blogText,itemType:'blogpost',EditOrDelete:'edit'});
+        /**set pertinant data so that the modal not only has what it needs to run operations but also so the modal will know which items its running operations for
+         * in this case it will be for blogposts as determined by the "itemType" property this is going to be a recurring
+         * theme for all things like users reviews products blogposts at the time of this note
+         * its already being used for products
+         */
+        setModalInfo({_id:_id,title:title,blogText:blogText,Key:Key,Bucket:Bucket,itemType:'blogpost',EditOrDelete:'edit'});
      };
 
 
@@ -116,8 +121,6 @@ return(
         {isAdmin && <EditDeleteModal
         open={open} 
         setOpen={setOpen}
-        setEditOrDelete={setEditOrDelete}
-        editOrDelete={editOrDelete}
         setModalInfo={setModalInfo} 
         modalInfo={modalInfo}
         />}

@@ -20,10 +20,6 @@ import Grid from '@mui/material/Grid';
  export default function AdminProductsPage () {
     /**this state opens edit delete modal it is passed to the modal as well as the product cards*/
     const [open, setOpen] = useState(false);
-    /**this state is used to tell the modal whether this is an edit or delete action its passed to product cards as well as the modal
-     * its set in the product cards
-     */
-    const [editOrDelete,setEditOrDelete] = useState(null);
     /**modal info this state will hold the information I need to either delete or edit a product it will be set in product card
      * its passed to both modal and product card
      */
@@ -43,7 +39,6 @@ return (
     /**if stuff is not loading display all products */
     <AdminProductPageSection>
         <EditDeleteModal open={open} setOpen={setOpen}
-        setEditOrDelete={setEditOrDelete} editOrDelete={editOrDelete}
         setModalInfo={setModalInfo} modalInfo={modalInfo}
         />
         <Box>
@@ -51,7 +46,7 @@ return (
 {products.length ? (  products.map(product => (
   
   <Grid item xs={12} sm={6} lg={4} xl={3}   key={product._id}>
-    <ProductCard product={product} setEditOrDelete={setEditOrDelete} setOpen={setOpen}
+    <ProductCard product={product}  setOpen={setOpen}
     setModalInfo={setModalInfo}/>
   </Grid>
 ))):(<NoProductDiv>no products yet</NoProductDiv>)}

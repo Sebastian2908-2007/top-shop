@@ -99,3 +99,11 @@ mutation updateBlogpost($_id:ID!,$title:String,$blogText:String,$blogPic:ID) {
   }
 }
 `;
+/**this is for deleting file off our graphql database its being used in the editDeleteModal*/
+/*export const DELETE_FILE = gql`
+mutation deleteFile($_id:ID!) {
+  deleteFile(_id:$_id) {
+    _id
+  }
+}
+`;*/

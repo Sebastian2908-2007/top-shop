@@ -290,7 +290,9 @@ const resolvers = {
      updateBlogpost: async (parent,{_id,title,blogText,blogPic},context) => {
         // here we find the blogpost so we can get the old values
         const oldBlogpost = await Blogpost.findById(_id);
-        console.log(oldBlogpost);
+        console.log(oldBlogpost.blogPic.toHexString(),'OLD');
+        console.log(blogPic,'NEW');
+        
         /*Below we check to see if all our data has been fed with values if not we set variables to the old data
         so that we can run our update with the old data this allows a user to not need to fill out or change all data
         these variables will be used in the update action*/
@@ -307,10 +309,23 @@ const resolvers = {
          }
 
          console.log(titleToUse);
-         console.log(blogPicToUse);
+         console.log(blogPicToUse,"PIC WE ARE USING");
          console.log(blogTextToUse);
 
          if(context.user.isAdmin) {
+
+            /*if there is new blogPic data run delete on the old blogPost*/
+            if(blogPic) {
+                try{
+                await FileUpload.findByIdAndDelete({_id: oldBlogpost.blogPic.toHexString()});
+                console.log('backend old blogPost successfully killed!');
+                }catch(e) {
+                    console.log('backend edit blogPic file delete err',e);
+                }
+            }else{
+                console.log('no new blogPic we are going with the old one!');
+            }
+
            // return oldBlogpost.populate('blogPic');
             return await Blogpost.findOneAndUpdate(
                 {_id:_id},
