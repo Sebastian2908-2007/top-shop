@@ -89,3 +89,11 @@ border: none;
 //background-color: rgb(0, 0, 50.2);
 background-color: #000080 ;
 `;
+
+export const LeaveReviewBtn = styled.button`
+color:  rgba(223,223,16,1);
+padding: 1%;
+border: none;
+background-color: rgb(0,0,0,.5);
+margin-bottom: 3em;
+`;

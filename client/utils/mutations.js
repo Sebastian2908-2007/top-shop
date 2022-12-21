@@ -99,11 +99,18 @@ mutation updateBlogpost($_id:ID!,$title:String,$blogText:String,$blogPic:ID) {
   }
 }
 `;
-/**this is for deleting file off our graphql database its being used in the editDeleteModal*/
-/*export const DELETE_FILE = gql`
-mutation deleteFile($_id:ID!) {
-  deleteFile(_id:$_id) {
-    _id
+
+/**add review mutation for leave review form a.k.a AddReview.js*/
+export const ADD_REVIEW = gql`
+mutation addReview($reviewText:String!,$rating:Int!) {
+  addReview(reviewText:$reviewText,rating:$rating) {
+     _id
+    reviewText
+    rating
+    author {
+      _id
+      
+    }
   }
-}
-`;*/
+  }
+`;
