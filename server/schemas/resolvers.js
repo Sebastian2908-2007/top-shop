@@ -110,7 +110,7 @@ const resolvers = {
         },
         addReview: async (parent,{reviewText,rating},context) => {
             const currentUser = await User.findOne({_id:context.user._id});
-           //if(currentUser.hasLeftReview === false) {
+           if(currentUser.hasLeftReview === false) {
                 const usersReview = await Review.create(
                     {        
                     reviewText: reviewText,
@@ -127,7 +127,7 @@ const resolvers = {
                    {new:true}  
                 );
                 return usersReview;
-           // }
+            }
             throw new AuthenticationError('looks like you have already left a review!');
         },
         deleteReview: async (parent,{_id},context) => {
@@ -136,7 +136,7 @@ const resolvers = {
             /*get author's id from the found review*/
             const author = review.author.toHexString();
             /*here we compare author id to the current users id if they match delete review if not throw error */
-            if(author === context.user._id ) {
+            if(author === context.user._id || context.user.isAdmin ) {
             const deletedReview = await Review.findOneAndDelete({_id:_id});
             try{await User.findByIdAndUpdate({_id:context.user._id},{hasLeftReview:false},{new:true});}
             catch(e){
@@ -154,7 +154,7 @@ const resolvers = {
             const currentUser = context.user._id;
             console.log(author);
             console.log(currentUser);
-            if(author === currentUser) {
+            if(author === currentUser || context.user.isAdmin) {
                 try {
                 const updatedReview = await Review.findByIdAndUpdate(
                     {_id: _id},

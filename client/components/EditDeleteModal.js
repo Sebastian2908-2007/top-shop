@@ -4,6 +4,8 @@ import Router from "next/router";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+/**import rating component for the review edit functionality*/
+import { Rating } from '@mui/material';
 /**import s3Delete function so s3images can be removed when a product is removed*/
 import { s3Delete, s3Upload } from '../utils/s3';
 /**import mutation to delete and edit a Product */
@@ -13,9 +15,9 @@ import { DeleteProductButton, EditProductButton } from '../styles/Button.styled'
 import { Form,FormInput } from '../styles/Forms.styled';
 import { AdminTextArea, AdminFormInput } from "../styles/Forms.styled";
 /**styled components end*/
-import { GET_ALL_PRODUCTS, GET_BLOGPOSTS_ALL_DATA,GET_BLOG_POST_BY_ID } from '../utils/queries';
+import { GET_ALL_PRODUCTS, GET_BLOGPOSTS_ALL_DATA,GET_REVIEWS } from '../utils/queries';
 /*Mutation to delete and edit blogposts*/
-import { DELETE_BLOGPOST, EDIT_BLOG_POST } from "../utils/mutations";
+import { DELETE_BLOGPOST, EDIT_BLOG_POST,DELETE_REVIEW,EDIT_REVIEW } from "../utils/mutations";
 /**need switch cases in submit edit and delete clock functions that find out which mutation should be ran
  * based on modelInfo.itemType eventually there will be one for products blogposts
  * users and reviews so four different potential try catch blocks in each function "deleteClick & submitEdit"
@@ -40,15 +42,16 @@ const style = {
     open,
     setOpen,
     //setEditOrDelete,
-   
+    setHasLeftReview,
     setModalInfo,
     modalInfo,
     }) 
 
     {
-      //console.log(modalInfo);
       /**get our itemType for our data rendering and operations it will be set in useEffect with the modalInfo.itemType data*/
       const [itemType,SetItemType] = useState('');
+       // state for rating component for editing a review
+       //const [Ratingvalue, setRatingValue] = useState(modalInfo.rating);
       useEffect(() => {SetItemType(modalInfo.itemType)},[open]);
      // useEffect(() => {console.log(modalInfo)},[modalInfo]);
 /**name mutation for deleting a product we also instruct get all products to be run each time this is */
@@ -67,6 +70,14 @@ const [deleteBlogPost] = useMutation(DELETE_BLOGPOST,{
 const [editBlogPost] = useMutation(EDIT_BLOG_POST);
 /**mutation to add a file or a picture in this case for editing a blogpost*/
 const [addNewPicture] = useMutation(ADD_FILE);
+/**name our delete review mutation for use here in the modal*/
+const [deleteReview] = useMutation(DELETE_REVIEW,{
+  refetchQueries:[{query: GET_REVIEWS}]
+});
+/**name mutation to edit review*/
+const [editReview] = useMutation(EDIT_REVIEW,{
+  refetchQueries:[{query:GET_REVIEWS}]
+});
 
     
     /*closes modal and sets other state back to default */
@@ -110,6 +121,19 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
         }
         break;
        /**BLOGPOST LOGIC ENDS */
+       /**REVIEW LOGIC STARTS*/
+       case 'review':
+        console.log('your deleting a review!');
+        console.log(modalInfo);
+        await deleteReview({
+          variables:{
+            _id: modalInfo._id
+          }
+        });
+        setHasLeftReview(false);
+        handleClose();
+        break;
+       /**REVIEW LOGIC ENDS*/
 
       };
     };
@@ -123,6 +147,7 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
                 [name]:value
             }
         );
+        console.log(modalInfo);
     };
 
        /**this is used to capture the file or picture from form*/
@@ -207,6 +232,18 @@ if(modalInfo.blogPic) {
       };
       break;
   /**BLOGPOST LOGIC ENDS */
+  /*REVIEW LOGIC BEGINS*/
+  case 'review':
+    await editReview({
+      variables:{
+        _id: modalInfo._id,
+        rating: modalInfo.rating,
+        reviewText: modalInfo.reviewText
+      }
+    });
+    handleClose();
+    break;
+  /*REVIEW LOGIC ENDS*/
   };
     };
 
@@ -251,6 +288,19 @@ if(modalInfo.blogPic) {
             <AdminFormInput  onChange={handleFormChange} name='title' placeholder='edit blog title'/>
             <AdminTextArea  onChange={handleFormChange}  name="blogText" placeholder="Blog Post Text"/>
             <AdminFormInput  onChange={handleFileChange} type='file' name='blogPic' placeholder='edit blog picture'/>
+            </>}
+            {itemType === 'review' && 
+            <>
+            <Rating
+            name="simple-controlled"
+            value={modalInfo.rating}
+            onChange={(event, newValue) => {
+              setModalInfo({...modalInfo, rating: newValue});
+              console.log(modalInfo.rating,'in rating');
+            }}
+            />
+            <AdminTextArea  onChange={handleFormChange}  name="reviewText" placeholder={modalInfo.reviewText}/>
+            
             </>}
             <DeleteProductButton onClick={handleClose}>Cancel</DeleteProductButton>
             <EditProductButton type='submit'>submit</EditProductButton>

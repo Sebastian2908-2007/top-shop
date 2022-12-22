@@ -114,3 +114,25 @@ mutation addReview($reviewText:String!,$rating:Int!) {
   }
   }
 `;
+
+/**mutation to delete review*/
+export const DELETE_REVIEW = gql`
+mutation deleteReview($_id:ID!) {
+  deleteReview(_id:$_id) {
+    _id
+  }
+}
+`;
+
+/**mutation to edit a review*/
+export const EDIT_REVIEW = gql`
+mutation updateReview($_id:ID!,$reviewText:String!,$rating:Int!) {
+  updateReview(_id:$_id,reviewText:$reviewText,rating:$rating) {
+    rating
+    reviewText
+    author {
+      _id
+    }
+  }
+}
+`;

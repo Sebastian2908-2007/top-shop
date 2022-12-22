@@ -14,7 +14,7 @@ import { LeaveReviewBtn } from "../styles/Button.styled";
 import { GET_REVIEWS } from "../utils/queries";
 
 
-const AddReview = ({open,setOpen,hasLeftReview,setHasLeftReview}) => {
+const AddReview = ({open,setOpenLeaveReviewModal,hasLeftReview,setHasLeftReview}) => {
     
        // state for rating component
        const [Ratingvalue, setRatingValue] = useState(5);
@@ -25,7 +25,7 @@ const AddReview = ({open,setOpen,hasLeftReview,setHasLeftReview}) => {
         refetchQueries:[{query: GET_REVIEWS}]
        });
            /*closes modal and sets other state back to default */
-      const handleClose = () => {setOpen(false); };
+      const handleClose = () => {setOpenLeaveReviewModal(false); };
           // function to handle reviewText changes
      const handleChange = (event) => {
         const { name, value } = event.target;

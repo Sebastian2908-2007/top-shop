@@ -120,7 +120,7 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 padding: 6%;
-width: 60%;
+width:${props => props.width ? props.width : '60%'};
 background-color: rgb(248, 248, 128);
 box-shadow: 0 0 10px black;
 @media screen and (min-width: 540px) {

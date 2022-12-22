@@ -46,15 +46,18 @@ const vertIconStyle = theme => ({
     ["About","/about"],
     ["Blog","/blog"],
     ["login","/login"],
-    ["new account","/newuser"]
+    ["new account","/newuser"],
+    ["Reviews","/reviews"]
  ];
 
  /**menu options for logged in user */
  const loggedInMenuOptions = [
   ["About","/about"],
   ["Blog","/blog"],
+  ["Reviews","/reviews"]
  ];
 
+ 
   return (
     <div>
       <IconButton
@@ -94,6 +97,7 @@ const vertIconStyle = theme => ({
           ):( 
        menuOptions.map((menuOption) => (   
         <MenuItem  key={menuOption} sx={menuItemStyles} onClick={handleClose}>
+          
           <Link href={menuOption[1]}>{menuOption[0]}</Link>
         </MenuItem>
           )) 
