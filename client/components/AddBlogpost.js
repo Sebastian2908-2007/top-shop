@@ -10,6 +10,7 @@ import { AdminSectionTitle } from "../styles/H2.styled";
 import { CarouselAdminSection } from "../styles/Section.styled";
 import { AdminBlogpostLink } from "../styles/Links.styled";
 import { AdminFormErrDiv } from "../styles/Div.styled";
+import { EditLinkSpan } from "../styles/Spans.styled";
 /*styled components imports ends*/
 /**import s3 upload function to upload blog pics*/
 import { s3Upload } from "../utils/s3";
@@ -95,7 +96,7 @@ console.log(blogPostUpload);
     </AdminForm>
        {/**shows err messsage if its text data error */}
        {formErr && <AdminFormErrDiv>{formErr}</AdminFormErrDiv>}
-    <AdminBlogpostLink href='/blog'>There are {loading ? 'loading': getBlogpostCount.getBlogposts.length} blogposts ➯</AdminBlogpostLink>
+    <AdminBlogpostLink href='/blog'>{loading ? 'loading': getBlogpostCount.getBlogposts.length} blogposts ➯<EditLinkSpan>edit ?</EditLinkSpan></AdminBlogpostLink>
    </CarouselAdminSection>
     );
 };

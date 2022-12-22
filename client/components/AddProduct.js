@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { AdminForm, AdminFormButton, AdminFormInput } from "../styles/Forms.styled";
 import { AdminSectionTitle } from "../styles/H2.styled";
 import { CarouselAdminSection } from "../styles/Section.styled";
+import { EditLinkSpan } from "../styles/Spans.styled";
 /**my styled components end*/
 /**mui select imports */
 import Box from '@mui/material/Box';
@@ -161,7 +162,7 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
             <AdminFormInput name='image' type='file' accept='/image' onChange={fileChange} marginTop1280="2%"/>{fileError && <div>{formError}</div>}
             <AdminFormButton type="submit">Add product</AdminFormButton>
         </AdminForm>
-       <AdminProductLink href='/adminproducts'>There are {productsLoading ? 'loading':productData.getProducts.length} Products ➯</AdminProductLink>
+       <AdminProductLink href='/adminproducts'>{productsLoading ? 'loading':productData.getProducts.length} Products ➯<EditLinkSpan>edit ?</EditLinkSpan></AdminProductLink>
        </CarouselAdminSection>
     );
 };
