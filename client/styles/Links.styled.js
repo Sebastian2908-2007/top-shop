@@ -38,7 +38,8 @@ color: rgb(245 245 6);
 text-decoration: underline;
 margin-top: 11%;
 &:hover {
-color:rgb(248, 248, 128);
+    color: rgb(255, 0, 0);
+//color:rgb(248, 248, 128);
 }
 `;
 

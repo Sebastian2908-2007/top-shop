@@ -110,3 +110,11 @@ query getReviews {
   }
 }
 `;
+/**get all reviews query for adminPage review section page*/
+export const GET_REVIEWS_FOR_ADMIN = gql`
+query getReviews {
+  getReviews {
+    _id
+  }
+}
+`;

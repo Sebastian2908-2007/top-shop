@@ -41,3 +41,8 @@ font-size: .8em;
 export const ReviewCardNameSpan = styled.span`
 padding: 1%;
 `;
+export const EditLinkSpan = styled.span`
+font-size: .7rem;
+color:  #000080;
+//color: #0000EE;
+`;
