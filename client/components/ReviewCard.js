@@ -7,12 +7,17 @@ import Rating from '@mui/material/Rating';
 import { ReviewCardTitle } from '../styles/H2.styled';
 import { ReviewCardNameSpan } from '../styles/Spans.styled';
 import { ReviewTextParagraph } from '../styles/P.styled';
+import { DeleteProductButton, EditProductButton } from '../styles/Button.styled';
+import { AdminProductBtnDiv } from '../styles/Div.styled';
 /**styled Components imports end */
+/**import some token stuff to get user info from token*/
+import auth from '../utils/auth';
 const ReviewCard = ({review}) => {
     /**destructure the review*/
     const {reviewText,author,rating} = review;
     /**destructure author data from destructured review data*/
     const {firstName,lastName} = author;
+    console.log(author);
 return (
     <Card sx={{display:'flex',
     flexDirection:'column',
@@ -33,6 +38,12 @@ return (
         <ReviewTextParagraph>
             {reviewText}
         </ReviewTextParagraph>
+        
+           {(auth.loggedIn()) && (author._id === auth.getProfile().data._id) ?  
+           <AdminProductBtnDiv>
+           <DeleteProductButton>Delete</DeleteProductButton>
+            <EditProductButton>Edit</EditProductButton>
+        </AdminProductBtnDiv>:null}
         </CardContent>
     </Card>
 );

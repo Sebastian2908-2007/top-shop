@@ -14,7 +14,7 @@ import { LeaveReviewBtn } from "../styles/Button.styled";
 import { GET_REVIEWS } from "../utils/queries";
 
 
-const AddReview = ({open,setOpen}) => {
+const AddReview = ({open,setOpen,hasLeftReview,setHasLeftReview}) => {
     
        // state for rating component
        const [Ratingvalue, setRatingValue] = useState(5);
@@ -46,6 +46,7 @@ const AddReview = ({open,setOpen}) => {
                 }
             });
             console.log(review,'NEW REVIEW');
+            setHasLeftReview(true);
             handleClose();
         }catch(e){
             console.log(e);

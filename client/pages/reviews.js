@@ -13,22 +13,28 @@ import { ReviewSection } from '../styles/Section.styled';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { LeaveReviewBtn } from '../styles/Button.styled';
+/**import jwt token stuff for checking auth*/
+import auth from '../utils/auth';
 
 export default function Reviews () {
 
        /**this state opens leave review modal it is passed to the modal */
        const [open, setOpen] = useState(false);
+       /**state for determining whether user has left review*/
+       const [hasLeftReview,setHasLeftReview] = useState(false);
 
     const {loading,data} = useQuery(GET_REVIEWS);
    if (loading) {
      return <div>Loading...</div>
    }
 
+
 /**function to open review form called on leave review btn click*/
 const openReviewForm = () => {
     setOpen(true);
 };
 
+//console.log( auth.getProfile().data)
    const reviews = data.getReviews;
     return(
         
@@ -37,8 +43,13 @@ const openReviewForm = () => {
          <ReviewSection>
         <MainTitle>Customer Reviews</MainTitle>
              <Box>
-                <LeaveReviewBtn onClick={() => openReviewForm()}>Leave Review</LeaveReviewBtn>
-                <AddReview open={open} setOpen={setOpen} />
+               {(auth.loggedIn()) && (auth.getProfile().data.hasLeftReview) || (!auth.loggedIn()) ||(hasLeftReview) ? null: <LeaveReviewBtn onClick={() => openReviewForm()}>Leave Review</LeaveReviewBtn>} 
+                <AddReview
+                 open={open}
+                 setOpen={setOpen} 
+                 hasLeftReview={hasLeftReview}
+                 setHasLeftReview={setHasLeftReview}
+                 />
              <Grid container rowSpacing={{xs:3,md:4}} columnSpacing={{xs:0,sm:4,md:4}} >
             {reviews.map(review => (
                 <Grid item xs={12} sm={6} lg={4} xl={3}   key={review._id}>
