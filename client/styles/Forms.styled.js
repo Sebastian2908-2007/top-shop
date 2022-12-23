@@ -42,12 +42,53 @@ background: ${props => props.errorColor };
 }
 `;
 
+/**form for editDelete modal*/
+export const EditDeleteForm = styled.form`
+/**all transform props were added for the create user form and that is where they are being used */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+padding: 7%;
+border: 3px solid rgb(248, 248, 128);
+border-radius: 11px;
+background: ${props => props.errorColor };
+@media screen and (min-width: 390px) {
+    
+}
+@media screen and (min-width: 540px) {
+    
+}
+@media screen and (min-width: 768px) {
+    width: 100%
+}
+@media screen and (min-width: 1024px) {
+    padding: ${props => props.padding1024 };
+}
+/*this media query was made only for add user form */
+@media screen and (min-width: 1280px) {
+   
+}
+@media screen and (min-width: 1366px) {
+    padding: 4%;
+   // width: 50%;
+}
+@media screen and (min-width: 1920px) {
+    padding: 3%;
+    //width: 45%;
+}
+`;
+
+
+
+
 export const FormInput = styled.input`
 font-size: 1.3em;
 margin-top:${props => props.marginTop ? props.marginTop : '1em'};
 margin-bottom: 1em;
 border: 2px solid rgb(0,0,0);
 `;
+
 
 export const FormButton = styled.button`
 font-size: 1.1em;
@@ -105,6 +146,35 @@ text-align: center;
 }
 `;
 
+/**input for delete edit modal form */
+export const EditDeleteFormInput = styled.input`
+width: 100%;
+border: 2px solid rgba(223,223,16,1);
+background: rgba(223,223,16,0.4);
+color: black;
+border-radius: 11px;
+text-align: center;
+margin-bottom: 1em;
+&::placeholder {
+   color: rgba(223,223,16,1);
+  }
+@media screen and (min-width:540px) {
+    width: 70%;
+}
+@media screen and (min-width:768px) {
+    font-size: 1em;
+}
+@media screen and (min-width:1024px){
+   width: 50%;
+}
+@media screen and (min-width:1280px){
+   width: 40%;
+   /**this prop was specifically made for the admin form*/
+   margin-top: ${props => props.marginTop1280};
+   margin-bottom: ${props => props.marginBtm1280};
+}
+`;
+
 export const AdminTextArea = styled.textarea`
 width: 100%;
 border-radius: 11px;
@@ -112,6 +182,7 @@ height: 55%;
 border: 2px solid rgba(223,223,16,1);
 background: rgba(223,223,16,0.4);
 color: black;
+margin-bottom: 1em;
 &::placeholder {
    color: rgba(223,223,16,1);
   }

@@ -128,6 +128,19 @@ box-shadow: 0 0 10px black;
     padding: 4%;
 }
 `;
+export const AdminEditDeleteBtnDiv = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 6%;
+width:${props => props.width ? props.width : '60%'};
+background-color: rgb(248, 248, 128);
+box-shadow: 0 0 10px rgb(248, 248, 128);
+@media screen and (min-width: 540px) {
+    width: 40%;
+    padding: 4%;
+}
+`;
 
 /**div for form errors on admin side */
 export const AdminFormErrDiv = styled.div`

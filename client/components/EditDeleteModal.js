@@ -12,8 +12,9 @@ import { s3Delete, s3Upload } from '../utils/s3';
 import { DELETE_PRODUCT, EDIT_PRODUCT,ADD_FILE } from '../utils/mutations';
 /**styled components */
 import { DeleteProductButton, EditProductButton } from '../styles/Button.styled';
-import { Form,FormInput } from '../styles/Forms.styled';
-import { AdminTextArea, AdminFormInput } from "../styles/Forms.styled";
+import { EditDeleteForm } from '../styles/Forms.styled';
+import { AdminTextArea, EditDeleteFormInput } from "../styles/Forms.styled";
+import { AdminEditDeleteBtnDiv } from '../styles/Div.styled';
 /**styled components end*/
 import { GET_ALL_PRODUCTS, GET_BLOGPOSTS_ALL_DATA,GET_REVIEWS } from '../utils/queries';
 /*Mutation to delete and edit blogposts*/
@@ -27,15 +28,18 @@ import { DELETE_BLOGPOST, EDIT_BLOG_POST,DELETE_REVIEW,EDIT_REVIEW } from "../ut
  * or parent component
  */
 const style = {
+  display:"flex",
+  flexDirection: "column",
+  alignItems:"center",
     position: 'absolute',
     top: '50%',
+    padding: '5%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: '80%',
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: 'rgb(0,0,0,.6)',
+    border: '2px solid rgb(248, 248, 128)',
     boxShadow: 24,
-    p: 4,
   };
   
   export default function EditDeleteModal({
@@ -259,11 +263,13 @@ if(modalInfo.blogPic) {
             {modalInfo.EditOrDelete === 'delete' ?( 
          
           <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
+            <Typography sx={{color:"rgb(248, 248, 128)",textAlign:'center',marginBottom:'11%',fontSize:'1.65rem'}} id="modal-modal-title" variant="h6" component="h2">
               {`Are you Sure you want to delete this ${itemType}?`}
             </Typography>
+            <AdminEditDeleteBtnDiv width='100%'>
          <DeleteProductButton onClick={deleteClick}>yes</DeleteProductButton>
          <EditProductButton onClick={handleClose}>no</EditProductButton>
+         </AdminEditDeleteBtnDiv>
             
           </Box>
           
@@ -271,23 +277,23 @@ if(modalInfo.blogPic) {
           :
           
           <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              {` use this form to edit your ${itemType}?`}
+            <Typography sx={{color:"rgb(248, 248, 128)",textAlign:'center',marginBottom:'11%',fontSize:'1.65rem'}} id="modal-modal-title" variant="h6" component="h2">
+              {` use this form to edit your ${itemType}`}
             </Typography>
-            <Form transform='translateY(0%)'  onSubmit={submitEdit}>
+            <EditDeleteForm transform='translateY(0%)'  onSubmit={submitEdit}>
               {itemType === 'product' &&
               <>
-                <FormInput onChange={handleFormChange} name="name" placeholder='edit name'/>
-                <FormInput onChange={handleFormChange} name="description" placeholder='edit description'/>
-                <FormInput onChange={handleFormChange} type='number' name="price" placeholder='edit price'/>
-                <FormInput onChange={handleFormChange} type='number' name="quantity" placeholder='edit quantity'/>
+       <EditDeleteFormInput onChange={handleFormChange} name="name" placeholder='edit name'/>
+       <EditDeleteFormInput onChange={handleFormChange} name="description" placeholder='edit description'/>
+       <EditDeleteFormInput onChange={handleFormChange} type='number' name="price" placeholder='edit price'/>
+       <EditDeleteFormInput onChange={handleFormChange} type='number' name="quantity" placeholder='edit quantity'/>
                 </>
             }
             {itemType === 'blogpost' && 
             <>
-            <AdminFormInput  onChange={handleFormChange} name='title' placeholder='edit blog title'/>
+            <EditDeleteFormInput  onChange={handleFormChange} name='title' placeholder='edit blog title'/>
             <AdminTextArea  onChange={handleFormChange}  name="blogText" placeholder="Blog Post Text"/>
-            <AdminFormInput  onChange={handleFileChange} type='file' name='blogPic' placeholder='edit blog picture'/>
+            <EditDeleteFormInput  onChange={handleFileChange} type='file' name='blogPic' placeholder='edit blog picture'/>
             </>}
             {itemType === 'review' && 
             <>
@@ -298,13 +304,16 @@ if(modalInfo.blogPic) {
               setModalInfo({...modalInfo, rating: newValue});
               console.log(modalInfo.rating,'in rating');
             }}
+            sx={{marginBottom:'.5rem'}}
             />
             <AdminTextArea  onChange={handleFormChange}  name="reviewText" placeholder={modalInfo.reviewText}/>
             
             </>}
+            <AdminEditDeleteBtnDiv width='100%'>
             <DeleteProductButton onClick={handleClose}>Cancel</DeleteProductButton>
             <EditProductButton type='submit'>submit</EditProductButton>
-            </Form>
+            </AdminEditDeleteBtnDiv>
+            </EditDeleteForm>
           </Box>
           
   }
