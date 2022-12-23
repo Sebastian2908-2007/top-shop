@@ -68,6 +68,7 @@ const resolvers = {
             const token = signToken(user);
             return { user,token };
         },
+        /**this update user will be used with current users or account holders*/
         updateUser: async (parent,{firstName,lastName,email},context) => {
             if(context.user) {
                 const id = context.user._id;
@@ -84,8 +85,24 @@ const resolvers = {
             }
             throw new AuthenticationError('no permissions');
         },
+        AdminUpdateUser: async (parent,{_id,firstName,lastName,email},context) => {
+            if(context.user.isAdmin) {
+                
+                const updatedUser = await User.findByIdAndUpdate(
+                    {_id: _id},
+                    {
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email
+                    },
+                    { new: true, runValidators: true }
+                );
+              return updatedUser;
+            }
+            throw new AuthenticationError('you must be an admin to perform this operation');
+        },
         deleteUser: async (parent,{_id},context) => {
-           if(context.user._id === _id) {
+           if(context.user._id === _id || context.user.isAdmin) {
             const user = await User.findById(_id);
             if(user.hasLeftReview === true){
             try{

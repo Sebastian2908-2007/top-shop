@@ -16,9 +16,9 @@ import { EditDeleteForm } from '../styles/Forms.styled';
 import { AdminTextArea, EditDeleteFormInput } from "../styles/Forms.styled";
 import { AdminEditDeleteBtnDiv } from '../styles/Div.styled';
 /**styled components end*/
-import { GET_ALL_PRODUCTS, GET_BLOGPOSTS_ALL_DATA,GET_REVIEWS } from '../utils/queries';
+import { GET_ALL_PRODUCTS, GET_BLOGPOSTS_ALL_DATA,GET_REVIEWS,GET_ALL_DATA_USERS } from '../utils/queries';
 /*Mutation to delete and edit blogposts*/
-import { DELETE_BLOGPOST, EDIT_BLOG_POST,DELETE_REVIEW,EDIT_REVIEW } from "../utils/mutations";
+import { DELETE_BLOGPOST, EDIT_BLOG_POST,DELETE_REVIEW,EDIT_REVIEW,DELETE_USER,ADMIN_EDIT_USER } from "../utils/mutations";
 /**need switch cases in submit edit and delete clock functions that find out which mutation should be ran
  * based on modelInfo.itemType eventually there will be one for products blogposts
  * users and reviews so four different potential try catch blocks in each function "deleteClick & submitEdit"
@@ -82,6 +82,16 @@ const [deleteReview] = useMutation(DELETE_REVIEW,{
 const [editReview] = useMutation(EDIT_REVIEW,{
   refetchQueries:[{query:GET_REVIEWS}]
 });
+/**name mutation to delete a user*/
+const [deleteUser] = useMutation(DELETE_USER,{
+  /* below we refetch the reviews wit the get all user  query just in case a user had an associated review*/
+  refetchQueries:[{query: GET_ALL_DATA_USERS},{query:GET_REVIEWS}]
+});
+/**name mutation to edit an user*/
+const [editUser] = useMutation(ADMIN_EDIT_USER,{
+  /* below we refetch the reviews wit the get all user  query just in case a user had an associated review*/
+  refetchQueries:[{query: GET_ALL_DATA_USERS}]
+});
 
     
     /*closes modal and sets other state back to default */
@@ -138,6 +148,20 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
         handleClose();
         break;
        /**REVIEW LOGIC ENDS*/
+       /**USER LOGIC STARTS*/
+       case 'user':
+        try{
+          await deleteUser({
+            variables:{_id: modalInfo._id}
+          });
+          console.log('Successful user delete');
+          handleClose();
+          setModalInfo({});
+        }catch(e){
+          console.log(e);
+        };
+        break;
+       /**USER LOGIC ENDS*/
 
       };
     };
@@ -248,6 +272,21 @@ if(modalInfo.blogPic) {
     handleClose();
     break;
   /*REVIEW LOGIC ENDS*/
+  /**USER LOGIC BEGINS*/
+  case 'user':
+    await editUser({
+      variables: {
+        _id: modalInfo._id,
+        firstName: modalInfo.firstName,
+        lastName: modalInfo.lastName,
+        email: modalInfo.email
+      }
+    });
+    console.log('this edit ran through successfully!!!');
+    setOpen(false);
+    setModalInfo({});
+    break;
+  /**USER LOGIC ENDS*/
   };
     };
 
@@ -309,6 +348,13 @@ if(modalInfo.blogPic) {
             <AdminTextArea  onChange={handleFormChange}  name="reviewText" placeholder={modalInfo.reviewText}/>
             
             </>}
+            {itemType === 'user' && 
+            <>
+            <EditDeleteFormInput  onChange={handleFormChange} name='firstName' placeholder='edit user first name'/>
+            <EditDeleteFormInput  onChange={handleFormChange} name='lastName' placeholder='edit user last name'/>
+            <EditDeleteFormInput  onChange={handleFormChange} name='email' placeholder='edit user email'/>
+            </>
+            }
             <AdminEditDeleteBtnDiv width='100%'>
             <DeleteProductButton onClick={handleClose}>Cancel</DeleteProductButton>
             <EditProductButton type='submit'>submit</EditProductButton>

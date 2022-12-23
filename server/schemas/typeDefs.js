@@ -80,6 +80,7 @@ type Mutation {
    addUser(firstName:String!,lastName:String!,email:String!,password:String!): UserAuth
    loginUser(email:String!,password:String!): UserAuth
    updateUser(firstName:String,lastName:String,email:String): User
+   AdminUpdateUser(_id: ID! firstName:String,lastName:String,email:String): User
    deleteUser(_id:ID): User
    addReview(reviewText:String! rating:Int!): Review
    deleteReview(_id:ID!): Review

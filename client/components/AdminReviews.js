@@ -7,7 +7,7 @@ import { EditLinkSpan } from "../styles/Spans.styled";
 import { GET_REVIEWS_FOR_ADMIN } from "../utils/queries";
 const AdminReviews = () => {
     const {loading , data: getReviews} = useQuery(GET_REVIEWS_FOR_ADMIN);
-    console.log(getReviews);
+   // console.log(getReviews);
    return(
     <AdminBlogpostLink href='/reviews'>{loading ? 'loading': getReviews.getReviews.length} reviews ➯<EditLinkSpan>edit ?</EditLinkSpan></AdminBlogpostLink>
    );

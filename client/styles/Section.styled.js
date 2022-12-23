@@ -173,3 +173,10 @@ align-items: center;
     padding-bottom: 12rem;
 };
 `;
+
+export const AdminUsersSection = styled.section`
+height: 100%;
+width: 100%;
+padding: 5%;
+padding-bottom: 11em;
+`;

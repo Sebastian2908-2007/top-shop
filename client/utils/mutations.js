@@ -136,3 +136,22 @@ mutation updateReview($_id:ID!,$reviewText:String!,$rating:Int!) {
   }
 }
 `;
+/**used for admin to delete user*/
+export const DELETE_USER = gql`
+mutation deleteUser($_id:ID){
+  deleteUser(_id:$_id) {
+    _id
+  }
+}
+`;
+
+/**mutation for an admin to update a user "edit user"*/
+export const ADMIN_EDIT_USER = gql`
+mutation AdminUpdateUser ($_id:ID!,$firstName:String,$lastName:String,$email:String){
+  AdminUpdateUser(_id:$_id,firstName:$firstName,lastName:$lastName,email:$email) {
+    firstName
+    lastName
+    email
+  }
+}
+`;
