@@ -30,6 +30,7 @@ import "swiper/css/effect-cards";
 
 // import required modules
 import { EffectCards } from "swiper";
+import AdminUsers from "../components/AdminUsers";
 
 
 const admindashboard = () => {
@@ -64,7 +65,7 @@ const admindashboard = () => {
           <SwiperSlide><AddProduct data={data} loading={loading}/></SwiperSlide>
           <SwiperSlide><AddBlogpost/></SwiperSlide>
           <SwiperSlide><AdminReviews/></SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
+          <SwiperSlide><AdminUsers/></SwiperSlide>
         </Swiper>):(<NotAdmin/>)}
         </MainAdminSection>
     );

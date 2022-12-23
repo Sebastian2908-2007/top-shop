@@ -118,3 +118,45 @@ query getReviews {
   }
 }
 `;
+
+/**get user related query for admin functionalities*/
+export const GET_BASIC_USERS = gql`
+query getUsers{
+  getUsers {
+    _id
+  }
+}
+`;
+export const GET_ALL_DATA_USERS = gql`
+query getUsers{
+  getUsers {
+    _id
+    firstName
+    lastName
+    email
+    password
+    isAdmin
+    hasLeftReview
+    review {
+      _id
+      rating
+      reviewText
+    }
+    orders {
+      _id
+      purchaseDate
+      products {
+        _id
+        name
+        description
+        price
+        quantity
+        category {
+          _id
+          name
+        }
+      }
+    }
+  }
+}
+`;
