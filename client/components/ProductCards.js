@@ -101,12 +101,13 @@ Key
   };
 
   return (
-    <Card sx={{ boxShadow:' 0 0 5px black',height:'100%',maxWidth: '100%', backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
+    <Card sx={{ boxShadow:' 0 0 5px black',height:{xs:"auto",sm:'100%'},maxWidth: '100%', backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
       <CardMedia
         component="img"
         alt={product.name}
         height="140"
         image={Location}
+        sx={{objectFit:'fill'}}
       />
       <CardContent sx={{display:'flex', flexDirection:'column',alignItems:'center'}} >
         {isAdmin && <ProductCardCategoryDiv>Category: {product.category.name}</ProductCardCategoryDiv>}

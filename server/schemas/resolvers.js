@@ -287,7 +287,7 @@ const resolvers = {
         addOrder: async (parent,{products},context) => {
              if(context.user) {
           const order = new Order({ products });
-          await User.findOneAndUpdate(context.user._id,{$push: {orders: order}});
+          await User.findOneAndUpdate({_id: context.user._id},{$push: {orders: order}});
           return order;
              }
              throw new AuthenticationError('you must be logged in to place an order!');

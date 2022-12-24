@@ -46,3 +46,9 @@ font-size: .7rem;
 color:  #000080;
 //color: #0000EE;
 `;
+
+export const UserOrderCardSpan = styled.span`
+font-size: .7rem;
+color:  rgb(248, 248, 128);
+//color: #0000EE;
+`;

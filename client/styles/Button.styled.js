@@ -97,3 +97,14 @@ border: none;
 background-color: rgb(0,0,0,.5);
 margin-bottom: 3em;
 `;
+export const ViewUserOrderBtn = styled.button`
+margin-top: 3%;
+color:  rgba(223,223,16,1);
+padding: 1%;
+border: none;
+background-color: rgb(0,0,0);
+&:hover {
+background-color: transparent;
+color: #017698;
+}
+`;

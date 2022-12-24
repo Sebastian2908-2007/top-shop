@@ -124,7 +124,7 @@ width:${props => props.width ? props.width : '60%'};
 background-color: rgb(248, 248, 128);
 box-shadow: 0 0 10px black;
 @media screen and (min-width: 540px) {
-    width: 40%;
+    width: ${props => props.width540 ? props.width540 : '40%'};
     padding: 4%;
 }
 `;
@@ -189,5 +189,16 @@ flex-direction: column;
 justify-content: space-between;
 align-items: center;
 text-align: center;
+`;
+
+export const OrderCardDiv = styled.div`
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+text-align: center;
+border: 2px solid rgb(248, 248, 128);
+margin-top: 1em;
 `;
 
