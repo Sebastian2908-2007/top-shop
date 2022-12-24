@@ -101,13 +101,32 @@ Key
   };
 
   return (
-    <Card sx={{ boxShadow:' 0 0 5px black',height:{xs:"auto",sm:'100%'},maxWidth: '100%', backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
+    <Card sx={
+      { 
+        boxShadow:' 0 0 5px black',
+        height:{xs:"auto",sm:'100%'},
+        maxWidth: '100%',
+        backgroundColor: "rgb(255,255,255,0.6)",
+        border: '1px solid black',
+        display:"flex",
+        flexDirection:"column",
+        justifyContent:'space-between'
+      }
+            }>
       <CardMedia
         component="img"
         alt={product.name}
         height="140"
         image={Location}
-        sx={{objectFit:'fill'}}
+        sx={
+          {
+          objectFit:'fill',
+          height:'50%',
+          '@media screen and (min-width:768px )': {
+            height:'40%'
+          }
+        }
+        }
       />
       <CardContent sx={{display:'flex', flexDirection:'column',alignItems:'center'}} >
         {isAdmin && <ProductCardCategoryDiv>Category: {product.category.name}</ProductCardCategoryDiv>}
