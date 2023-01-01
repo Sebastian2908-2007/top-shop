@@ -36,6 +36,8 @@ const setCurrentCategory = (currentCategory) => {
 {categories.map(category => (
     <CategoryButton key={category._id} onClick={() => {setCurrentCategory(category._id)}}>{category.name}</CategoryButton>
 ))}
+{/**Below button sets currentCategory back to an empty string which causes UI to display all products*/}
+ <CategoryButton onClick={() => {setCurrentCategory('')}}>All Products</CategoryButton>
 {!categories.length ? <NoCategoryDiv>No Categories yet</NoCategoryDiv>:null}
     </CategoryDiv>
    );
