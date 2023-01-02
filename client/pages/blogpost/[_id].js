@@ -24,6 +24,11 @@ import { BackSpan } from "../../styles/Spans.styled";
 import auth from "../../utils/auth";
 /**this is the modal for deleting and editing*/
 import EditDeleteModal from "../../components/EditDeleteModal";
+/**import shareModal*/
+import ShareModal from "../../components/ShareModal";
+/**mui icon for sharing*/
+import ShareIcon from '@mui/icons-material/Share';
+
 
 
 export async function getStaticPaths () {
@@ -82,6 +87,9 @@ export default function blogPost ({blogPost})  {
      * its passed to both modal and product card
      */
     const [modalInfo,setModalInfo] = useState({});
+    /**state to open share modal*/
+    const [openShareModal, setOpenShareModal] = useState(false);
+
 
     /**This IS NOT DRY "it repeats across adminproducts and homepage or index.js and now here" ends*/
      const deleteBlogPost = ()=> {
@@ -124,13 +132,17 @@ return(
         setModalInfo={setModalInfo} 
         modalInfo={modalInfo}
         />}
-
+<ShareModal
+openShareModal={openShareModal} 
+setOpenShareModal={setOpenShareModal}
+/>
           {/**Below if admin display edit and delete buttons for */}
   {isAdmin &&   <AdminProductBtnDiv><DeleteProductButton onClick={deleteBlogPost} >Delete</DeleteProductButton>
       <EditProductButton onClick={editBlogPost} >Edit</EditProductButton></AdminProductBtnDiv>}
 
         <BlogText content={blogText} />
       {!isAdmin && <BottomLinkPack/>}
+      <ShareIcon onClick={() => {setOpenShareModal(true)}}/>
     </SingleBlogpostSection>
     </>
 );
