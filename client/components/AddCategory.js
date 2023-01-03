@@ -12,7 +12,7 @@ import { AdminForm, AdminFormInput,AdminFormButton } from "../styles/Forms.style
 /**imported styled components end */
 /**import mui icon */
 import ClearIcon from '@mui/icons-material/Clear';
-
+import DeleteErrorModal from "./DeleteErrorModal";
 /**these props come in from data queried in adminDashboard its passed because products component also needs this data */
 const AddCategory = ({data,refetch,loading}) => {
     /**clear icon styles*/
@@ -28,6 +28,10 @@ const AddCategory = ({data,refetch,loading}) => {
     const [deleteCategory] = useMutation(DELETE_CATEGORY);
     /**create the state for the add category data */
     const [categoryFormData,setCategoryFormData] = useState({name:''});
+    /*state for category delete error*/
+    const [categoryDeleteError,setCategoryDeleteError] = useState('');
+    /**state to open delete error modal*/
+    const [open, setOpen] = useState(false);
     /**funtion to set category data state */
     const onFormChange = (event) => {
         /**destructure name and value from the event target*/
@@ -61,13 +65,21 @@ const AddCategory = ({data,refetch,loading}) => {
          /**call refetch so UI can be updated if delete is successful*/
          refetch();
        }catch(e) {
-        console.log(e)
+        console.log(e);
+        setCategoryDeleteError(e);
+        setOpen(true);
        }
     };
 
 
     return(
         <CarouselAdminSection>
+          <DeleteErrorModal 
+           open={open}
+           setOpen={setOpen}
+           categoryDeleteError={categoryDeleteError}
+           setCategoryDeleteError={setCategoryDeleteError}
+           />
         <AdminSectionTitle>Add Categories</AdminSectionTitle>
         <AdminForm id='category-form' onSubmit={submitNewCategory}>
             <AdminFormInput name='name' onChange={onFormChange}/>

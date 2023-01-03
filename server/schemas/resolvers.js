@@ -206,7 +206,16 @@ const resolvers = {
         },
         deleteCategory: async (parent,args,context) => {
             if(context.user.isAdmin) {
+                /**search for products belonging to category and store it in a variable*/
+                const categoryHasProducts = await Product.find({category:args._id});
+                console.log(categoryHasProducts);
+                if(categoryHasProducts.length) {
+                    //const error = 'category has active associated products'
+                   // throw error;
+                   throw new Error('category has active associated products! Please first delete those products')
+                }else { 
                 return await Category.findByIdAndDelete(args._id);
+                }
             }
             throw new AuthenticationError('you must be an admin to delete a category');
         },
