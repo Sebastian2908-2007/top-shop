@@ -1,7 +1,9 @@
 /**import useRouter hook from next so we can pass it to share modal*/
 import { useRouter } from "next/router";
+/**MUI stuff starts*/
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+/**MUI stuff ends*/
 /**import next share stuff for social sharing*/
 import {
     FacebookShareButton,
@@ -22,21 +24,33 @@ import {
 
   const style = {
     display:"flex",
-    flexDirection: "column",
-    alignItems:"center",
-      position: 'absolute',
+    flexDirection: "row",
+    justifyContent: 'space-between',
+    position: 'absolute',
+    '@media screen and (min-width:768px )': {
+      width:'50%'
+     },
+    '@media screen and (min-width:1366px )': {
+      width:'35%'
+     },
       top: '50%',
       padding: '5%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: '80%',
+      width: '90%',
       bgcolor: 'rgb(0,0,0,.6)',
       border: '2px solid rgb(248, 248, 128)',
       boxShadow: 24,
     };
 
-  const ShareModal = ({openShareModal, setOpenShareModal}) => {
-    const handleClose = () => setOpenShareModal(false);
+  const ShareModal =
+   ({
+    openShareModal,
+    setOpenShareModal,
+    setModalInfo, 
+    modalInfo
+    }) => {
+    const handleClose = () => {setOpenShareModal(false); setModalInfo({});}
     /**destructure the pat;h from the next router object*/
     const { asPath } = useRouter();
     /**get actual name of webapp or site and store it in a variable */
@@ -46,7 +60,7 @@ import {
         : '';
         /**take our origin and add it with the path to get our url this is what we feed to the modal to share*/
         const URL = `${origin}${asPath}`;
-        console.log(URL);
+        console.log(modalInfo);
     return( 
         <Modal
         open={openShareModal}
@@ -57,42 +71,47 @@ import {
             <Box sx={style}>
         <FacebookShareButton
         url={URL}
-        quote={'next-share is a social share buttons for your next React apps.'}
-        hashtag={'#nextshare'}
+        quote={'Sybs Crafty blog. The best craft blog online'}
+        hashtag={'#handmadecrafts'}
+        blankTarget={true}
       >
         <FacebookIcon size={32} round />
       </FacebookShareButton>
       <PinterestShareButton
-  url={'https://github.com/next-share'}
-  media={'next-share is a social share buttons for your next React apps.'}
+  url={URL}
+  media={modalInfo.image}
 >
   <PinterestIcon size={32} round />
 </PinterestShareButton>
 <RedditShareButton
-  url={'https://github.com/next-share'}
-  title={'next-share is a social share buttons for your next React apps.'}
+  url={URL}
+  title={modalInfo.title}
+  blankTarget={true}
 >
   <RedditIcon size={32} round />
 </RedditShareButton>
 <TwitterShareButton
-  url={'https://github.com/next-share'}
-  title={'next-share is a social share buttons for your next React apps.'}
+  url={URL}
+  title={modalInfo.title}
+  blankTarget={true}
 >
   <TwitterIcon size={32} round />
 </TwitterShareButton>
 <WhatsappShareButton
-  url={'https://github.com/next-share'}
-  title={'next-share is a social share buttons for your next React apps.'}
+  url={URL}
+  title={modalInfo.title}
   separator=":: "
+  blankTarget={true}
 >
   <WhatsappIcon size={32} round />
 </WhatsappShareButton>
-<LinkedinShareButton url={'https://github.com/next-share'}>
+<LinkedinShareButton url={URL}
+blankTarget={true}>
   <LinkedinIcon size={32} round />
 </LinkedinShareButton>
 <EmailShareButton
-  url={'https://github.com/next-share'}
-  subject={'Next Share'}
+  url={URL}
+  subject={modalInfo.title}
   body="body"
 >
   <EmailIcon size={32} round />

@@ -26,13 +26,16 @@ import auth from "../../utils/auth";
 import EditDeleteModal from "../../components/EditDeleteModal";
 /**import shareModal*/
 import ShareModal from "../../components/ShareModal";
-/**mui icon for sharing*/
+/**mui stuff starts*/
 import ShareIcon from '@mui/icons-material/Share';
+import Tooltip from '@mui/material/Tooltip';
+import { borderRadius } from "@mui/system";
+/**mui stuff ends*/
 
 
 
-export async function getStaticPaths () {
-    
+
+export async function getStaticPaths () { 
     const client = initializeApollo();
  const {data} =  await client.query({
       query: GET_BLOGPOSTS_ADMIN
@@ -62,6 +65,22 @@ return {
 };
 
 export default function blogPost ({blogPost})  {
+  const shareIconStyle = {
+    position:"sticky",
+    top:0,
+    bgcolor: 'rgb(0,0,0,.6)',
+    color: 'rgb(248, 248, 128)',
+    padding:'2%',
+    borderRadius: '50%',
+    fontSize:'2rem',
+    //transform: 'translateX(50%)',
+    '@media screen and (min-width:768px )': {
+      padding:'1%'
+     },
+    '@media screen and (min-width:1366px )': {
+      fontSize: '3rem'
+     },
+  }; 
     /**destructure static props */
     const {_id,title,blogText,blogPic} = blogPost.getBlogpostById;
     /**further desstructure for pertinent blogPic info like Key Bucket which are instrumental in deleting from s3
@@ -85,6 +104,7 @@ export default function blogPost ({blogPost})  {
     const [open, setOpen] = useState(false);
     /**modal info this state will hold the information I need to either delete or edit a product it will be set in product card
      * its passed to both modal and product card
+     * We are now using this modal info state in the share modal
      */
     const [modalInfo,setModalInfo] = useState({});
     /**state to open share modal*/
@@ -126,6 +146,9 @@ return(
           <TopLinkPack/>
     </SingleBlogPostHeroSection>
     <SingleBlogpostSection>
+    <Tooltip title="Share" arrow>
+      <ShareIcon sx={shareIconStyle} onClick={() => {setOpenShareModal(true); setModalInfo({image:blogPic.Location,title:title});}}/>
+    </Tooltip>
         {isAdmin && <EditDeleteModal
         open={open} 
         setOpen={setOpen}
@@ -135,6 +158,8 @@ return(
 <ShareModal
 openShareModal={openShareModal} 
 setOpenShareModal={setOpenShareModal}
+setModalInfo={setModalInfo} 
+modalInfo={modalInfo}
 />
           {/**Below if admin display edit and delete buttons for */}
   {isAdmin &&   <AdminProductBtnDiv><DeleteProductButton onClick={deleteBlogPost} >Delete</DeleteProductButton>
@@ -142,7 +167,6 @@ setOpenShareModal={setOpenShareModal}
 
         <BlogText content={blogText} />
       {!isAdmin && <BottomLinkPack/>}
-      <ShareIcon onClick={() => {setOpenShareModal(true)}}/>
     </SingleBlogpostSection>
     </>
 );
