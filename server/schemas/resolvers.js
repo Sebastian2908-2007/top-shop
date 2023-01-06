@@ -29,7 +29,10 @@ const resolvers = {
             }).sort({createdAt: -1});
         },
         getUserById: async (parent,{_id}) => {
-            return await User.findOne({_id:_id}).populate('review');
+            return await User.findOne({_id:_id}).populate('review').populate({
+                path:'orders.products',
+                populate:'category'
+            }).sort({createdAt: -1});
         },
         getReviews: async  (parent,args) => {
             return await Review.find().populate('author').sort({createdAt: -1});

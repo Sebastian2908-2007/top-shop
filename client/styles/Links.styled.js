@@ -22,6 +22,14 @@ text-shadow: 0 0 1px black ;
 color: black;
 }
 `;
+export const UserOrdersLink = styled(Link)`
+color: orange;
+padding: 2%;
+text-shadow: 0 0 1px black ;
+&:hover {
+color: black;
+}
+`;
 
 export const AdminProductLink = styled(Link)`
 text-align: center;

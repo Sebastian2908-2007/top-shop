@@ -47,7 +47,7 @@ const openReviewForm = () => {
       reviews.length ?
          <ReviewSection>
         <MainTitle>Customer Reviews</MainTitle>
-             <Box>
+             <Box sx={{width:"100%"}}>
                {(auth.loggedIn()) && (auth.getProfile().data.hasLeftReview) || (!auth.loggedIn()) ||(hasLeftReview) ? null: <LeaveReviewBtn onClick={() => openReviewForm()}>Leave Review</LeaveReviewBtn>} 
                 <AddReview
                  open={openLeaveReviewModal}

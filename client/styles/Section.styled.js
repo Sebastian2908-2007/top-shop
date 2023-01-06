@@ -180,3 +180,10 @@ width: 100%;
 padding: 5%;
 padding-bottom: 11em;
 `;
+
+export const UserDetailsSection = styled.section`
+height: 100%;
+width: 100%;
+padding: 5%;
+padding-bottom: 11em;
+`;

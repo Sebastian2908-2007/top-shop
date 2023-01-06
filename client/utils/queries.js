@@ -160,3 +160,36 @@ query getUsers{
   }
 }
 `;
+/**query to get single user by _id used in userdetails page*/
+export const GET_USER_BY_ID = gql` 
+query getUserById($_id:ID!) {
+  getUserById(_id:$_id) {
+     _id
+    firstName
+    lastName
+    email
+    password
+    isAdmin
+    hasLeftReview
+    review {
+      _id
+      reviewText
+      rating
+    }
+    orders {
+      _id
+      purchaseDate
+      products {
+        _id
+        name
+        description
+        price
+        quantity
+        category {
+          _id
+          name
+        }
+      }
+    }
+   }   
+  }`;

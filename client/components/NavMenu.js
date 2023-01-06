@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Link from 'next/link';
-import { AdminDashboardLink } from '../styles/Links.styled';
+import { AdminDashboardLink, UserOrdersLink } from '../styles/Links.styled';
 import auth from '../utils/auth';
 import { MenuLogoutButton } from '../styles/Button.styled';
 
@@ -115,6 +115,10 @@ const vertIconStyle = theme => ({
      {
      auth.loggedIn() && auth.getProfile().data.isAdmin ?
        (<MenuItem style={menuItemStyles}><AdminDashboardLink href='/admindashboard'>Dashboard</AdminDashboardLink></MenuItem>):(null)
+     }
+     {
+     auth.loggedIn() && !auth.getProfile().data.isAdmin ?
+       (<MenuItem style={menuItemStyles}><UserOrdersLink href='/usersdetails'>Orders</UserOrdersLink></MenuItem>):(null)
      }
       </Menu>
     </div>

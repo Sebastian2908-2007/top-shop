@@ -16,6 +16,7 @@
     "@mui/material": "^5.10.12",
     "@stripe/stripe-js": "^1.42.1",
     "aws-sdk": "^2.1246.0",
+    "dayjs": "^1.11.7",
     "deepmerge": "^4.2.2",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.1",
