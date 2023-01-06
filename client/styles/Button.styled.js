@@ -24,7 +24,7 @@ border-radius: 11px;
 margin-bottom: .7em;
 margin-right: .1em;
 margin-left: .1em;
-background-color: rgb(248, 248, 128);
+background-color: rgb(252, 245, 239);
 font-family: 'dancing script';
 font-size: 1.2em;
 padding: 2%;
