@@ -71,12 +71,11 @@ if(data) {
         refetch={refetch}/>
 
      <HomeHeroPic 
-     src='/sybs-banner1024.jpg'
-     srcSet='/sybs-banner1024.jpg 1024w, /sybs-banner1280.jpg 1280w, /sybs-banner2500.jpg 2500w'
+     src='/topshop-hero2.png'
      />
      </HomeHeroSection>
      <ProductSection>
-      <MainTitle>Buy Handmade Crafts Online</MainTitle>
+      <MainTitle>The #1 Shop Online</MainTitle>
       <CategoryList/>
       <Box>
       <Grid container rowSpacing={{xs:3,md:4}} columnSpacing={{xs:0,sm:4,md:4}} >

@@ -26,15 +26,15 @@ export default function NavMenu() {
 const menuItemStyles = {
     fontFamily: ['Dancing Script'],
     fontSize: '1.3rem',
-    color: 'orange',
+    color: 'rgb(0, 119, 255)',
     textShadow: '0 0 1px black' ,
       '&:hover': {
-    color: 'black'
+    color: 'rgb(254, 114, 53)'
   }
 };
 /**more vert icon styles */
 const vertIconStyle = theme => ({ 
-  color:'rgb(248, 248, 128)',
+  color:'rgb(0, 119, 255)',
   fontSize:'2rem',
   [theme.breakpoints.up('md')]:{
       fontSize: '3.5rem'
@@ -82,7 +82,7 @@ const vertIconStyle = theme => ({
         PaperProps={{
           style: {
             width: 'auto',
-            backgroundColor:'rgb(248, 248, 128)',
+            backgroundColor:'rgb(0, 195, 255)',
           },
         }}
       >

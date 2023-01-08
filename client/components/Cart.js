@@ -22,7 +22,7 @@ const Cart = () => {
     const ITEM_HEIGHT = 48;
  
 const cartIconStyle = theme => ({ 
-  color:'rgb(248, 248, 128)',
+  color:'rgb(0, 119, 255)',
   fontSize:'2rem',
   [theme.breakpoints.up('md')]:{
       fontSize: '3rem'

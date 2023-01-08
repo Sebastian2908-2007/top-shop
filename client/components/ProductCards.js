@@ -128,14 +128,14 @@ Key
         }
         }
       />
-      <CardContent sx={{display:'flex', flexDirection:'column',alignItems:'center'}} >
+      <CardContent sx={{display:'flex', flexDirection:'column',alignItems:'center',justifyContent:'space-between',height:'25%'}} >
         {isAdmin && <ProductCardCategoryDiv>Category: {product.category.name}</ProductCardCategoryDiv>}
         <Typography gutterBottom variant="h5" component="div" 
-        sx={{textShadow: '0 0 10px rgb(248, 248, 128)',fontSize:{xs:'1.5rem',xl:'1.8rem'}}}>
+        sx={{textShadow: '0 0 10px rgb(0, 119, 255)',fontSize:{xs:'1.5rem',xl:'1.8rem'}}}>
          {isAdmin && <AdminItemNameSpan>Product Name:</AdminItemNameSpan>} {name}
         </Typography>
         <Typography variant="body2" color="text.secondary"
-         sx={{backgroundColor:'rgb(248, 248, 128,0.4)',padding:"2%",fontWeight:'bolder',fontSize:{xs:'1.3rem',xl:'1.5rem'}}}>
+         sx={{backgroundColor:'rgb(0, 119, 255,0.4)',padding:"2%",fontWeight:'bolder',fontSize:{xs:'1.3rem',xl:'1.5rem'}}}>
         {isAdmin && <AdminItemNameSpan>Product description:</AdminItemNameSpan>} {description}
         </Typography>
       </CardContent>

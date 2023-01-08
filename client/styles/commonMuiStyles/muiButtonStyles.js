@@ -1,7 +1,7 @@
 export const checkoutAdd2CartBtnStyle = theme => ({
     animation: 'wiggle 5s linear infinite',
-    backgroundColor:' rgb(0,0,0,0.6)',
-    color: 'rgb(248, 248, 128)',
+    backgroundColor:' rgb(254, 167, 53)',
+    color: 'rgb(0, 119, 255)',
     marginBottom: '3%',
     [theme.breakpoints.up('sm')]:{
       fontSize: '1.11rem'
@@ -9,7 +9,7 @@ export const checkoutAdd2CartBtnStyle = theme => ({
     [theme.breakpoints.up('md')]:{
       fontSize: '1.2rem'
   },
-    '&:hover': {backgroundColor:'rgba(0, 0, 0)'},
+    '&:hover': {backgroundColor:'rgba(254, 114, 53)'},
     '@keyframes wiggle': {
       '0%, 7%': {
         transform: 'rotateZ(0)'

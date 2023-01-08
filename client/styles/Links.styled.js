@@ -10,7 +10,7 @@ text-decoration: none;
 width: 45%;
 display: flex;
 justify-content: center;
-background-color: rgb(248, 248, 128);
+background-color: rgb(0, 119, 255);
 border-radius: 30%;
 `;
 

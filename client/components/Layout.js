@@ -16,7 +16,7 @@ import { SocialPic } from '../styles/Images.styled';
 
 /*this will style the header title */
 const headerTitleStyle = theme => ({
-    color:'rgb(248, 248, 128)',
+    color:'rgb(0, 119, 255)',
     fontSize:'1.45rem',
     [theme.breakpoints.up('sm')]:{
         fontSize: '2rem'
@@ -29,7 +29,7 @@ const headerTitleStyle = theme => ({
 /*this will style the copyright text in footer */
 const copyStyle = theme => ({
     fontSize:'.9rem',
-    color:'rgb(248, 248, 128)',
+    color:'rgb(0, 119, 255)',
     padding:'3.2% 1% 3% 1%',
     [theme.breakpoints.up('sm')]:{
         fontSize: '1.2rem'
@@ -48,7 +48,7 @@ const Layout = ({ children}) => {
    <ThemeProvider theme={danceScriptTheme}>
    <CssBaseline />
     <Header>  
-       <HeaderHomePageLink href='/' ><Typography component="h1" variant='h6' sx={headerTitleStyle}>Sybs Crafty Shack</Typography></HeaderHomePageLink>
+       <HeaderHomePageLink href='/' ><Typography component="h1" variant='h6' sx={headerTitleStyle}>Top Shop</Typography></HeaderHomePageLink>
         {/**this div holds the menus */}
        <HeaderCartMenuDiv>
        <Cart/>
@@ -60,7 +60,7 @@ const Layout = ({ children}) => {
     {children}
     </main>
     <Footer>
-        <Typography sx={copyStyle} component="h6" variant='h6' >&copy; Sybs Crafty Shack {new Date().getFullYear()}</Typography>
+        <Typography sx={copyStyle} component="h6" variant='h6' >&copy; Top Shop {new Date().getFullYear()}</Typography>
         <FooterDiv>
             <SocialImgLink href='https://www.facebook.com/groups/sybscraftyshack/?ref=share' target='_blank'>
                 <SocialPic 
