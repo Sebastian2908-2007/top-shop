@@ -105,7 +105,7 @@ padding-bottom: 11em;
 
 export const BlogPostHeroSection = styled.section`
 width: 100%;
-background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
+background: linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
 padding-bottom: .1%;
 @media screen and (min-width: 768px) {
  // background-color: rgb(248, 248, 128);
@@ -118,7 +118,7 @@ padding-bottom: .1%;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
+  background: linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
 };
 `;
 export const SingleBlogpostSection = styled.section`
@@ -133,7 +133,7 @@ align-items: center;
 
 export const SingleBlogPostHeroSection = styled.section`
 width: 100%;
-background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
+background: linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
 padding: 4%;
 padding-bottom: 1%;
 @media screen and (min-width: 768px) {

@@ -6,8 +6,8 @@ import { BackSpan } from "../styles/Spans.styled";
 const LinkPack = () => {
     return (
         <SingleBlogLinkDiv 
-        padding='2%' marginTop="4rem"
-        borderRadius="8px"background='linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));'>
+        padding='8%' marginTop="4rem"
+        borderRadius="8px"background='linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));'>
         <BackSpan  onClick={() => Router.back()}>&#x2b05; Go Back</BackSpan>
         <BackToTopLink href="#Hero">Back To Top</BackToTopLink>
         <ShopNowLink href='/'>Shop Now</ShopNowLink>

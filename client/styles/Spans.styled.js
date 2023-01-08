@@ -17,11 +17,11 @@ font-family: 'Courier New', Courier, monospace;
 `;
 
 export const BackSpan = styled.span`
-color:rgb(248, 248, 128);
-background-color: black;
+color:rgb(0, 119, 255);
+background-color: rgb(254, 167, 53);
 border-radius: 8px;
 padding: .4%;
-border: 2px solid rgb(248, 248, 128);
+border: 2px solid rgb(0, 195, 255);
 @media screen and (min-width: 375px) {
     padding: 2%;
 }
@@ -34,7 +34,7 @@ color: #017698;
 }
 `;
 export const ContinueReadSpan = styled.span`
-color:#017698;
+color:rgb(0, 195, 255);
 font-size: .8em;
 `;
 

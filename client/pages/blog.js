@@ -28,10 +28,10 @@ return(
     <div>
         <BlogPostHeroSection id="Hero">
 <BlogHeroPic
-src="/blogposts_hero.jpeg"
+src="/topshop-hero1.png"
 alt="hero banner of a cute handmade knome in a jail suit"
 />
-<MainTitle>Sybs Crafty Blog</MainTitle>
+<MainTitle>Top Blog</MainTitle>
 <TopLinkPack/>
         </BlogPostHeroSection>
     <BlogpostSection>

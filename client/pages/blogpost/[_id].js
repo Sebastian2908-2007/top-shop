@@ -68,7 +68,7 @@ export default function blogPost ({blogPost})  {
     position:"sticky",
     top:0,
     bgcolor: 'rgb(0,0,0,.6)',
-    color: 'rgb(248, 248, 128)',
+    color: 'rgb(254, 114, 53)',
     padding:'2%',
     borderRadius: '50%',
     fontSize:'2rem',
