@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { Category, FileUpload, Order, Product, Blogpost, User, Review } = require('../models');
 const { signToken } = require('../utils/authorize');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 
 
@@ -52,6 +53,49 @@ const resolvers = {
         getBlogpostById: async (parent ,{_id}) => {
             return await Blogpost.findById({_id:_id}).populate('blogPic');
         },
+        checkout: async (parent,args, context) => {
+            // initialize empty line items array
+            const line_items = [];
+            //console.log(context);
+            // this will get the referer url so we can use it f;or redirect upon a successfull transaction
+            const url = new URL(context.headers.referer);
+            const order = new Order({ products: args.products });
+            console.log(order.products);
+            const { products } = await order.populate('products');
+            // add for loop to generate stripe products and id's as well as adding them to the line_items array
+            for (let i = 0; i < products.length; i++) {
+              // generate product id
+              const product = await stripe.products.create({
+                name: products[i].name,
+                description: products[i].description,
+                // the below images do not work in development!
+                images: [`${url}/images/${products[i].image}`]
+              });
+      
+              // generate price id using the product id
+              const price = await stripe.prices.create({
+                product: product.id,
+                unit_amount: products[i].price * 100,
+                currency: 'usd',
+              });
+      
+              // add price id to the line items array
+              line_items.push({
+                price: price.id,
+                quantity: 1
+              });
+      
+            }
+            // create a checkout session for stripe
+            const session = await stripe.checkout.sessions.create({
+              payment_method_types: ['card'],
+              line_items,
+              mode: 'payment',
+              success_url: `${url}success?session_id={CHECKOUT_SESSION_ID}`,
+              cancel_url: `${url}`
+            });
+            return { session: session.id };
+          }
     },
     Mutation: {
         addUser: async (parent,args) => {

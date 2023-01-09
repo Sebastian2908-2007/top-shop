@@ -60,6 +60,10 @@ type UserAuth {
    orders:[Order]
  }
 
+ type Checkout {
+    session: ID
+  }
+
 type Query {
     getCategories:[Category]
     getFiles:[FileUpload]
@@ -74,6 +78,7 @@ type Query {
     getFileById(_id:ID!):FileUpload
     getProductById(_id:ID!): Product
     getBlogpostById(_id:ID!): Blogpost
+    checkout(products: [ID]!): Checkout
 }
 
 type Mutation {
