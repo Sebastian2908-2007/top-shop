@@ -56,12 +56,14 @@ const resolvers = {
         checkout: async (parent,args, context) => {
             // initialize empty line items array
             const line_items = [];
-            //console.log(context);
             // this will get the referer url so we can use it f;or redirect upon a successfull transaction
             const url = new URL(context.headers.referer);
             const order = new Order({ products: args.products });
-            console.log(order.products);
             const { products } = await order.populate('products');
+             /**populate product image data*/
+             for (let i = 0; i < products.length; i++) {
+             await products[i].populate('image')
+            }
             // add for loop to generate stripe products and id's as well as adding them to the line_items array
             for (let i = 0; i < products.length; i++) {
               // generate product id
@@ -69,9 +71,9 @@ const resolvers = {
                 name: products[i].name,
                 description: products[i].description,
                 // the below images do not work in development!
-                images: [`${url}/images/${products[i].image}`]
+                images: [`${products[i].image.Location}`]
               });
-      
+      //console.log(product);
               // generate price id using the product id
               const price = await stripe.prices.create({
                 product: product.id,
