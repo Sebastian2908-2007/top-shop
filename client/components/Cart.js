@@ -8,6 +8,9 @@ import { checkoutAdd2CartBtnStyle } from '../styles/commonMuiStyles/muiButtonSty
 import { useStoreContext } from '../utils/Globalstate';
 import { QUERY_CHECKOUT } from '../utils/queries';
 import {loadStripe} from '@stripe/stripe-js';
+/** import use live query to easily grab dexie db data in an array*/
+import { useLiveQuery } from 'dexie-react-hooks';
+import clientDatabase from '../utils/dexiedb';
 
 /**stripe pub key*/
 const stripePromise = loadStripe(  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
@@ -53,10 +56,12 @@ const submitCheckout = () => {
       for (let i = 0; i < item.purchaseQuantity; i++) {
           productIds.push(item._id);
       }
+     
+      console.log(item);
   });
-  getCheckout({
+  /*getCheckout({
    variables: { products: productIds }
-  });
+  });*/
 };
 
 // if data var changes we will be redirected to stripe checkout page

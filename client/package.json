@@ -18,6 +18,8 @@
     "aws-sdk": "^2.1246.0",
     "dayjs": "^1.11.7",
     "deepmerge": "^4.2.2",
+    "dexie": "^3.2.2",
+    "dexie-react-hooks": "^1.1.1",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.1",
     "graphql": "^16.6.0",

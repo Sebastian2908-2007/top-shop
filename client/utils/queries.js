@@ -12,6 +12,7 @@ export const GET_ALL_PRODUCTS= gql`
       name
     }
     image {
+      _id
       Location
       Bucket
       Key
