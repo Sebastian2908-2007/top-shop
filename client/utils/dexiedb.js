@@ -10,4 +10,5 @@ clientDatabase.version(1).stores({
 
 export default clientDatabase;
 
+
  /**name description price image purchaseQuantitiy */
