@@ -7,6 +7,8 @@ import { CartTrashSpan } from "../styles/Spans.styled";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useStoreContext } from '../utils/Globalstate';
 import { REMOVE_FROM_CART,  UPDATE_CART_QUANTITY } from "../utils/actions";
+/**import my dexie singleton so that I can do delete cart items from local db as well as update purchase quantity if needed*/
+import clientDatabase from '../utils/dexiedb';
 
 const menuItemStyle = {
     width:'75%'
@@ -14,6 +16,8 @@ const menuItemStyle = {
 
 const CartItem = ({ item }) => {
   const [ state, dispatch ] = useStoreContext();
+  
+
 /**destructure incoming cart item data */
   const {
     image,
@@ -32,6 +36,7 @@ const CartItem = ({ item }) => {
     type: REMOVE_FROM_CART,
     _id: _id
   })
+  clientDatabase.cart.delete(_id);
  };
  
  /**function to update the item quantity as well as remove item from cart if number is zero in input box */

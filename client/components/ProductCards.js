@@ -16,6 +16,9 @@ import { ProductCardCategoryDiv,AdminProductBtnDiv } from '../styles/Div.styled'
 import { AdminItemNameSpan } from '../styles/Spans.styled';
 import { DeleteProductButton, EditProductButton } from '../styles/Button.styled';
 /**styled components related only to admin functionality end*/
+/** import use live query to easily grab dexie db data in an array*/
+import { useLiveQuery } from 'dexie-react-hooks';
+import clientDatabase from '../utils/dexiedb';
 
 /**although this is the same component used on the homepage certain data will not be accessible there for the
  * admin namely category name also even if delete button shows the key and bucket properties will not be present
@@ -35,6 +38,7 @@ export default function ProductCard({product,setOpen,setEditOrDelete,setModalInf
     isAdmin = false
   };
 
+const cartArray = useLiveQuery(() => clientDatabase.cart.toArray(),[]);
   //console.log(isAdmin);
   /**this is state for the text that resides in the product item buttons so that it can be changed when adding to cart */
   const [crtBtnTxt, setCrtBtnTxt] = useState('Add To Cart');
@@ -84,6 +88,7 @@ Key
     setCrtBtnTxt('Added to cart!');
     setTimeout(() => {setCrtBtnTxt('Add To Cart')},3000)
   }
+  clientDatabase.cart.add({_id: _id,name:name,description:description,price:price,image:Location,purchaseQuantity:1});
   };
 
   /**delete product function to open modal and set relivent data*/
@@ -100,6 +105,7 @@ Key
     setModalInfo({_id:_id,name:name,description:description,price:price,quantity:quantity,itemType:'product',EditOrDelete:"edit"});
   };
 
+  useEffect(() => {console.log(cartArray)},[cartArray]);
   return (
     <Card sx={
       { 
