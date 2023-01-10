@@ -36,6 +36,7 @@ const CartItem = ({ item }) => {
     type: REMOVE_FROM_CART,
     _id: _id
   })
+  /**DELETES PRODUCT FROM INDEXEDDB*/
   clientDatabase.cart.delete(_id);
  };
  
@@ -48,6 +49,8 @@ const CartItem = ({ item }) => {
           type: REMOVE_FROM_CART,
           _id: _id
       });
+      /**DELETES PRODUCT FROM INDEXEDDB*/
+      clientDatabase.cart.delete(_id);
   }else {
     /**below if keeps error from going off this still throws a warning when value
      *  is momentarily absent the problen is the empty value '?' being fed to input value*/
@@ -64,6 +67,8 @@ const CartItem = ({ item }) => {
           _id: _id,
           purchaseQuantity: parseInt(value)
       });
+      /**below updates indexedDb in particular the purchaseQuantity field*/
+      clientDatabase.cart.update(_id,{purchaseQuantity:parseInt(value)});
   }
 };
 

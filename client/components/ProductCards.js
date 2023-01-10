@@ -16,8 +16,7 @@ import { ProductCardCategoryDiv,AdminProductBtnDiv } from '../styles/Div.styled'
 import { AdminItemNameSpan } from '../styles/Spans.styled';
 import { DeleteProductButton, EditProductButton } from '../styles/Button.styled';
 /**styled components related only to admin functionality end*/
-/** import use live query to easily grab dexie db data in an array*/
-import { useLiveQuery } from 'dexie-react-hooks';
+/**this is dexie singleton import this allows us to work easily with indexedDB*/
 import clientDatabase from '../utils/dexiedb';
 
 /**although this is the same component used on the homepage certain data will not be accessible there for the
@@ -38,7 +37,7 @@ export default function ProductCard({product,setOpen,setEditOrDelete,setModalInf
     isAdmin = false
   };
 
-const cartArray = useLiveQuery(() => clientDatabase.cart.toArray(),[]);
+
   //console.log(isAdmin);
   /**this is state for the text that resides in the product item buttons so that it can be changed when adding to cart */
   const [crtBtnTxt, setCrtBtnTxt] = useState('Add To Cart');
@@ -75,6 +74,8 @@ Key
       _id: _id,
       purchaseQuantity: parseInt(isItemInCart.purchaseQuantity) + 1
     });
+    /**below updates indexedDb in particular the purchaseQuantity field*/
+    clientDatabase.cart.update(_id,{purchaseQuantity:parseInt(isItemInCart.purchaseQuantity) + 1});
     /**this sets button text momentarily when an item is added twice*/
     setCrtBtnTxt('quantity updated !');
     setTimeout(() => {setCrtBtnTxt('Add To Cart')},3000)
@@ -84,28 +85,29 @@ Key
       /**purchaseQuantity is not on data from db its created right here for the global state */
       product: { ...product, purchaseQuantity: 1 }
     });
+    /**adds our product to indexedDb*/
+    clientDatabase.cart.add({_id: _id,name:name,description:description,price:price,image:Location,purchaseQuantity:1});
     /**this sets button text momentarily when an item is added*/
     setCrtBtnTxt('Added to cart!');
     setTimeout(() => {setCrtBtnTxt('Add To Cart')},3000)
   }
-  clientDatabase.cart.add({_id: _id,name:name,description:description,price:price,image:Location,purchaseQuantity:1});
   };
 
-  /**delete product function to open modal and set relivent data*/
+  /**delete product function to open modal and set relivent data FUNCTION ONLY RELIVANT WHEN USER IS AN ADMIN*/
   const deleteProduct = () => {
     setOpen(true);
    // setEditOrDelete('delete');
     setModalInfo({_id:_id,Bucket:Bucket,Key:Key,itemType:'product',EditOrDelete:'delete'});
   };
 
-  /**edit product function to open modal and set relivent data*/
+  /**edit product function to open modal and set relivent data FUNCTION ONLY RELIVANT WHEN USER IS AN ADMIN*/
   const editProduct = () => {
     setOpen(true);
     //setEditOrDelete('edit');
     setModalInfo({_id:_id,name:name,description:description,price:price,quantity:quantity,itemType:'product',EditOrDelete:"edit"});
   };
 
-  useEffect(() => {console.log(cartArray)},[cartArray]);
+  
   return (
     <Card sx={
       { 
