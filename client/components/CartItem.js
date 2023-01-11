@@ -16,10 +16,11 @@ const menuItemStyle = {
 
 const CartItem = ({ item }) => {
   const [ state, dispatch ] = useStoreContext();
-  
+  console.log(item);
 
 /**destructure incoming cart item data */
   const {
+    Location,
     image,
     name,
     price,
@@ -28,7 +29,7 @@ const CartItem = ({ item }) => {
   } = item;
 
   /**destructure location from image data that was destructured from incoming item data */
- const {Location} = image;
+ //const {Location} = image;
 
  /**function to remove items from cart */
  const removeFromCart = () => {

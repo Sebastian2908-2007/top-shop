@@ -8,9 +8,12 @@ import { checkoutAdd2CartBtnStyle } from '../styles/commonMuiStyles/muiButtonSty
 import { useStoreContext } from '../utils/Globalstate';
 import { QUERY_CHECKOUT } from '../utils/queries';
 import {loadStripe} from '@stripe/stripe-js';
+/**import reducer to add multiple items to the cart*/
+import { ADD_MULTIPLE_TO_CART } from '../utils/actions';
 /** import use live query to easily grab dexie db data in an array*/
 import { useLiveQuery } from 'dexie-react-hooks';
 import clientDatabase from '../utils/dexiedb';
+
 
 /**stripe pub key*/
 const stripePromise = loadStripe(  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
@@ -19,7 +22,11 @@ const Cart = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const [ state, dispatch ] = useStoreContext();
-    const { cart } = state;
+    const [globalCartUpdate,setGlobalCartUpdate] = useState(null);
+    //const { cart } = state;
+    var clientCart = useLiveQuery(() =>  clientDatabase.cart.toArray(),[]);
+    //console.log(clientCart);
+   
      // useLazyQuery for doing our checkout query on button click
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
     const handleClick = (event) => {
@@ -52,7 +59,7 @@ function calculateTotal() {
 const submitCheckout = () => {
   const productIds = [];
 
-  cart.forEach((item) => {
+  state.cart.forEach((item) => {
       for (let i = 0; i < item.purchaseQuantity; i++) {
           productIds.push(item._id);
       }
@@ -63,6 +70,25 @@ const submitCheckout = () => {
    variables: { products: productIds }
   });*/
 };
+
+  // function to check if there's anything in the state's cart property on load. If not, we'll retrieve data from the IndexedDB cart object store. 
+ useEffect(() => {
+    async function getCart() {
+      console.log('getCart() ran',);
+   
+   const cart = clientCart;
+      console.log('CART',cart);
+      if(cart) {
+        dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+        console.log('global cart',state.cart.length);
+        setGlobalCartUpdate(true);
+    }
+    };
+
+    if(!state.cart.length) {
+        getCart();
+    }
+}, [state.cart.length, dispatch,clientCart,globalCartUpdate]);
 
 // if data var changes we will be redirected to stripe checkout page
 useEffect(() => {
@@ -98,15 +124,15 @@ useEffect(() => {
       },
     }}
     >
-     {  cart.length ?  ( 
+     {  state.cart.length ?  ( 
       
-        cart.map(item => (
+        state.cart.map(item => (
         <CartItem key={item._id} item={item}/>
        ))
        
        ):(<div>Nothing in cart</div>)
        }
-{cart.length ? ( 
+{state.cart.length ? ( 
 <div>
 <strong>Total: ${isNaN(calculateTotal()) ? '0': calculateTotal()}</strong>
 <MenuItem><Button onClick={submitCheckout} sx={checkoutAdd2CartBtnStyle}>Checkout</Button></MenuItem>

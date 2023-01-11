@@ -4,7 +4,8 @@ import { Header } from '../styles/Header.styled';
 import { Footer } from '../styles/Footer.styled';
 import {danceScriptTheme} from '../utils/themes'
 import NavMenu from './NavMenu';
-import Cart from './Cart';
+import dynamic from "next/dynamic";
+const Cart = dynamic(() =>import( './Cart'),{ssr: false});
 import { HeaderHomePageLink } from '../styles/Links.styled';
 import { FooterDiv, HeaderCartMenuDiv  } from '../styles/Div.styled';
 import { SocialImgLink } from '../styles/Links.styled';

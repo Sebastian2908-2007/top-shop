@@ -86,7 +86,7 @@ Key
       product: { ...product, purchaseQuantity: 1 }
     });
     /**adds our product to indexedDb*/
-    clientDatabase.cart.add({_id: _id,name:name,description:description,price:price,image:Location,purchaseQuantity:1});
+    clientDatabase.cart.add({_id: _id,name:name,description:description,price:price,Location:Location,purchaseQuantity:1});
     /**this sets button text momentarily when an item is added*/
     setCrtBtnTxt('Added to cart!');
     setTimeout(() => {setCrtBtnTxt('Add To Cart')},3000)
