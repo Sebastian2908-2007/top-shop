@@ -155,3 +155,12 @@ mutation AdminUpdateUser ($_id:ID!,$firstName:String,$lastName:String,$email:Str
   }
 }
 `;
+
+/**this is used to add an order on the success page*/
+export const ADD_ORDER = gql`
+mutation addOrder($products:[ID!]) {
+  addOrder(products:$products) {
+    purchaseDate
+  }
+}
+`;

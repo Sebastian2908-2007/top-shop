@@ -16,8 +16,6 @@ const menuItemStyle = {
 
 const CartItem = ({ item }) => {
   const [ state, dispatch ] = useStoreContext();
-  console.log(item);
-
 /**destructure incoming cart item data */
   const {
     image,

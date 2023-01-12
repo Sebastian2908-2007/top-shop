@@ -12,6 +12,7 @@ import {loadStripe} from '@stripe/stripe-js';
 import { ADD_MULTIPLE_TO_CART } from '../utils/actions';
 /** import use live query to easily grab dexie db data in an array*/
 import { useLiveQuery } from 'dexie-react-hooks';
+/**import dexie aka indexedDb functionality*/
 import clientDatabase from '../utils/dexiedb';
 
 
@@ -23,11 +24,9 @@ const Cart = () => {
     const open = Boolean(anchorEl);
     const [ state, dispatch ] = useStoreContext();
     const [globalCartUpdate,setGlobalCartUpdate] = useState(null);
-    //const { cart } = state;
+    /**this gets all items in the dexie cart aka indexedDb var is used because its not block scoped*/
     var clientCart = useLiveQuery(() =>  clientDatabase.cart.toArray(),[]);
-    //console.log(clientCart);
-   
-     // useLazyQuery for doing our checkout query on button click
+     /* useLazyQuery for doing our checkout query on button click*/
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
@@ -63,8 +62,6 @@ const submitCheckout = () => {
       for (let i = 0; i < item.purchaseQuantity; i++) {
           productIds.push(item._id);
       }
-     
-      console.log(item);
   });
   getCheckout({
    variables: { products: productIds }
@@ -74,13 +71,12 @@ const submitCheckout = () => {
   // function to check if there's anything in the state's cart property on load. If not, we'll retrieve data from the IndexedDB cart object store. 
  useEffect(() => {
     async function getCart() {
-      console.log('getCart() ran',);
-   
+      /**here we make a blockScoped variable for our dexie cart array this is done because useLiveQuery cannot be used in this context*/
    const cart = clientCart;
-      console.log('CART',cart);
       if(cart) {
+        /**add dexie cart to global cart if it exists for instance on a refresh or connection loss */
         dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
-        console.log('global cart',state.cart.length);
+        /**this causes a re render so cart items can be visually displayed*/
         setGlobalCartUpdate(true);
     }
     };
@@ -90,7 +86,7 @@ const submitCheckout = () => {
     }
 }, [state.cart.length, dispatch,clientCart,globalCartUpdate]);
 
-// if data var changes we will be redirected to stripe checkout page
+/*if data var changes we will be redirected to stripe checkout page*/
 useEffect(() => {
   if (data) {
       stripePromise.then((res) => {

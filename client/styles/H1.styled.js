@@ -97,3 +97,27 @@ box-shadow:  0 0 10px black;
 font-size: 2.8em;
 }
 `;
+
+export const SuccessTitle = styled.h1`
+padding: 1%;
+color: black;
+background-color: rgb(255,255,255,0.6);
+border: 2px solid black;
+text-shadow: 0 0 10px rgb(0, 119, 255);
+margin-top: 0.2em;
+font-size: 1.7em;
+font-family: 'dancing script';
+text-align: center;
+border-radius: 8px;
+font-weight: bolder;  
+box-shadow:  0 0 10px black;
+@media screen and (min-width: 912px) {
+  font-size: 2.5em ;
+}
+@media screen and (min-width: 1024px){
+    margin-bottom: 0%;
+}
+@media screen and (min-width: 1366px) {
+font-size: 2.8em;
+}
+`;

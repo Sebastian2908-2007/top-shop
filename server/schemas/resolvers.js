@@ -151,7 +151,7 @@ const resolvers = {
             throw new AuthenticationError('you must be an admin to perform this operation');
         },
         deleteUser: async (parent,{_id},context) => {
-           if(context.user._id === _id || context.user.isAdmin) {
+          if(context.user._id === _id || context.user.isAdmin) {
             const user = await User.findById(_id);
             if(user.hasLeftReview === true){
             try{
@@ -348,7 +348,9 @@ const resolvers = {
           await User.findOneAndUpdate({_id: context.user._id},{$push: {orders: order}});
           return order;
              }
-             throw new AuthenticationError('you must be logged in to place an order!');
+             
+                throw new AuthenticationError('you must be logged in to place an order!');
+                
         },
         addBlogpost: async (parent,args,context) => {
              /*below checks to see if the context is empty*/

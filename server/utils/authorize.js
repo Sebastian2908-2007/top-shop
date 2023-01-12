@@ -27,11 +27,11 @@ module.exports = {
     try {
         if(token) {
             const { data } = jwt.verify(token, secret, { maxAge: expiration });
-            console.log('You have a token my friend118811',data);
+            console.log('You have a token my friend118811');
             req.user = data;
         }
     }catch{
-        console.log('invalid token');
+       console.log('invalid token');
     }
     return req;
 }
