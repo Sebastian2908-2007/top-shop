@@ -206,3 +206,8 @@ export const AiImage = styled.img`
   height: auto;
   object-fit: contain;
 `;
+
+export const OrderItemPic = styled.img`
+max-width:30%;
+margin-bottom: 3%;
+`;

@@ -66,9 +66,9 @@ const submitCheckout = () => {
      
       console.log(item);
   });
-  /*getCheckout({
+  getCheckout({
    variables: { products: productIds }
-  });*/
+  });
 };
 
   // function to check if there's anything in the state's cart property on load. If not, we'll retrieve data from the IndexedDB cart object store. 

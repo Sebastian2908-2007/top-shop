@@ -202,3 +202,33 @@ border: 2px solid rgb(248, 248, 128);
 margin-top: 1em;
 `;
 
+export const OrderItemDiv = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-bottom: 1.5em;
+background-color: rgb(255,255,255,0.4);
+padding-top: 5%;
+border: 1px solid black;
+border-radius: 11px;
+box-shadow:  0 0 10px black;
+width: 100%;
+@media screen and (min-width: 768px) {
+   padding-top: 2.5%;
+}
+@media screen and (min-width: 912px) {
+   padding-top: 2%;
+}
+`;
+
+export const OrderItemInfoDiv = styled.div`
+margin-bottom: 1%;
+text-align: center;
+background: rgb(0, 119, 255,0.3);
+margin-left: 2%;
+margin-right: 2%;
+padding: 1%;
+border-radius: 8px;
+`;
+

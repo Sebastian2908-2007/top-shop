@@ -187,3 +187,10 @@ width: 100%;
 padding: 5%;
 padding-bottom: 11em;
 `;
+
+export const SuccessSection = styled.section`
+height: 100%;
+width: 100%;
+padding: 5%;
+padding-bottom: 11em;
+`;
