@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Category, FileUpload, Order, Product, Blogpost, User, Review } = require('../models');
+const { Category, FileUpload, Order, Product, Blogpost, User, Review, Address } = require('../models');
 const { signToken } = require('../utils/authorize');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
@@ -24,7 +24,7 @@ const resolvers = {
             return await Blogpost.find().populate('blogPic').sort({createdAt: -1});
         },
         getUsers: async (parent, args) => {
-            return await User.find().populate('review').populate({
+            return await User.find().populate('review').populate('address').populate({
                 path:'orders.products',
                 populate:'category'
             }).sort({createdAt: -1});
@@ -437,6 +437,28 @@ const resolvers = {
          throw new AuthenticationError('you must be an admin to do that!')
 
      },
+     addAddress: async (parent,{streetAddress,city,state,zip,country},context) => {
+        if(context.user) {
+            const usersAddress = await Address.create(
+                {
+                    user: context.user._id,
+                    streetAddress:streetAddress,
+                    city:city,
+                    state:state,
+                    zip:zip,
+                    country:country,
+                });
+
+             const userWithAddress = await User.findByIdAndUpdate(
+                {_id: context.user._id},
+                {address: usersAddress},
+                {new: true}
+            ).populate('address');
+            return userWithAddress;
+            
+        }
+        throw new AuthenticationError('your not logged in!');
+     }
     }
 };
 

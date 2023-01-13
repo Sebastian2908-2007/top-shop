@@ -39,7 +39,11 @@ const userSchema = new Schema({
          type: Schema.Types.ObjectId,
          ref: 'Review'
      },
-    orders:[Order.schema]
+    orders:[Order.schema],
+    address:{
+        type: Schema.Types.ObjectId,
+        ref: 'Address'
+    }
 });
 
 // this pre save function will check for a admin email and set admin boolean either true or false

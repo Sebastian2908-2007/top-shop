@@ -58,10 +58,21 @@ type UserAuth {
    hasLeftReview: Boolean
    review: Review
    orders:[Order]
+   address: Address
  }
 
  type Checkout {
     session: ID
+  }
+
+  type Address {
+   _id: ID
+   user: User!
+   streetAddress: String!
+   city: String!
+   state: String!
+   zip: String!
+   country: String!
   }
 
 type Query {
@@ -102,6 +113,7 @@ type Mutation {
    addBlogpost(title:String!,blogText:String!,blogPic:ID!): Blogpost
    updateBlogpost(_id:ID!,title:String,blogText:String,blogPic:ID): Blogpost
    deleteBlogpost(_id:ID!): Blogpost
+   addAddress(streetAddress:String!,city:String!,state:String!,zip:String!,country:String!): User
 }
 `;
 
