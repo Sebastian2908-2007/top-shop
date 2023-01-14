@@ -85,6 +85,10 @@ a {
   }
 }
 
+#cart-total-strong {
+  color: rgb(0, 195, 255);
+}
+
 /*
 linen #FCF5EF rgb(252, 245, 239)
 sunshade #FEA735 rgb(254, 167, 53)

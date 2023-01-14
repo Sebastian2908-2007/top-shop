@@ -30,12 +30,12 @@ const CartItem = ({ item }) => {
 
  /**function to remove items from cart */
  const removeFromCart = () => {
+   /**DELETES PRODUCT FROM INDEXEDDB*/
+   clientDatabase.cart.delete(_id);
   dispatch({
     type: REMOVE_FROM_CART,
     _id: _id
   })
-  /**DELETES PRODUCT FROM INDEXEDDB*/
-  clientDatabase.cart.delete(_id);
  };
  
  /**function to update the item quantity as well as remove item from cart if number is zero in input box */

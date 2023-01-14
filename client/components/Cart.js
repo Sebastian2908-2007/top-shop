@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery,useMutation } from '@apollo/client';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Menu, Button, MenuItem } from '@mui/material';
 import CartItem from './CartItem';
 import { checkoutAdd2CartBtnStyle } from '../styles/commonMuiStyles/muiButtonStyles';
+import { CheckoutLink } from '../styles/Links.styled';
 import { useStoreContext } from '../utils/Globalstate';
 import { QUERY_CHECKOUT } from '../utils/queries';
 import {loadStripe} from '@stripe/stripe-js';
@@ -14,6 +15,7 @@ import { ADD_MULTIPLE_TO_CART } from '../utils/actions';
 import { useLiveQuery } from 'dexie-react-hooks';
 /**import dexie aka indexedDb functionality*/
 import clientDatabase from '../utils/dexiedb';
+
 
 
 /**stripe pub key*/
@@ -84,7 +86,7 @@ const submitCheckout = () => {
     if(!state.cart.length) {
         getCart();
     }
-}, [state.cart.length, dispatch,clientCart,globalCartUpdate]);
+}, [ dispatch,clientCart,globalCartUpdate]);
 
 /*if data var changes we will be redirected to stripe checkout page*/
 useEffect(() => {
@@ -116,7 +118,7 @@ useEffect(() => {
       style: {
         maxHeight: ITEM_HEIGHT * 4.5,
         width: '31ch',
-        backgroundColor:'rgb(248, 248, 128)',
+        backgroundColor:'rgb(0, 119, 255)',
       },
     }}
     >
@@ -130,8 +132,9 @@ useEffect(() => {
        }
 {state.cart.length ? ( 
 <div>
-<strong>Total: ${isNaN(calculateTotal()) ? '0': calculateTotal()}</strong>
-<MenuItem><Button onClick={submitCheckout} sx={checkoutAdd2CartBtnStyle}>Checkout</Button></MenuItem>
+<strong id='cart-total-strong'>Total: ${isNaN(calculateTotal()) ? '0': calculateTotal()}</strong>
+{/*<MenuItem><Button onClick={submitCheckout} sx={checkoutAdd2CartBtnStyle}>Checkout</Button></MenuItem>*/}
+<MenuItem><CheckoutLink href='/addresscheckout'>checkout</CheckoutLink></MenuItem>
 </div>
 )
 :(null)}

@@ -42,6 +42,45 @@ background: ${props => props.errorColor };
 }
 `;
 
+export const AddressForm = styled.form`
+/**all transform props were added for the create user form and that is where they are being used */
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 7%;
+border: 3px solid rgb(0,0,0);
+border-radius: 11px;
+background: ${props => props.errorColor };
+@media screen and (min-width: 390px) {
+    
+}
+@media screen and (min-width: 540px) {
+    
+}
+@media screen and (min-width: 768px) {
+    
+    width: 70%
+}
+@media screen and (min-width: 1024px) {
+    padding: ${props => props.padding1024 };
+   
+}
+/*this media query was made only for add user form */
+@media screen and (min-width: 1280px) {
+    
+}
+@media screen and (min-width: 1366px) {
+    padding: 4%;
+    width: 50%;
+    
+}
+@media screen and (min-width: 1920px) {
+    padding: 3%;
+    width: 45%;
+   
+}
+`;
+
 /**form for editDelete modal*/
 export const EditDeleteForm = styled.form`
 /**all transform props were added for the create user form and that is where they are being used */

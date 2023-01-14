@@ -111,4 +111,12 @@ background-color: transparent;
 color: #017698;
 }
 `;
+export const CheckoutLink = styled.a`
+    padding: 3%;
+    background-color: rgb(254, 114, 53);
+    color: rgb(0, 195, 255);
+    margin-bottom: 3%;
+    border: 2px solid rgb(254, 167, 53) ;
+    font-size: 1.2em;
+`;
 

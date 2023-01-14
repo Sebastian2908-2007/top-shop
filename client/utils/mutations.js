@@ -164,3 +164,12 @@ mutation addOrder($products:[ID!]) {
   }
 }
 `;
+
+/*this is a mutation to add the address  in the addresscheckout.js*/
+export const ADD_ADDRESS = gql`
+mutation addAddress($streetAddress:String!,$city:String!,$state:String!,$zip:String!,$country:String!) {
+  addAddress(streetAddress:$streetAddress,city:$city,state:$state,zip:$zip,country:$country) {
+    _id
+  }
+}
+`; 
