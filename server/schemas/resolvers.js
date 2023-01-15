@@ -33,7 +33,7 @@ const resolvers = {
             return await User.findOne({_id:_id}).populate('review').populate({
                 path:'orders.products',
                 populate:'category'
-            }).sort({createdAt: -1});
+            }).populate('address').sort({createdAt: -1});
         },
         getReviews: async  (parent,args) => {
             return await Review.find().populate('author').sort({createdAt: -1});

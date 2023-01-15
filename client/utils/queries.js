@@ -202,3 +202,18 @@ query getUserById($_id:ID!) {
     }
   }
 `;
+
+/**query to get single user by _id used in addresscheckout page*/
+export const GET_USER_ADDRESS_FOR_CHECKOUT = gql` 
+query getUserById($_id:ID!) {
+  getUserById(_id:$_id) {
+    address{
+      _id
+      streetAddress
+      country
+      city
+      zip
+      state
+    }
+   }   
+  }`;

@@ -42,7 +42,7 @@ background: ${props => props.errorColor };
 }
 `;
 
-export const AddressForm = styled.form`
+export const AddForm = styled.form`
 /**all transform props were added for the create user form and that is where they are being used */
 display: flex;
 flex-direction: column;

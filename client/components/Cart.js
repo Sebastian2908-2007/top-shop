@@ -1,14 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useLazyQuery,useMutation } from '@apollo/client';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Menu, Button, MenuItem } from '@mui/material';
+import { Menu,MenuItem } from '@mui/material';
 import CartItem from './CartItem';
-import { checkoutAdd2CartBtnStyle } from '../styles/commonMuiStyles/muiButtonStyles';
 import { CheckoutLink } from '../styles/Links.styled';
 import { useStoreContext } from '../utils/Globalstate';
-import { QUERY_CHECKOUT } from '../utils/queries';
-import {loadStripe} from '@stripe/stripe-js';
 /**import reducer to add multiple items to the cart*/
 import { ADD_MULTIPLE_TO_CART } from '../utils/actions';
 /** import use live query to easily grab dexie db data in an array*/
@@ -18,8 +14,7 @@ import clientDatabase from '../utils/dexiedb';
 
 
 
-/**stripe pub key*/
-const stripePromise = loadStripe(  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+
 
 const Cart = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -28,8 +23,6 @@ const Cart = () => {
     const [globalCartUpdate,setGlobalCartUpdate] = useState(null);
     /**this gets all items in the dexie cart aka indexedDb var is used because its not block scoped*/
     var clientCart = useLiveQuery(() =>  clientDatabase.cart.toArray(),[]);
-     /* useLazyQuery for doing our checkout query on button click*/
-  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
@@ -57,18 +50,6 @@ function calculateTotal() {
   return sum.toFixed(2);
 };
 
-const submitCheckout = () => {
-  const productIds = [];
-
-  state.cart.forEach((item) => {
-      for (let i = 0; i < item.purchaseQuantity; i++) {
-          productIds.push(item._id);
-      }
-  });
-  getCheckout({
-   variables: { products: productIds }
-  });
-};
 
   // function to check if there's anything in the state's cart property on load. If not, we'll retrieve data from the IndexedDB cart object store. 
  useEffect(() => {
@@ -88,14 +69,6 @@ const submitCheckout = () => {
     }
 }, [ dispatch,clientCart,globalCartUpdate]);
 
-/*if data var changes we will be redirected to stripe checkout page*/
-useEffect(() => {
-  if (data) {
-      stripePromise.then((res) => {
-          res.redirectToCheckout({ sessionId: data.checkout.session });
-      });
-  }
-}, [data]);
 
 
     return(
