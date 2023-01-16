@@ -11,6 +11,7 @@ import { QUERY_CHECKOUT,GET_USER_ADDRESS_FOR_CHECKOUT } from '../utils/queries';
 import { ADD_ADDRESS } from '../utils/mutations';
 import auth from '../utils/auth';
 import {loadStripe} from '@stripe/stripe-js';
+import { PreviousAddressBtn } from '../styles/Button.styled';
 
 /**stripe pub key*/
 const stripePromise = loadStripe(  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
@@ -113,7 +114,7 @@ const previousAddress = {
           <Button onClick={submitCheckout} sx={checkoutAdd2CartBtnStyle}>Secure Checkout</Button>
         </AddForm>
        
-        {!addressData.getUserById.address  ? null: <button onClick={() => {setOpen(true)}}>use saved address?</button>}
+        {!addressData.getUserById.address  ? null: <PreviousAddressBtn onClick={() => {setOpen(true)}}>use saved address?</PreviousAddressBtn>}
      
       </FormSection>
     )

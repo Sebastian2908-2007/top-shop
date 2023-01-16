@@ -126,3 +126,12 @@ border: none;
 background-color: rgb(255, 0, 0);
 margin-right: 5%;
 `;
+
+export const PreviousAddressBtn = styled.button`
+background-color: rgb(252, 245, 239,.8);
+color: rgb(0, 119, 255);
+border: 2px solid rgb(254, 114, 53);
+padding: 2%;
+width: 100%;
+margin-top: 6%;
+`;
