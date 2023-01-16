@@ -134,4 +134,7 @@ border: 2px solid rgb(254, 114, 53);
 padding: 2%;
 width: 100%;
 margin-top: 6%;
+@media screen and (min-width: 768px) {
+        width: 30%;
+}
 `;

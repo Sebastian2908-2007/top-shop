@@ -48,8 +48,10 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 padding: 7%;
-border: 3px solid rgb(0,0,0);
+border: 2px solid rgb(0,0,0);
+width: 100%;
 border-radius: 11px;
+//background-color: rgb(252, 245, 239,.8);
 background: ${props => props.errorColor };
 @media screen and (min-width: 390px) {
     
@@ -125,7 +127,7 @@ export const FormInput = styled.input`
 font-size: 1.3em;
 margin-top:${props => props.marginTop ? props.marginTop : '1em'};
 margin-bottom: 1em;
-border: 2px solid rgb(0,0,0);
+border:${props => props.border ? props.border: '2px solid rgb(0,0,0)'};
 `;
 
 

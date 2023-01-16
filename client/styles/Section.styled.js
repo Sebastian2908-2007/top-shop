@@ -194,3 +194,22 @@ width: 100%;
 padding: 5%;
 padding-bottom: 11em;
 `;
+
+export const AddressFormSection = styled.section`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+max-width: 100%;
+padding-bottom: 5rem;
+padding: 4%;
+height: auto;
+/**I start using below prop on form error at 1024 px */
+padding-bottom: ${props => props.pdngBtmErr};
+@media screen and (min-width: 768px) {
+  padding-top: 5rem;
+}
+@media screen and (min-width: 1366px) {
+  padding-bottom: 11rem;
+}
+`;

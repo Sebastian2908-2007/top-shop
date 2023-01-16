@@ -5,7 +5,7 @@ import SavedAddressModal from './SavedAddressModal';
 import { Button } from "@mui/material";
 import { checkoutAdd2CartBtnStyle } from "../styles/commonMuiStyles/muiButtonStyles";
 import { AddForm,FormInput } from "../styles/Forms.styled";
-import { FormSection } from "../styles/Section.styled";
+import { AddressFormSection } from "../styles/Section.styled";
 import { useStoreContext } from '../utils/Globalstate';
 import { QUERY_CHECKOUT,GET_USER_ADDRESS_FOR_CHECKOUT } from '../utils/queries';
 import { ADD_ADDRESS } from '../utils/mutations';
@@ -97,7 +97,7 @@ const previousAddress = {
 };
 
     return(
-        <FormSection>
+        <AddressFormSection>
             <SavedAddressModal
              open={open}
              setOpen={setOpen} 
@@ -106,17 +106,17 @@ const previousAddress = {
              addressData={addressData}
              />
         <AddForm>
-          <FormInput onChange={handleChange} placeholder="Street Address" name="streetAddress" type="streetAddress"/>
-          <FormInput onChange={handleChange} placeholder="city" name="city" type="city"/>
-          <FormInput onChange={handleChange} placeholder="state" name="state" type="state"/>
-          <FormInput onChange={handleChange} placeholder="zip" name="zip" type="zip"/>
-          <FormInput onChange={handleChange} placeholder="country" name="country" type="country"/>
+          <FormInput border='2px solid rgb(254, 114, 53)' onChange={handleChange} placeholder="Street Address" name="streetAddress" type="streetAddress"/>
+          <FormInput border='2px solid rgb(254, 114, 53)' onChange={handleChange} placeholder="city" name="city" type="city"/>
+          <FormInput border='2px solid rgb(254, 114, 53)' onChange={handleChange} placeholder="state" name="state" type="state"/>
+          <FormInput border='2px solid rgb(254, 114, 53)' onChange={handleChange} placeholder="zip" name="zip" type="zip"/>
+          <FormInput border='2px solid rgb(254, 114, 53)' onChange={handleChange} placeholder="country" name="country" type="country"/>
           <Button onClick={submitCheckout} sx={checkoutAdd2CartBtnStyle}>Secure Checkout</Button>
         </AddForm>
        
         {!addressData.getUserById.address  ? null: <PreviousAddressBtn onClick={() => {setOpen(true)}}>use saved address?</PreviousAddressBtn>}
      
-      </FormSection>
+      </AddressFormSection>
     )
 };
 
