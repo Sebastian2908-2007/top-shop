@@ -108,3 +108,21 @@ background-color: transparent;
 color: #017698;
 }
 `;
+
+export const AddressModalCheckoutButton = styled.button`
+padding: 6%;
+color:rgb(0, 195, 255);
+border-radius: 11px;
+border: none;
+background-color:rgb(254, 114, 53);
+margin-left: 5%;
+`;
+export const AddressModalCancelButton = styled.button`
+padding: 6%;
+color:rgb(0, 195, 255) ;
+border-radius: 11px;
+border: none;
+//background-color: rgb(0, 0, 50.2);
+background-color: rgb(255, 0, 0);
+margin-right: 5%;
+`;

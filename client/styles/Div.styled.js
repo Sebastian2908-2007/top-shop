@@ -232,3 +232,10 @@ padding: 1%;
 border-radius: 8px;
 `;
 
+export const AddressModalDiv = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-top: 5%;
+`;
+
