@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
+/**modal for previous address*/
+import SavedAddressModal from './SavedAddressModal';
 import { Button } from "@mui/material";
 import { checkoutAdd2CartBtnStyle } from "../styles/commonMuiStyles/muiButtonStyles";
 import { AddForm,FormInput } from "../styles/Forms.styled";
@@ -7,7 +9,6 @@ import { FormSection } from "../styles/Section.styled";
 import { useStoreContext } from '../utils/Globalstate';
 import { QUERY_CHECKOUT,GET_USER_ADDRESS_FOR_CHECKOUT } from '../utils/queries';
 import { ADD_ADDRESS } from '../utils/mutations';
-
 import auth from '../utils/auth';
 import {loadStripe} from '@stripe/stripe-js';
 
@@ -28,6 +29,8 @@ const AddressForm = () => {
   const [ state, dispatch ] = useStoreContext();
   /**form state to be set in handleChange function */
   const [form,setForm] = useState({streetAddress:'',city:'',state:'',zip:'',country:''});
+  /**state var to open address modal */
+  const [open,setOpen] = useState(false);
 
        /*function for capturing state */
  const handleChange = (event) => {
@@ -76,15 +79,31 @@ useEffect(() => {
     }
   }, [data]);
 
-  useEffect(() => {console.log(form)},[form]);
+  //useEffect(() => {console.log(form)},[form]);
 
   if(loading) {
     return(
         <div>loading...</div>
     )
   }
+/**make an object containing the users previous address if it exists*/
+const previousAddress = {
+    streetAddress: addressData.getUserById.address.streetAddress,
+    city: addressData.getUserById.address.city,
+    state: addressData.getUserById.address.state,
+    zip: addressData.getUserById.address.zip,
+    country: addressData.getUserById.address.country
+};
+
     return(
         <FormSection>
+            <SavedAddressModal
+             open={open}
+             setOpen={setOpen} 
+             submitCheckout={submitCheckout}
+             previousAddress={previousAddress}
+             addressData={addressData}
+             />
         <AddForm>
           <FormInput onChange={handleChange} placeholder="Street Address" name="streetAddress" type="streetAddress"/>
           <FormInput onChange={handleChange} placeholder="city" name="city" type="city"/>
@@ -94,7 +113,7 @@ useEffect(() => {
           <Button onClick={submitCheckout} sx={checkoutAdd2CartBtnStyle}>Secure Checkout</Button>
         </AddForm>
        
-        {!addressData.getUserById.address  ? null: <div>use saved address?</div>}
+        {!addressData.getUserById.address  ? null: <button onClick={() => {setOpen(true)}}>use saved address?</button>}
      
       </FormSection>
     )

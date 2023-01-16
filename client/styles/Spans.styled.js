@@ -52,3 +52,15 @@ font-size: .7rem;
 color:  rgb(248, 248, 128);
 //color: #0000EE;
 `;
+export const SavedAddressModalSpan = styled.span`
+font-size: .7rem;
+color:  rgb(254, 167, 53);
+background-color:rgb(0, 195, 255,.4);
+padding: 2%;
+//color: #0000EE;
+`;
+export const SavedAddressModalLabelSpan = styled.span`
+font-size: 1rem;
+color:  rgb(0, 119, 255);
+//color: #0000EE;
+`;
