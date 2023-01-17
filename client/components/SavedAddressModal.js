@@ -33,7 +33,7 @@ const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
     const [state] = useStoreContext();  
 
-  console.log(previousAddress);
+  //console.log(previousAddress);
     const handleClose = () => {setOpen(false);};
 
     const submitCheckout = async () => {
@@ -60,6 +60,10 @@ const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
   }, [data]);
 
 return(
+  /**If prvious address is undefined return null as such is in the case of a new user if not make the modal
+   * Modal will not even be accessible unless it is in the case of a previous user
+  */
+  previousAddress ? (
     <div>
     <Modal
     open={open}
@@ -68,6 +72,7 @@ return(
     aria-describedby="modal-modal-description"
   >
     <Box sx={style}>
+      
         <SavedAddressModalLabelSpan>Street Address</SavedAddressModalLabelSpan>
     <SavedAddressModalSpan>{previousAddress.streetAddress}</SavedAddressModalSpan>
     <SavedAddressModalLabelSpan>State</SavedAddressModalLabelSpan>
@@ -82,11 +87,13 @@ return(
         <AddressModalCancelButton onClick={() => {handleClose()}}>Cancel</AddressModalCancelButton>
         <AddressModalCheckoutButton onClick={() => {submitCheckout()}}>Secure Checkout</AddressModalCheckoutButton>
     </AddressModalDiv>
+
     </Box>
           
         
     </Modal>
     </div>
+  ):null
 );
 };
 

@@ -82,19 +82,23 @@ useEffect(() => {
 
   //useEffect(() => {console.log(form)},[form]);
 
+  /**if user data is loading return loading div*/
   if(loading) {
     return(
         <div>loading...</div>
     )
   }
 /**make an object containing the users previous address if it exists*/
-const previousAddress = {
+if(addressData.getUserById.address !== null) {
+  /**var used because its function scoped use of state in the ways I've tried causes infinite re renders */
+var previousAddress = {
     streetAddress: addressData.getUserById.address.streetAddress,
     city: addressData.getUserById.address.city,
     state: addressData.getUserById.address.state,
     zip: addressData.getUserById.address.zip,
     country: addressData.getUserById.address.country
 };
+}
 
     return(
         <AddressFormSection>

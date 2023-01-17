@@ -111,7 +111,7 @@ background-color: transparent;
 color: #017698;
 }
 `;
-export const CheckoutLink = styled.a`
+export const CheckoutLink = styled(Link)`
     padding: 3%;
     background-color: rgb(254, 114, 53);
     color: rgb(0, 195, 255);

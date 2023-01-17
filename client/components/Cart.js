@@ -11,6 +11,7 @@ import { ADD_MULTIPLE_TO_CART } from '../utils/actions';
 import { useLiveQuery } from 'dexie-react-hooks';
 /**import dexie aka indexedDb functionality*/
 import clientDatabase from '../utils/dexiedb';
+import auth from '../utils/auth';
 
 
 
@@ -69,7 +70,7 @@ function calculateTotal() {
     }
 }, [ dispatch,clientCart,globalCartUpdate]);
 
-
+const loggedIn = auth.loggedIn();
 
     return(
         <div>
@@ -107,7 +108,12 @@ function calculateTotal() {
 <div>
 <strong id='cart-total-strong'>Total: ${isNaN(calculateTotal()) ? '0': calculateTotal()}</strong>
 {/*<MenuItem><Button onClick={submitCheckout} sx={checkoutAdd2CartBtnStyle}>Checkout</Button></MenuItem>*/}
-<MenuItem><CheckoutLink href='/addresscheckout'>checkout</CheckoutLink></MenuItem>
+{loggedIn ? (<MenuItem><CheckoutLink href='/addresscheckout'>checkout</CheckoutLink></MenuItem>):(
+  <div>
+  <MenuItem><CheckoutLink href='/login'>Returning customer</CheckoutLink></MenuItem>
+  <MenuItem><CheckoutLink href='/newuser'>New Customer</CheckoutLink></MenuItem>
+  </div>
+)}
 </div>
 )
 :(null)}
