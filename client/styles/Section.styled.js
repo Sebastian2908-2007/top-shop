@@ -181,12 +181,6 @@ padding: 5%;
 padding-bottom: 11em;
 `;
 
-export const UserDetailsSection = styled.section`
-height: 100%;
-width: 100%;
-padding: 5%;
-padding-bottom: 11em;
-`;
 
 export const SuccessSection = styled.section`
 height: 100%;
@@ -212,4 +206,33 @@ padding-bottom: ${props => props.pdngBtmErr};
 @media screen and (min-width: 1366px) {
   padding-bottom: 11rem;
 }
+`;
+
+export const UserPersonalDetailsSection = styled.section`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+background-color: rgb(255,255,255,0.4);
+border: 1px solid rgb(0, 119, 255);
+border-radius:8px;
+box-shadow:  0 0 10px black;
+width: 100%;
+padding: 4%;
+`;
+export const UserOrdersSection = styled.section`
+height: auto;
+width: 100%;
+padding: 1%;
+`;
+
+export const UserDetailsSection = styled.section`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+height: 100%;
+width: 100%;
+padding: 5%;
+padding-bottom: 11em;
 `;

@@ -31,8 +31,12 @@ const resolvers = {
         },
         getUserById: async (parent,{_id}) => {
             return await User.findOne({_id:_id}).populate('review').populate({
+                
                 path:'orders.products',
-                populate:'category'
+                populate:'category image',
+                
+                
+           
             }).populate('address').sort({createdAt: -1});
         },
         getReviews: async  (parent,args) => {

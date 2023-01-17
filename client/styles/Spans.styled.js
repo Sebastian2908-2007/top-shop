@@ -64,3 +64,10 @@ font-size: 1rem;
 color:  rgb(0, 119, 255);
 //color: #0000EE;
 `;
+
+export const UserDetailsSpan = styled.span`
+background-color:rgb(0, 119, 255,0.3);
+margin-bottom: 2%;
+padding: 4%;
+//color: #0000EE;
+`;

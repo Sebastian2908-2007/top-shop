@@ -190,6 +190,9 @@ query getUserById($_id:ID!) {
           _id
           name
         }
+        image {
+          Location
+        }
       }
     }
    }   
