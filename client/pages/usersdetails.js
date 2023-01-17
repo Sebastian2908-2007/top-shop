@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { GET_USER_BY_ID } from "../utils/queries";
 import auth from "../utils/auth";
 import { UserDetailsSection } from "../styles/Section.styled";
-import dayjs from 'dayjs';
+
 export default function usersdetails () {
     const {data,loading} = useQuery(GET_USER_BY_ID,{
         variables:{
@@ -12,9 +12,10 @@ export default function usersdetails () {
     if(loading) {
         return(<div>loading...</div>)
     }
+   const date = data.getUserById.orders[2].purchaseDate
+  
+    console.log(date);
    
-    console.log(dayjs(data.getUserById.orders[0].purchaseDate));
-    console.log(data.getUserById.orders[0].purchaseDate);
     return(
         <UserDetailsSection>this is user details</UserDetailsSection>
     );

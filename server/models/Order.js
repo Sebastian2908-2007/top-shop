@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
+const dayjs = require('dayjs');
 
 const orderSchema = new Schema({
     purchaseDate: {
         type: Date,
-        default: Date.now 
+        default: Date.now,
+        get: timeStamp =>  dayjs(timeStamp).format('M/DD/YYYY h:m a') 
     },
     products:[
         {
