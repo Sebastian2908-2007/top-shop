@@ -236,3 +236,18 @@ width: 100%;
 padding: 5%;
 padding-bottom: 11em;
 `;
+
+export const AboutSection = styled.section`
+height: auto;
+width: 100%;
+padding: 8%;
+border: 2px solid rgb(0, 119, 255);
+box-shadow:0 0 10px black;
+border-radius: 8px;
+`;
+export const OuterAboutSection = styled.section`
+height: 100%;
+width: 100%;
+padding: 5%;
+padding-bottom: 5rem;
+`;

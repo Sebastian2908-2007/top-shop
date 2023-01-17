@@ -13,6 +13,9 @@ import OrderItem from "../components/OrderItem";
 
 
 export default function usersdetails () {
+    if(typeof window !== 'undefined' && !auth.loggedIn()) {
+       window.location.assign('/login');
+    }
     const {data,loading} = useQuery(GET_USER_BY_ID,{
         variables:{
             _id: auth.getProfile().data._id 
