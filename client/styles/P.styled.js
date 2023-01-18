@@ -31,3 +31,12 @@ text-shadow: 0 0 10px rgb(0, 119, 255);
 box-shadow:  0 0 10px black;
 width: 100%;
 `;
+
+export const  AboutParagrapgh = styled.p`
+padding: 4%;
+border: 2px solid rgb(0, 119, 255);
+background-color: rgb(255,255,255);
+text-align: center;
+box-shadow:  0 0 10px black;
+
+`;

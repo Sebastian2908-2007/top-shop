@@ -205,6 +205,9 @@ export const AiImage = styled.img`
   width: 100%;
   height: auto;
   object-fit: contain;
+ /* @media screen and (min-width: 1024px) {
+    height: 500px;
+}*/
 `;
 
 export const OrderItemPic = styled.img`

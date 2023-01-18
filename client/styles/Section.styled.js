@@ -244,10 +244,43 @@ padding: 8%;
 border: 2px solid rgb(0, 119, 255);
 box-shadow:0 0 10px black;
 border-radius: 8px;
+@media screen and (min-width: 1024px) {
+   width: 80%;
+}
 `;
 export const OuterAboutSection = styled.section`
 height: 100%;
 width: 100%;
 padding: 5%;
 padding-bottom: 5rem;
+@media screen and (min-width: 540px) {
+    padding-bottom: 10rem;
+}
+@media screen and (min-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media screen and (min-width: 1920px) {
+    padding-bottom: 14rem;
+}
+`;
+
+export const AboutHeroSection = styled.section`
+width: 100%;
+background: linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
+padding-bottom: .1%;
+@media screen and (min-width: 768px) {
+ // background-color: rgb(248, 248, 128);
+  //border-bottom: 50px solid black;
+  padding: 4%;
+  padding-bottom: 1%;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
+};
 `;
