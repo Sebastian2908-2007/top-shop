@@ -24,16 +24,19 @@ border-radius: 11px;
 margin-bottom: .7em;
 margin-right: .1em;
 margin-left: .1em;
-background-color: rgb(252, 245, 239);
+//background-color: rgb(252, 245, 239);
+//background-color:rgb(254, 167, 53);
+background: linear-gradient(to left, rgb(254, 167, 53),rgb(254, 114, 53));
+color: rgb(252, 245, 239);
 font-family: 'dancing script';
 font-size: 1.2em;
 padding: 2%;
 box-shadow:  0 0 7px black;
 &:hover {
 animation: ${buttonPopUp} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-color: rgb(245 245 6);
+color: rgb(0, 119, 255);
 background-color: rgb(0,0,0,0.2);
-border: 1px solid rgb(245 245 6);
+border: 1px solid rgb(254, 114, 53);
 };
 @media screen and (min-width: 375px) {
     margin-right: .7em;

@@ -53,13 +53,13 @@ margin-top: 11%;
 `;
 
 export const FullBlogPostLink = styled(Link)`
-background: linear-gradient(to right, rgb(254, 114, 53),rgb(0,0,0));;
+background: linear-gradient(to right, rgb(254, 114, 53),rgb(0,0,0));
 padding: 3%;
 border-radius: 11px;
 color: rgb(254, 167, 53);
 &:hover {
 //background-color: rgb(255,255,255,0.8);
-background: linear-gradient(to left, rgb(199, 197, 104),rgb(0,0,0));;
+background: linear-gradient(to left, rgb(199, 197, 104),rgb(0,0,0));
 }
 `;
 

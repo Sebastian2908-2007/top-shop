@@ -1,7 +1,9 @@
 export const checkoutAdd2CartBtnStyle = theme => ({
     animation: 'wiggle 5s linear infinite',
-    backgroundColor:' rgb(254, 167, 53)',
-    color: 'rgb(0, 119, 255)',
+    //backgroundColor:' rgb(254, 167, 53)',
+    background:'linear-gradient(to left, rgb(254, 167, 53),rgb(0,0,0,0.7))',
+    //color: 'rgb(0, 119, 255)',
+    color:'rgb(252, 245, 239)',
     marginBottom: '3%',
     [theme.breakpoints.up('sm')]:{
       fontSize: '1.11rem'

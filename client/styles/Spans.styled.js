@@ -5,7 +5,11 @@ export const CartTrashSpan = styled.span`
 `;
 
 export const ProductPriceSpan = styled.span`
-background-color: rgb(255,255,255,0.6);
+//background-color: rgb(255,255,255,0.6);
+//background:linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
+background: linear-gradient(to right, rgb(254, 114, 53),rgb(0,0,0));
+color: rgb(252, 245, 239);
+text-shadow: 0 0 10px rgb(254, 167, 53);
 font-size: 1.3rem;
 padding: ${props => props.padding ? props.padding: '6%'};
 margin-bottom: ${props => props.marginBottom};

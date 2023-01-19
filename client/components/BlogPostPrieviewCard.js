@@ -13,7 +13,13 @@ const BlogPostPrieviewCard = ({blogPost}) => {
    // console.log(blogPic);
    useEffect(() => {console.log('main blog rendering')},[])
     return(
-        <Card sx={{ boxShadow:' 0 0 10px black',height:'100%',maxWidth: '100%', backgroundColor: "rgb(255,255,255,0.6)", border: '1px solid black'}}>
+        <Card sx={{ 
+            boxShadow:' 0 0 10px black',
+            height:'100%',
+            maxWidth: '100%',
+            //backgroundColor: "rgb(255,255,255,0.6)",
+            background: 'linear-gradient(to left, rgb(0, 119, 255),rgb(0,0,0,0.7))',
+            border: '1px solid black'}}>
             <CardMedia
                component="img"
                alt={title}

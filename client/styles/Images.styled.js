@@ -168,7 +168,7 @@ animation: ${bounceIn} 2s linear 1;
 animation: ${flickerIn} 2s linear 1;
 margin-top: 3%;
 width: 70%;
-border: 7px solid black;
+border: 4px solid rgb(0, 0, 0);
 border-radius:11px;
 box-shadow:  0 0 50px black;
 transform: skew(10deg, -8deg);

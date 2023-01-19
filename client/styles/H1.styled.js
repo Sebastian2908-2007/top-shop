@@ -18,8 +18,10 @@ const  rotateScaleUp = keyframes`
 
 export const MainTitle = styled.h1`
 padding: 1%;
-color: black;
-background-color: rgb(255,255,255,0.6);
+color: rgb(252, 245, 239);
+//color: black;
+//background-color: rgb(255,255,255,0.6);
+background: linear-gradient(to left, rgb(0, 119, 255),rgb(0,0,0,0.7));
 border: 2px solid black;
 text-shadow: 0 0 10px rgb(0, 119, 255);
 margin-top: 0.2em;

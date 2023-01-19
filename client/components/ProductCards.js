@@ -111,14 +111,16 @@ Key
   return (
     <Card sx={
       { 
-        boxShadow:' 0 0 5px black',
+        boxShadow:' 0 0 10px rgb(0,0,0)',
         height:{xs:"auto",sm:'100%'},
         maxWidth: '100%',
-        backgroundColor: "rgb(255,255,255,0.6)",
-        border: '1px solid black',
+       // backgroundColor: "rgb(255,255,255,0.6)",
+       background:'linear-gradient(to left, rgb(0, 119, 255),rgb(0,0,0,0.7))',
+       
+        border: '1px solid rgb(0,0,0)',
         display:"flex",
         flexDirection:"column",
-        justifyContent:'space-between'
+       justifyContent:'space-between'
       }
             }>
       <CardMedia
@@ -139,11 +141,30 @@ Key
       <CardContent sx={{display:'flex', flexDirection:'column',alignItems:'center',justifyContent:'space-between',height:'25%'}} >
         {isAdmin && <ProductCardCategoryDiv>Category: {product.category.name}</ProductCardCategoryDiv>}
         <Typography gutterBottom variant="h5" component="div" 
-        sx={{textShadow: '0 0 10px rgb(0, 119, 255)',fontSize:{xs:'1.5rem',xl:'1.8rem'}}}>
+        sx={{
+        textShadow: '0 0 10px rgb(254, 167, 53)',
+       padding:'2%',
+        fontSize:{xs:'1.5rem',xl:'1.8rem'},
+        background: 'linear-gradient(to right, rgb(254, 114, 53),rgb(0,0,0))',
+        color:'rgb(252, 245, 239)',
+        border: '2px solid black',
+        textShadow: '0 0 10px rgb(254, 167, 53)',
+        }}>
          {isAdmin && <AdminItemNameSpan>Product Name:</AdminItemNameSpan>} {name}
         </Typography>
         <Typography variant="body2" color="text.secondary"
-         sx={{backgroundColor:'rgb(0, 119, 255,0.4)',padding:"2%",fontWeight:'bolder',fontSize:{xs:'1.3rem',xl:'1.5rem'}}}>
+         sx={{textShadow: '0 0 10px rgb(254, 167, 53)',
+         //background:'linear-gradient(to left, rgb(0, 119, 255),rgb(0,0,0,0.7))',
+         backgroundColor: "rgb(255,255,255,0.6)",
+         padding:"2%",
+         color:'rgb(252, 245, 239)',
+        // color:'black',
+         border: '1px solid rgb(254, 114, 53)',
+         borderRadius:'8px',
+         textShadow: '0 0 10px rgb(254, 114, 53)',
+         boxShadow:  '0 0 10px black',
+         fontWeight:'bolder',
+         fontSize:{xs:'1.3rem',xl:'1.5rem'}}}>
         {isAdmin && <AdminItemNameSpan>Product description:</AdminItemNameSpan>} {description}
         </Typography>
       </CardContent>
