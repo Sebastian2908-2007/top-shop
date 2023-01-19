@@ -205,12 +205,43 @@ export const AiImage = styled.img`
   width: 100%;
   height: auto;
   object-fit: contain;
- /* @media screen and (min-width: 1024px) {
-    height: 500px;
-}*/
+  @media screen and (min-width: 1024px) {
+   width: 80%;
+}
+  @media screen and (min-width: 1280px) {
+   width: 70%;
+}
 `;
 
 export const OrderItemPic = styled.img`
 max-width:30%;
 margin-bottom: 3%;
+`;
+
+export const AboutHeroPic = styled.img`
+width: 100%;
+height: 40vh;
+//max-height: 100%;
+object-fit: fill;
+border-bottom: 2px solid rgb(0, 119, 255);
+animation: ${bounceIn} 2s linear 1;
+@media screen and (min-width: 768px) {
+  height: 50vh;
+  width: 80%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border: 2px solid rgb(0, 119, 255);
+  border-radius:11px;
+}
+
+@media screen and (min-width: 1024px) {
+animation: ${flickerIn} 2s linear 1;
+margin-top: 1%;
+margin-bottom: 3%;
+width: 60%;
+height: 100%;
+border: 2px solid rgb(0, 195, 255);
+border-radius:11px;
+box-shadow:  0 0 50px rgb(254, 114, 53);
+}
 `;

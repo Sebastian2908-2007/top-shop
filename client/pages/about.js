@@ -1,11 +1,11 @@
 import { AboutSection,OuterAboutSection,AboutHeroSection } from "../styles/Section.styled";
-import { BlogHeroPic, AiImage } from "../styles/Images.styled";
+import { AboutHeroPic, AiImage } from "../styles/Images.styled";
 import { AboutParagrapgh } from "../styles/P.styled";
 const about = () => {
 return (
     <>
     <AboutHeroSection>
-        <BlogHeroPic src="/about-hero2.png" alt="A futuristic shop on a mountain"/>
+        <AboutHeroPic src="/about-hero2.png" alt="A futuristic shop on a mountain"/>
     </AboutHeroSection>
     <OuterAboutSection>
     <AboutSection>

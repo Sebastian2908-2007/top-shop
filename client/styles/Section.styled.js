@@ -242,10 +242,15 @@ height: auto;
 width: 100%;
 padding: 8%;
 border: 2px solid rgb(0, 119, 255);
-box-shadow:0 0 10px black;
+background: linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
+box-shadow:0 0 10px rgb(254, 167, 53);
 border-radius: 8px;
 @media screen and (min-width: 1024px) {
-   width: 80%;
+   width: 100%;
+   display: flex;
+flex-direction: column;
+align-items: center;
+box-shadow:0 0 20px rgb(254, 167, 53);
 }
 `;
 export const OuterAboutSection = styled.section`
