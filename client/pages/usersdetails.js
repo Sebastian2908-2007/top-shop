@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid';
 import OrderItem from "../components/OrderItem";
 
 
-export default function usersdetails () {
+export default function Usersdetails () {
     if(typeof window !== 'undefined' && !auth.loggedIn()) {
        window.location.assign('/login');
     }

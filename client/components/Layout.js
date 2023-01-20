@@ -67,12 +67,16 @@ const Layout = ({ children}) => {
                 <SocialPic 
                  src='/fb_48px.png' 
                  alt='fb link'
+                 width={48}
+                 height={48}
                 />
             </SocialImgLink>
             <SocialImgLink href='https://www.instagram.com/sybscraftyshack/?fbclid=IwAR3CNExLMc1B_S_y7EnY8JEQQlytD9Ac621Jaj0xlvf9FC7Pf2-Ez3HJg8Y' target='_blank'>
                 <SocialPic 
                  src='/insta_48px.png'  
                  alt='insta link'
+                 width={48}
+                 height={48}
                 />
             </SocialImgLink>
         </FooterDiv>

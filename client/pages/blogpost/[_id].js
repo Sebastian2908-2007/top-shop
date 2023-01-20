@@ -61,7 +61,7 @@ return {
 }
 };
 
-export default function blogPost ({blogPost})  {
+export default function BlogPost ({blogPost})  {
 
   /**destructure static props */
   const {_id,title,blogText,blogPic} = blogPost.getBlogpostById;

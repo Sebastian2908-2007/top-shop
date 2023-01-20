@@ -6,6 +6,7 @@
   "scripts": {
     "start": "concurrently \"cd server && npm run watch\"",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
+    "simprod": "concurrently \"cd server && npm run watch\" \"cd client && npm run build && npm run start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build:production"
   },

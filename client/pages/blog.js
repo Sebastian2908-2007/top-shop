@@ -15,7 +15,7 @@ import { MainTitle } from "../styles/H1.styled";
 /**styled components imports ends*/
 import BottomLinkPack from "../components/BottomLinkPack";
 import TopLinkPack from "../components/TopLinkPack";
-const blog = () => {
+const Blog = () => {
     
     const {loading,data} = useQuery(GET_BLOGPOSTS_ALL_DATA);
     if(loading) {
@@ -62,4 +62,4 @@ alt="hero banner of a cute handmade knome in a jail suit"
 }
 };
 */
-export default blog;
+export default Blog;

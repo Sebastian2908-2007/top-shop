@@ -6,7 +6,7 @@ import { FormSection } from "../styles/Section.styled";
 import auth from "../utils/auth";
 import { LoginSignupErrorDiv } from "../styles/Div.styled";
 
-const login = () => {
+const Login = () => {
     /**form state to be set in handleChange function */
     const [loginFormState,setLoginFormState] = useState({email:'',password:''});
     /*state for error message */
@@ -58,4 +58,4 @@ const login = () => {
         </FormSection>
     );
 };
-export default login;
+export default Login;

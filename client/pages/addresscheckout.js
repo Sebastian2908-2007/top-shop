@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 const AddressForm = dynamic(() =>import( '../components/AddressForm'),{ssr: false});
 
-const addressCheckout = () => {
+const AddressCheckout = () => {
  
 
     return(
@@ -9,4 +9,4 @@ const addressCheckout = () => {
     )
 };
 
-export default addressCheckout;
+export default AddressCheckout;

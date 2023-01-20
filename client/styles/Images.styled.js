@@ -154,6 +154,7 @@ const bounceIn = keyframes`
 /**img tag for social links*/
 export const SocialPic = styled.img`
 width:100%;
+object-fit: cover;
 `;
 export const CartPic = styled.img`
 max-width:100%;

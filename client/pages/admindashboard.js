@@ -33,7 +33,7 @@ import { EffectCards } from "swiper";
 import AdminUsers from "../components/AdminUsers";
 
 
-const admindashboard = () => {
+const Admindashboard = () => {
     /**call category query refetch will happen when form is submitted*/
     const {loading,data,refetch} = useQuery(GET_CATEGORIES);
     // todays date\
@@ -72,4 +72,4 @@ const admindashboard = () => {
        
 };
 
-export default admindashboard;
+export default Admindashboard;

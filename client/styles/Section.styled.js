@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const HomeHeroSection = styled.section`
 width: 100%;
+//position: relative;
+//overflow: hidden;
 @media screen and (min-width: 1366px) {
   padding: 8%;
   padding-bottom: 8%;

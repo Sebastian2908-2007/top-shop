@@ -75,6 +75,8 @@ if(data) {
      alt='a bunch of futuristic shopping scenes'
      width={1920}
      height={1080}
+     //fill
+     priority
      layout='responsive'
      />
      </HomeHeroSection>

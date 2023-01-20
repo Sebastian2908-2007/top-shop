@@ -2,7 +2,7 @@ import { AboutSection,OuterAboutSection,AboutHeroSection } from "../styles/Secti
 import { AboutHeroPic, AiImage } from "../styles/Images.styled";
 import { AboutParagrapgh } from "../styles/P.styled";
 
-const about = () => {
+const About = () => {
 return (
     <>
     <AboutHeroSection>
@@ -56,4 +56,4 @@ Thank you for choosing Top Shop. We're thrilled to have you as a customer and we
 )
 };
 
-export default about;
+export default About;

@@ -16,7 +16,7 @@ import { AdminProductBtnDiv } from '../styles/Div.styled';
 import EditDeleteModal from "../components/EditDeleteModal";
 import UserOrderModal from "../components/UserOrderModal";
 /**self made components end*/
-export default function adminusers () {
+export default function Adminusers () {
     /**styles for mui components */
     const style = {
           display:"flex",
