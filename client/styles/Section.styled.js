@@ -292,7 +292,7 @@ padding-bottom: 5rem;
 
 export const AboutHeroSection = styled.section`
 width: 100%;
-background: linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
+//background: linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
 padding-bottom: .1%;
 @media screen and (min-width: 768px) {
  // background-color: rgb(248, 248, 128);

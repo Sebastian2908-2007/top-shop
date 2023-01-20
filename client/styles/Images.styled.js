@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { keyframes } from "styled-components";
+import Image from 'next/image';
 
 const flickerIn = keyframes`
 0% {
@@ -161,7 +162,8 @@ max-width:100%;
 export const HomeHeroPic = styled.img`
 width: 100%;
 max-height: 100%;
-object-fit: fill;
+object-fit: cover;
+
 border-bottom: 2px solid black;
 animation: ${bounceIn} 2s linear 1;
 @media screen and (min-width: 1366px) {
@@ -201,8 +203,8 @@ border-radius:11px;
 box-shadow:  0 0 50px black;
 }
 `;
-export const AiImage = styled.img`
-  width: 100%;
+export const AiImage = styled(Image)`
+  //width: 100%;
   height: auto;
   object-fit: contain;
   @media screen and (min-width: 1024px) {

@@ -72,6 +72,7 @@ if(data) {
 
      <HomeHeroPic 
      src='/topshop-hero2.png'
+     alt='a bunch of futuristic shopping scenes'
      />
      </HomeHeroSection>
      <ProductSection>
