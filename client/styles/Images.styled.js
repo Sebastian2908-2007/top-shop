@@ -159,10 +159,10 @@ export const CartPic = styled.img`
 max-width:100%;
 `;
 
-export const HomeHeroPic = styled.img`
+export const HomeHeroPic = styled(Image)`
 width: 100%;
-max-height: 100%;
-object-fit: cover;
+//max-height: 100%;
+object-fit: contain;
 
 border-bottom: 2px solid black;
 animation: ${bounceIn} 2s linear 1;
@@ -204,7 +204,7 @@ box-shadow:  0 0 50px black;
 }
 `;
 export const AiImage = styled(Image)`
-  //width: 100%;
+  width: 100%;
   height: auto;
   object-fit: contain;
   @media screen and (min-width: 1024px) {
@@ -220,7 +220,7 @@ max-width:30%;
 margin-bottom: 3%;
 `;
 
-export const AboutHeroPic = styled.img`
+export const AboutHeroPic = styled(Image)`
 width: 100%;
 height: 40vh;
 //max-height: 100%;

@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const HomeHeroSection = styled.section`
 width: 100%;
 @media screen and (min-width: 1366px) {
-  padding: 4%;
-  padding-bottom: 6%;
+  padding: 8%;
+  padding-bottom: 8%;
   background: linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
  // background-color: rgb(248, 248, 128);
   //border-bottom: 50px solid black;

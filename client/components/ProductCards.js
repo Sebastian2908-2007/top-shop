@@ -18,6 +18,7 @@ import { DeleteProductButton, EditProductButton } from '../styles/Button.styled'
 /**styled components related only to admin functionality end*/
 /**this is dexie singleton import this allows us to work easily with indexedDB*/
 import clientDatabase from '../utils/dexiedb';
+import Image from 'next/legacy/image';
 
 /**although this is the same component used on the homepage certain data will not be accessible there for the
  * admin namely category name also even if delete button shows the key and bucket properties will not be present
@@ -123,7 +124,7 @@ Key
        justifyContent:'space-between'
       }
             }>
-      <CardMedia
+      {/*<CardMedia
         component="img"
         alt={product.name}
         height="140"
@@ -137,6 +138,13 @@ Key
           }
         }
         }
+      />*/}
+      <Image
+         src={Location}
+         alt={product.name}
+         width={600}
+         height={600}
+         layout='responsive'
       />
       <CardContent sx={{display:'flex', flexDirection:'column',alignItems:'center',justifyContent:'space-between',height:'25%'}} >
         {isAdmin && <ProductCardCategoryDiv>Category: {product.category.name}</ProductCardCategoryDiv>}
