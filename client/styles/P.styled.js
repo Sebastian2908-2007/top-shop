@@ -1,10 +1,11 @@
 import styled from "styled-components";
 export const  SingleblogpostParagrapgh = styled.p`
-padding: 2%;
-border: 1px solid black;
-background-color: rgb(255,255,255,0.6);
+padding: 4%;
+border: 1px solid rgb(0,0,0);
+background-color: rgb(252, 245, 239);
+border-radius: 8px;
 text-align: center;
-box-shadow:  0 0 10px black;
+box-shadow:  0 0 10px rgb(254, 114, 53);
 `;
 export const  ReviewTextParagraph = styled.p`
 padding: 2%;

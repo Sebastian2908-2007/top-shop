@@ -64,22 +64,23 @@ background: linear-gradient(to left, rgb(199, 197, 104),rgb(0,0,0));
 `;
 
 export const ExternalLink = styled.a`
-color: #017698;
+color: rgb(254, 114, 53);
 text-decoration: underline;
+word-wrap: break-word;
 &:hover {
-color:rgb(248, 248, 128);
-background-color: black;
+color:rgb(0, 195, 255);
+background:linear-gradient(to left, rgb(254, 114, 53),rgb(0,0,0));
 border-radius: 8px;
 padding: .5%;
 }
 `;
 
 export const ShopNowLink = styled(Link)`
-color:rgb(0, 195, 255);
-background-color: rgb(254, 114, 53);
+color:rgb(252, 245, 239);
+border: 2px solid rgb(252, 245, 239);
+background: linear-gradient(to left, rgb(254, 167, 53),rgb(0,0,0));
 border-radius: 8px;
 padding: .4%;
-border: 2px solid rgb(0, 195, 255);
 margin-left: 2%;
 @media screen and (min-width: 375px) {
     padding: 2%;
@@ -94,11 +95,11 @@ color: #017698;
 `;
 
 export const BackToTopLink = styled.a`
-color:rgb(0, 195, 255);
-background-color: rgb(254, 114, 53);
+color:rgb(252, 245, 239);
+border: 2px solid rgb(252, 245, 239);
+background: linear-gradient(to right, rgb(254, 114, 53),rgb(0,0,0));
 border-radius: 8px;
 padding: .4%;
-border: 2px solid rgb(0, 195, 255);
 margin-left: 2%;
 @media screen and (min-width: 375px) {
     padding: 2%;
@@ -113,10 +114,16 @@ color: #017698;
 `;
 export const CheckoutLink = styled(Link)`
     padding: 3%;
-    background-color: rgb(254, 114, 53);
-    color: rgb(0, 195, 255);
+    border: 1px solid rgb(252, 245, 239);
+    background: linear-gradient(to left, rgb(254, 167, 53),rgb(254, 114, 53));
+    color: rgb(252, 245, 239);
     margin-bottom: 3%;
-    border: 2px solid rgb(254, 167, 53) ;
     font-size: 1.2em;
+    border-radius: 8px;
+    &:hover {
+      color: rgb(0, 195, 255);
+      border: 2px solid rgb(254, 167, 53);
+      border: 1px solid  rgb(0, 195, 255);
+}
 `;
 

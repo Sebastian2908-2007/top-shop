@@ -163,6 +163,8 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 width: 100%;
+border: 1px solid rgb(252, 245, 239);
+box-shadow:  0 0 10px black;
 padding: ${props => props.padding ? props.padding : '2%'};
 margin-top: ${props => props.marginTop};
 border-radius: ${props => props.borderRadius};

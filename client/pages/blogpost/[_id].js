@@ -10,15 +10,13 @@ import BottomLinkPack from "../../components/BottomLinkPack";
 /**COMPONENT: for the top two page links*/
 import TopLinkPack from "../../components/TopLinkPack";
 /**styled componenets import */
-import { SingleBlogPostHeroSection,SingleBlogpostSection  } from "../../styles/Section.styled";
+import { SingleBlogPostHeroSection,SingleBlogpostSection,SingleBlogSection  } from "../../styles/Section.styled";
 import { BlogHeroPic } from "../../styles/Images.styled";
 import { SingleBlogpostTitle } from "../../styles/H1.styled";
 /**this stuff if for the admin edit and delete buttons that will trigger the model "should probably be a COMPONENT" */
 import { DeleteProductButton, EditProductButton } from '../../styles/Button.styled';
 import { AdminProductBtnDiv } from '../../styles/Div.styled';
 /**this stuff if for the admin edit and delete buttons that will trigger the model ending*/
-/**this is imported alone for display of just this link when logged in as an admin */
-import { BackSpan } from "../../styles/Spans.styled";
 /**styled componenets import ends */
 /**jwt auth stuff */
 import auth from "../../utils/auth";
@@ -64,6 +62,53 @@ return {
 };
 
 export default function blogPost ({blogPost})  {
+
+  /**destructure static props */
+  const {_id,title,blogText,blogPic} = blogPost.getBlogpostById;
+  /**further desstructure for pertinent blogPic info like Key Bucket which are instrumental in deleting from s3
+   * all of these destructured props are used in setModalInfo();
+   */
+ const {Key,Bucket} = blogPic;
+
+/**this is used for the if statement that determines how many paragraphs there will be*/
+let wordCounter = 0;
+/**this is used for the if statement that determines how many paragraphs there will be it is fed as the second argument to the actual format paragraph function*/
+let numberOfParagraphs = 1;
+/**this if statement determines how many paragraphs we are going to need based on how much "blogText" there is 62 words equals one paragraph*/
+for (let i=0; i< blogText.split(' ').length; i++ ) {
+  if(wordCounter === 62){
+    numberOfParagraphs++
+    wordCounter = 0
+}else{
+  wordCounter++ 
+}
+}
+/**This function returns an array of all of our paragraphs to be used in the map in our jsx*/
+function formatParagraphs(string, numlines) {
+  let length = string.length;
+  let paraLength = Math.round((length)/numlines);
+  let paragraphs = [];
+  for (let i=0; i<numlines; i++) {
+      let marker = paraLength;
+      //if the marker is right after a space, move marker back one character
+      if (string.charAt(marker-1) == " ") {
+          marker--; 
+      }
+      //move marker to end of a word if it's in the middle
+      while(string.charAt(marker) != " " && string.charAt(marker) != "") {
+          marker++;
+      }
+      let nextPara = string.substring(0, marker)
+      paragraphs.push(nextPara)
+      string = string.substring((nextPara.length+1),string.length)
+  }
+  return paragraphs
+}
+/**our paragraphs for map in jsx it takes db blog text and the numberofParagraphs determing in the if statement above */
+const myparagraphs = formatParagraphs(blogText,numberOfParagraphs);
+/**this is just to give my mapped elements an id*/
+let blogTextKey = 0;
+
   const shareIconStyle = {
     position:"sticky",
     top:0,
@@ -80,12 +125,7 @@ export default function blogPost ({blogPost})  {
       fontSize: '3rem'
      },
   }; 
-    /**destructure static props */
-    const {_id,title,blogText,blogPic} = blogPost.getBlogpostById;
-    /**further desstructure for pertinent blogPic info like Key Bucket which are instrumental in deleting from s3
-     * all of these destructured props are used in setModalInfo();
-     */
-   const {Key,Bucket} = blogPic;
+  
   /**checks to see if the user is an admin*/
   const [isAdmin,setIsAdmin] = useState(true);
   /**set admin data at runtime with useEffect*/
@@ -126,8 +166,6 @@ export default function blogPost ({blogPost})  {
         setModalInfo({_id:_id,title:title,blogText:blogText,Key:Key,Bucket:Bucket,itemType:'blogpost',EditOrDelete:'edit'});
      };
 
-
-
 return(
     <>
     <Head>
@@ -163,8 +201,12 @@ modalInfo={modalInfo}
           {/**Below if admin display edit and delete buttons for */}
   {isAdmin &&   <AdminProductBtnDiv><DeleteProductButton onClick={deleteBlogPost} >Delete</DeleteProductButton>
       <EditProductButton onClick={editBlogPost} >Edit</EditProductButton></AdminProductBtnDiv>}
-
-        <BlogText content={blogText} />
+      <SingleBlogSection>
+{myparagraphs.map(paragraph => (
+  
+  <BlogText key={blogTextKey++} content={paragraph}/>
+))}
+   </SingleBlogSection>     
       {!isAdmin && <BottomLinkPack/>}
     </SingleBlogpostSection>
     </>

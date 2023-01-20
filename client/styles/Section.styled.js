@@ -4,6 +4,8 @@ export const HomeHeroSection = styled.section`
 width: 100%;
 @media screen and (min-width: 1366px) {
   padding: 4%;
+  padding-bottom: 6%;
+  background: linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
  // background-color: rgb(248, 248, 128);
   //border-bottom: 50px solid black;
   display: flex;
@@ -149,7 +151,6 @@ padding-bottom: 1%;
   padding-bottom: 2%;
   width: 100%;
   height: auto;
-  background: linear-gradient(to right, rgb(199, 197, 104),rgb(0,0,0,0.7));
 }
 `;
 /**A section for the reviews originally cloned from the Products section styled component */
@@ -247,6 +248,24 @@ box-shadow:0 0 10px rgb(254, 167, 53);
 border-radius: 8px;
 @media screen and (min-width: 1024px) {
    width: 100%;
+   display: flex;
+flex-direction: column;
+align-items: center;
+box-shadow:0 0 20px rgb(254, 167, 53);
+}
+`;
+
+export const SingleBlogSection = styled.section`
+height: auto;
+width: 100%;
+padding: 8%;
+border: 1px solid rgb(252, 245, 239);
+background: linear-gradient(to left, rgb(0, 119, 255),rgb(0,0,0,0.7));
+box-shadow:0 0 10px rgb(0,0,0);
+border-radius: 8px;
+@media screen and (min-width: 1024px) {
+   width: 100%;
+   padding: 3%;
    display: flex;
 flex-direction: column;
 align-items: center;

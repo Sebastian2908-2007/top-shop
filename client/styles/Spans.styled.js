@@ -21,11 +21,13 @@ font-family: 'Courier New', Courier, monospace;
 `;
 
 export const BackSpan = styled.span`
-color:rgb(0, 119, 255);
-background-color: rgb(254, 167, 53);
+color:rgb(252, 245, 239);
+border: 2px solid rgb(252, 245, 239);
+background: linear-gradient(to right, rgb(254, 114, 53),rgb(0,0,0));
+//background-color: rgb(254, 167, 53);
 border-radius: 8px;
 padding: .4%;
-border: 2px solid rgb(0, 195, 255);
+
 @media screen and (min-width: 375px) {
     padding: 2%;
 }
