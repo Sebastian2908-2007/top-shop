@@ -17,7 +17,7 @@ import { useStoreContext } from '../utils/Globalstate';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { UPDATE_PRODUCTS } from '../utils/actions';
-import { NoProductDiv } from '../styles/Div.styled';
+import { NoProductDiv} from '../styles/Div.styled';
 /**grid components mui */
 //import { initializeApollo } from '../lib/apolloClient'
 /**import the edit and delete modal*/
@@ -75,9 +75,8 @@ if(data) {
      alt='a bunch of futuristic shopping scenes'
      width={1920}
      height={1080}
-     //fill
      priority
-     layout='responsive'
+     layout='intrinsic'
      />
      </HomeHeroSection>
      <ProductSection>

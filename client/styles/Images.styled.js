@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { keyframes } from "styled-components";
 import Image from 'next/image';
+/**if I use legacy image here it really messes up my current styling but If I dont I get a warning for using legacy prop
+ * I may deploy as is and see if all goes well if so oh well I guess
+ */
+//import Image from 'next/legacy/image';
 
 const flickerIn = keyframes`
 0% {
@@ -156,13 +160,13 @@ export const SocialPic = styled.img`
 width:100%;
 object-fit: cover;
 `;
-export const CartPic = styled.img`
+export const CartPic = styled(Image)`
 max-width:100%;
 `;
 
 export const HomeHeroPic = styled(Image)`
 width: 100%;
-//max-height: 100%;
+max-height: 100%;
 object-fit: contain;
 
 border-bottom: 2px solid black;
@@ -177,7 +181,7 @@ box-shadow:  0 0 50px black;
 transform: skew(10deg, -8deg);
 }
 `;
-export const BlogHeroPic = styled.img`
+export const BlogHeroPic = styled(Image)`
 width: 100%;
 height: 40vh;
 //max-height: 100%;

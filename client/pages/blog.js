@@ -29,7 +29,12 @@ return(
         <BlogPostHeroSection id="Hero">
 <BlogHeroPic
 src="/topshop-hero1.png"
-alt="hero banner of a cute handmade knome in a jail suit"
+alt="futuristic shop collage"
+width={1920}
+height={1080}
+//fill
+priority
+layout='responsive'
 />
 <MainTitle>Top Blog</MainTitle>
 <TopLinkPack/>

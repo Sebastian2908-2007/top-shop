@@ -242,3 +242,7 @@ justify-content: space-between;
 margin-top: 5%;
 `;
 
+export const CardImageDiv = styled.div`
+
+`;
+

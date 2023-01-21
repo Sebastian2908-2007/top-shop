@@ -12,7 +12,7 @@ import { ProductPriceSpan } from '../styles/Spans.styled';
 /**import token functionality to use for conditionals */
 import auth from '../utils/auth';
 /**styled components related only to admin functionality start */
-import { ProductCardCategoryDiv,AdminProductBtnDiv } from '../styles/Div.styled';
+import { ProductCardCategoryDiv,AdminProductBtnDiv, CardImageDiv } from '../styles/Div.styled';
 import { AdminItemNameSpan } from '../styles/Spans.styled';
 import { DeleteProductButton, EditProductButton } from '../styles/Button.styled';
 /**styled components related only to admin functionality end*/
@@ -139,13 +139,15 @@ Key
         }
         }
       />*/}
+      <div>
       <Image
          src={Location}
          alt={product.name}
          width={600}
          height={600}
-         layout='responsive'
+         layout='intrinsic'
       />
+      </div>
       <CardContent sx={{display:'flex', flexDirection:'column',alignItems:'center',justifyContent:'space-between',height:'25%'}} >
         {isAdmin && <ProductCardCategoryDiv>Category: {product.category.name}</ProductCardCategoryDiv>}
         <Typography gutterBottom variant="h5" component="div" 

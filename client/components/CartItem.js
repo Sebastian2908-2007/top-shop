@@ -77,6 +77,9 @@ return (
         <CartPic
         src={Location}
         alt="cart item"
+        width={60}
+        height={60}
+        layout='intrinsic'
         />
       </CartImgDiv>
       <MenuItem2MainDiv>
