@@ -44,7 +44,7 @@ const openReviewForm = () => {
     return(
         
             
-      reviews.length ?
+      
          <ReviewSection>
         <MainTitle>Customer Reviews</MainTitle>
              <Box sx={{width:"100%"}}>
@@ -55,7 +55,7 @@ const openReviewForm = () => {
                  hasLeftReview={hasLeftReview}
                  setHasLeftReview={setHasLeftReview}
                  />
-                 
+               {reviews.length ?  (
              <Grid container rowSpacing={{xs:3,md:4}} columnSpacing={{xs:0,sm:4,md:4}} >
             {reviews.map(review => (
                 <Grid item xs={12} sm={6} lg={4} xl={3}   key={review._id}>
@@ -63,9 +63,12 @@ const openReviewForm = () => {
                </Grid>
             ))}
             </Grid>
-            </Box>
-        </ReviewSection>
-        :<div>no reviews</div>
+            
+       
+        ):(<div>no reviews</div>)}
+        </Box>
+         </ReviewSection>
+        
       
       
     );

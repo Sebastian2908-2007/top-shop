@@ -82,6 +82,47 @@ background: ${props => props.errorColor };
    
 }
 `;
+export const ReviewForm = styled.form`
+/**all transform props were added for the create user form and that is where they are being used */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+padding: 7%;
+border: 2px solid rgb(254, 167, 53);
+width: 100%;
+border-radius: 11px;
+//background-color: rgb(252, 245, 239,.8);
+background: ${props => props.errorColor };
+@media screen and (min-width: 390px) {
+    
+}
+@media screen and (min-width: 540px) {
+    
+}
+@media screen and (min-width: 768px) {
+    
+    width: 70%
+}
+@media screen and (min-width: 1024px) {
+    padding: ${props => props.padding1024 };
+   
+}
+/*this media query was made only for add user form */
+@media screen and (min-width: 1280px) {
+    
+}
+@media screen and (min-width: 1366px) {
+    
+    width: 80%;
+    
+}
+@media screen and (min-width: 1920px) {
+    padding: 3%;
+    width: 45%;
+   
+}
+`;
 
 /**form for editDelete modal*/
 export const EditDeleteForm = styled.form`
@@ -267,11 +308,12 @@ export const ReviewFormTextArea = styled.textarea`
 width: 100%;
 border-radius: 11px;
 height: 55%;
-border: 2px solid rgba(223,223,16,1);
-background: rgba(223,223,16,0.4);
-color: black;
+border: 2px solid rgb(0, 119, 255);
+background: rgba(0,0,0,0.4);
+color: rgb(252, 245, 239);
+margin-top: 8%;
 &::placeholder {
-   color: rgba(223,223,16,1);
+   color: rgb(252, 245, 239);
   }
   @media screen and (min-width:540px) {
     width: 70%;

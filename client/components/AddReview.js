@@ -6,13 +6,28 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 /**mui imports ends*/
 /**styled components imports*/
-import { Form, ReviewFormTextArea } from "../styles/Forms.styled";
+import { ReviewForm , ReviewFormTextArea } from "../styles/Forms.styled";
 /**styled components imports ends*/
 /**mutation imports for leaving review*/
 import { ADD_REVIEW } from "../utils/mutations";
 import { LeaveReviewBtn } from "../styles/Button.styled";
 import { GET_REVIEWS } from "../utils/queries";
 
+const style = {
+    display:"flex",
+    flexDirection: "column",
+    alignItems:"center",
+      position: 'absolute',
+      top: '50%',
+      padding: '5%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: '80%',
+      bgcolor: 'rgb(0,0,0,.6)',
+      border: '2px solid rgb(254, 114, 53)',
+      borderRadius:'8px',
+      boxShadow: 24,
+    };
 
 const AddReview = ({open,setOpenLeaveReviewModal,hasLeftReview,setHasLeftReview}) => {
     
@@ -60,9 +75,9 @@ const AddReview = ({open,setOpenLeaveReviewModal,hasLeftReview,setHasLeftReview}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         >
-            <Box>
-                <Typography>Please Leave A Review</Typography>
-                <Form onSubmit={submitReview}>
+            <Box sx={style}>
+                <Typography sx={{color:'rgb(252, 245, 239)',marginBottom:'5%',fontSize:{sm:"2em"}}}>Please Leave A Review</Typography>
+                <ReviewForm  onSubmit={submitReview}>
                     <Rating
                      name="simple-controlled"
                      value={Ratingvalue}
@@ -72,7 +87,7 @@ const AddReview = ({open,setOpenLeaveReviewModal,hasLeftReview,setHasLeftReview}
                     />
                     <ReviewFormTextArea onChange={handleChange} name='reviewText' placeholder="share your thoughts..."/>
                    <LeaveReviewBtn type="submit">Submit</LeaveReviewBtn>
-                </Form>
+                </ReviewForm>
             </Box>
 
         </Modal>

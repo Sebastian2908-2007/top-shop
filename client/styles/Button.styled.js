@@ -94,11 +94,17 @@ background-color: #000080 ;
 `;
 
 export const LeaveReviewBtn = styled.button`
-color:  rgba(223,223,16,1);
-padding: 1%;
+color:  rgb(254, 167, 53);
+padding: 3%;
 border: none;
-background-color: rgb(0,0,0,.5);
+background:linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7));
 margin-bottom: 3em;
+border-radius: 8px;
+margin-top: 11%;
+&:hover {
+color:rgb(0, 195, 255);
+background:linear-gradient(to left, rgb(254, 114, 53),rgb(0,0,0));
+}
 `;
 export const ViewUserOrderBtn = styled.button`
 margin-top: 3%;

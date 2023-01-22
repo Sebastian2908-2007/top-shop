@@ -23,10 +23,12 @@ const headerTitleStyle = theme => ({
         fontSize: '3rem'
     },
     [theme.breakpoints.up('md')]:{
-        fontSize: '3rem'
+        fontSize: '3.5rem',
+        marginLeft:'35%'
     },
     [theme.breakpoints.up('lg')]:{
-        fontSize: '4rem'
+        fontSize: '4rem',
+        marginLeft:'50%'
     },
 });
 
