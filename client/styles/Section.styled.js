@@ -17,22 +17,22 @@ width: 100%;
 
 export const ProductSection = styled.section`
 padding: 3%;
-padding-bottom: 5rem;
+padding-bottom: 6rem;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 @media screen and (min-width: 768px) {
-    padding-bottom: 7rem;
+    padding-bottom: 8rem;
 };
 @media screen and (min-width: 912px) {
-    padding-bottom: 9rem;
+    padding-bottom: 10rem;
 };
 @media screen and (min-width: 1366px) {
-    padding-bottom: 11rem;
+    padding-bottom: 12rem;
 };
 @media screen and (min-width: 1920px) {
-    padding-bottom: 12rem;
+    padding-bottom: 13rem;
 };
 `;
 

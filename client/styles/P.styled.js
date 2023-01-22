@@ -6,6 +6,7 @@ background-color: rgb(252, 245, 239);
 border-radius: 8px;
 text-align: center;
 box-shadow:  0 0 10px rgb(254, 114, 53);
+font-family: 'Times New Roman', Times, serif;
 `;
 export const  ReviewTextParagraph = styled.p`
 padding: 2%;

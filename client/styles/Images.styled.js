@@ -252,3 +252,26 @@ border-radius:11px;
 box-shadow:  0 0 50px rgb(254, 114, 53);
 }
 `;
+export const LogoImage = styled(Image)`
+  width: 30%;
+  height: auto;
+  object-fit: contain;
+  @media screen and (min-width: 360px) {
+   width: 25%;
+}
+  @media screen and (min-width: 768px) {
+   width: 20%;
+}
+  @media screen and (min-width: 1024px) {
+   width: 13%;
+}
+  @media screen and (min-width: 1280px) {
+   width: 11%;
+}
+  @media screen and (min-width: 1366px) {
+   width: 10%;
+}
+  @media screen and (min-width: 1920px) {
+   width: 8%;
+}
+`;

@@ -242,7 +242,16 @@ justify-content: space-between;
 margin-top: 5%;
 `;
 
-export const CardImageDiv = styled.div`
-
+export const ColumnFooterDiv = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+width: 60%;
+@media screen and (min-width: 540px) {
+   width: 40%;
+}
+@media screen and (min-width: 1366px) {
+   width: 40%;
+}
 `;
 

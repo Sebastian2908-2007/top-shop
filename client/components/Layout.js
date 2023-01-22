@@ -7,10 +7,10 @@ import NavMenu from './NavMenu';
 import dynamic from "next/dynamic";
 const Cart = dynamic(() =>import( './Cart'),{ssr: false});
 import { HeaderHomePageLink } from '../styles/Links.styled';
-import { FooterDiv, HeaderCartMenuDiv  } from '../styles/Div.styled';
-import { SocialImgLink } from '../styles/Links.styled';
+import { FooterDiv, HeaderCartMenuDiv, ColumnFooterDiv  } from '../styles/Div.styled';
+import { SocialImgLink,TopDevLink } from '../styles/Links.styled';
 import { SocialPic } from '../styles/Images.styled';
-
+import { LogoImage } from '../styles/Images.styled';
 
 
 
@@ -18,13 +18,16 @@ import { SocialPic } from '../styles/Images.styled';
 /*this will style the header title */
 const headerTitleStyle = theme => ({
     color:'rgb(0, 119, 255)',
-    fontSize:'1.45rem',
+    fontSize:'1.8rem',
     [theme.breakpoints.up('sm')]:{
-        fontSize: '2rem'
+        fontSize: '3rem'
     },
     [theme.breakpoints.up('md')]:{
         fontSize: '3rem'
-    }
+    },
+    [theme.breakpoints.up('lg')]:{
+        fontSize: '4rem'
+    },
 });
 
 /*this will style the copyright text in footer */
@@ -49,7 +52,16 @@ const Layout = ({ children}) => {
    <ThemeProvider theme={danceScriptTheme}>
    <CssBaseline />
     <Header>  
-       <HeaderHomePageLink href='/' ><Typography component="h1" variant='h6' sx={headerTitleStyle}>Top Shop</Typography></HeaderHomePageLink>
+       <HeaderHomePageLink href='/' >
+        <LogoImage
+         src='/logo.png'
+         alt='site logo'
+         width={256}
+         height={256}
+         layout='intrinsic'
+             />
+        <Typography component="h1" variant='h6' sx={headerTitleStyle}>Top Shop</Typography>
+    </HeaderHomePageLink>
         {/**this div holds the menus */}
        <HeaderCartMenuDiv>
        <Cart/>
@@ -61,9 +73,12 @@ const Layout = ({ children}) => {
     {children}
     </main>
     <Footer>
-        <Typography sx={copyStyle} component="h6" variant='h6' >&copy; Top Shop {new Date().getFullYear()}</Typography>
+        <ColumnFooterDiv>
+        <Typography sx={copyStyle} component="body1" variant='body1' >&copy; Top Shop {new Date().getFullYear()}</Typography>
+        <TopDevLink  href='https://topdev.tech/' target='_blank'>Engineered by TopDev.Tech</TopDevLink>
+        </ColumnFooterDiv>
         <FooterDiv>
-            <SocialImgLink href='https://www.facebook.com/groups/sybscraftyshack/?ref=share' target='_blank'>
+            <SocialImgLink href='https://www.facebook.com/topdev11' target='_blank'>
                 <SocialPic 
                  src='/fb_48px.png' 
                  alt='fb link'
@@ -71,7 +86,7 @@ const Layout = ({ children}) => {
                  height={48}
                 />
             </SocialImgLink>
-            <SocialImgLink href='https://www.instagram.com/sybscraftyshack/?fbclid=IwAR3CNExLMc1B_S_y7EnY8JEQQlytD9Ac621Jaj0xlvf9FC7Pf2-Ez3HJg8Y' target='_blank'>
+            <SocialImgLink href='https://www.instagram.com/topdev.tech/' target='_blank'>
                 <SocialPic 
                  src='/insta_48px.png'  
                  alt='insta link'

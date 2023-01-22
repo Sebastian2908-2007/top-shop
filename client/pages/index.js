@@ -1,7 +1,5 @@
 /**head is for keywords meta tags etc.*/
-//import Head from 'next/head'
-//import Image from 'next/image'
-//import styles from '../styles/Home.module.css'
+import Head from 'next/head'
 import { useState } from 'react';
 import CategoryList from '../components/CategoryList';
 import { useEffect } from 'react';
@@ -65,6 +63,14 @@ if(data) {
 
   return (
     <div>
+      <Head>
+      <title>Top Shop</title>
+      <meta
+      name="description"
+      content="online shopping platform that has a variety of high quality 
+      product available for purchase today"
+      />
+      </Head>
      <HomeHeroSection>
      <EditDeleteModal open={open} setOpen={setOpen}
         setModalInfo={setModalInfo} modalInfo={modalInfo}

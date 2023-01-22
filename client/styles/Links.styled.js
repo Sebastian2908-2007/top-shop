@@ -3,6 +3,10 @@ import Link from 'next/link';
 
 export const HeaderHomePageLink = styled(Link)`
 padding: 1.5%;
+display: flex;
+flex-direction: row;
+align-items: center;
+width: 75%;
 `;
 
 export const SocialImgLink = styled.a`
@@ -124,6 +128,24 @@ export const CheckoutLink = styled(Link)`
       color: rgb(0, 195, 255);
       border: 2px solid rgb(254, 167, 53);
       border: 1px solid  rgb(0, 195, 255);
+}
+`;
+
+export const TopDevLink = styled.a`
+color: rgb(0, 119, 255);
+text-decoration: none;
+font-size: .7rem;
+padding: 1%;
+//font-family: 'dancingscript';
+&:hover {
+color:rgb(0, 195, 255);
+background:linear-gradient(to left, rgb(254, 114, 53),rgb(0,0,0));
+border-radius: 8px;
+padding: .5%;
+}
+@media screen and (min-width: 1366px) {
+  font-size: 1rem;
+  padding: 2%;
 }
 `;
 

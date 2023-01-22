@@ -76,6 +76,7 @@ const loggedIn = auth.loggedIn();
         <div>
         <IconButton
         id="basic-button"
+        aria-label='shopping-cart-button'
         aria-controls={open ? 'long-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
