@@ -121,8 +121,10 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 padding: 6%;
+border-radius: 8px;
+border: 1px solid rgb(252, 245, 239);
 width:${props => props.width ? props.width : '60%'};
-background-color: rgb(248, 248, 128);
+background: linear-gradient(to left, rgb(254, 167, 53),rgb(0,0,0,0.7));
 box-shadow: 0 0 10px black;
 @media screen and (min-width: 540px) {
     width: ${props => props.width540 ? props.width540 : '40%'};

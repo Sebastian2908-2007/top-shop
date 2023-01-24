@@ -7,10 +7,11 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 padding: 7%;
-border: 3px solid rgb(0,0,0);
+border: 3px solid rgb(254, 167, 53);
+box-shadow: 0 0 20px rgb(254, 114, 53);
 border-radius: 11px;
 transform: ${props => props.transform ? props.transform:'translateY(50%)'};
-background: ${props => props.errorColor };
+background: ${props => props.errorColor ? props.errorColor: 'linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7))' };
 @media screen and (min-width: 390px) {
     transform: ${props => props.transform390 ? props.transform390:'translateY(70%)'};
 }
@@ -168,15 +169,17 @@ export const FormInput = styled.input`
 font-size: 1.3em;
 margin-top:${props => props.marginTop ? props.marginTop : '1em'};
 margin-bottom: 1em;
-border:${props => props.border ? props.border: '2px solid rgb(0,0,0)'};
+border:${props => props.border ? props.border: '2px solid rgb(254, 167, 53)'};
+border-radius: 8px;
 `;
 
 
 export const FormButton = styled.button`
 font-size: 1.1em;
 margin-top: 1em;
-background-color: rgb(0,0,0,0.7);
-color: rgb(248, 248, 128);
+background: linear-gradient(to left, rgb(254, 114, 53),rgb(0,0,0,0.7));
+color: rgb(254, 167, 53);
+border:2px solid rgb(254, 167, 53);
 &:hover {
 color: rgb(0,0,0);
 background-color: rgb(0,0,0,0.4);

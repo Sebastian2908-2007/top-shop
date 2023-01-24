@@ -79,18 +79,18 @@ font-size: 1.3em;
 /**related to logged in admin only */
 export const DeleteProductButton = styled.button`
 padding: 6%;
-color:rgb(199, 197, 104) ;
+color:rgb(252, 245, 239);
 border-radius: 11px;
-border: none;
-background-color: rgb(255, 0, 0);
+border: 1px solid rgb(254, 114, 53);
+background: linear-gradient(rgb(0,0,0,0.8),rgb(170, 74, 68));
 `;
 export const EditProductButton = styled.button`
 padding: 6%;
-color:rgb(199, 197, 104) ;
+color:rgb(252, 245, 239);
 border-radius: 11px;
-border: none;
+border: 1px solid rgb(252, 245, 239);
 //background-color: rgb(0, 0, 50.2);
-background-color: #000080 ;
+background:linear-gradient(rgb(0,0,0,0.8),rgb(0, 195, 255));
 `;
 
 export const LeaveReviewBtn = styled.button`

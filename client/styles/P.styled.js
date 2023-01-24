@@ -10,10 +10,15 @@ font-family: 'Times New Roman', Times, serif;
 `;
 export const  ReviewTextParagraph = styled.p`
 padding: 2%;
-border: 1px solid black;
 background-color: rgb(255,255,255,0.6);
 text-align: center;
 box-shadow:  0 0 10px black;
+color:rgb(252, 245, 239);
+border: 1px solid rgb(254, 114, 53);
+border-radius: 8px;
+text-shadow: 0 0 10px rgb(254, 114, 53);
+box-shadow:  0 0 10px black;
+font-weight: bolder;
 `;
 
 export const  AdminUserOrderParagrapgh = styled.p`
