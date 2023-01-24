@@ -53,8 +53,8 @@ const CreateUser = () => {
         return(
             <FormSection flxDirErr={error && 'column'} alignItemsErr={error &&'center'} pdngBtmErr={error && '9em'}>
                 {error && <LoginSignupErrorDiv>{errorMsg} Please Try again!</LoginSignupErrorDiv> }
-                <Form onSubmit={submitAddUser} transform={error ? 'translateY(1%)':'translateY(25%)'} transform390='translateY(40%)'
-                transform540={error ? 'translateY(11%)':'translateY(25%)'} transform768='translateY(35%)' padding1024='1%'
+                <Form onSubmit={submitAddUser} transform={error ? 'translateY(1%)':'translateY(15%)'} transform390='translateY(40%)'
+                transform540={error ? 'translateY(11%)':'translateY(11%)'} transform768='translateY(35%)' padding1024='1%'
                 transform1024={error ? 'translateY(2%)':'translateY(-6%)'} transform1280='translateY(8%)' transform1366={error ? 'translateY(2%)':'translateY(-2%)'}
                 transform1920='translateY(20%)' errorColor={error && 'linear-gradient(rgb(0,0,0,0.8),rgb(170, 74, 68))'}
                 >

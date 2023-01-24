@@ -10,6 +10,7 @@ padding: 7%;
 border: 3px solid rgb(254, 167, 53);
 box-shadow: 0 0 20px rgb(254, 114, 53);
 border-radius: 11px;
+align-items: center;
 transform: ${props => props.transform ? props.transform:'translateY(50%)'};
 background: ${props => props.errorColor ? props.errorColor: 'linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7))' };
 @media screen and (min-width: 390px) {
@@ -171,6 +172,7 @@ margin-top:${props => props.marginTop ? props.marginTop : '1em'};
 margin-bottom: 1em;
 border:${props => props.border ? props.border: '2px solid rgb(254, 167, 53)'};
 border-radius: 8px;
+width: 100%;
 `;
 
 
@@ -180,10 +182,12 @@ margin-top: 1em;
 background: linear-gradient(to left, rgb(254, 114, 53),rgb(0,0,0,0.7));
 color: rgb(254, 167, 53);
 border:2px solid rgb(254, 167, 53);
+border-radius: 8px;
+width: 45%;
 &:hover {
 color: rgb(0,0,0);
-background-color: rgb(0,0,0,0.4);
-border: 1px solid rgb(245 245 6);
+background: linear-gradient(to left, rgb(0, 195, 255),rgb(0,0,0,0.7));;
+border: 3px solid rgb(252, 245, 239);
 };
 `;
 /*forms for adding user and logging in end */
