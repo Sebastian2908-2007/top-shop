@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sebastian2908-2007/sybs-crafty-shack.git"
+    "url": "git+https://github.com/Sebastian2908-2007/top-shop"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Sebastian2908-2007/sybs-crafty-shack/issues"
+    "url": "https://github.com/Sebastian2908-2007/top-shop/issues"
   },
-  "homepage": "https://github.com/Sebastian2908-2007/sybs-crafty-shack#readme",
+  "homepage": "https://github.com/Sebastian2908-2007/top-shop#readme",
   "dependencies": {
     "concurrently": "^7.4.0"
   }
