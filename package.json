@@ -1,8 +1,8 @@
 {
-  "name": "sybs-crafty-shack",
+  "name": "top-shop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "start": "concurrently \"cd server && npm run watch\"",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
