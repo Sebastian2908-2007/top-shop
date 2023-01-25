@@ -51,7 +51,7 @@ const paths = data.getBlogposts.map(blogpost => {
 
 export async function getStaticProps(context) {
     const client = initializeApollo();
-const _id = context.params._id;
+const _id = context.params?._id;
 const {data} = await client.query({
     
     query: GET_BLOG_POST_BY_ID ,variables:{_id: _id}
