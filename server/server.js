@@ -51,4 +51,7 @@ db.once('open', () => {
 });
 
 
-/*-p $PORT*/
+/*-p $PORT
+"start": "node server/server.js",
+ "install": "cd server && npm i && cd ../client && npm i"
+*/
