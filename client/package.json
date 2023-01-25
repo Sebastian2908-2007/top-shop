@@ -39,5 +39,9 @@
     "react-dom": "18.2.0",
     "styled-components": "^5.3.6",
     "swiper": "^8.4.5"
-  }
+  },
+  "cacheDirectories": [
+    "node_modules/",
+    ".next/cache/"
+  ]
 }
