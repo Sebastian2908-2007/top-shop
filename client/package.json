@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "dev": "next dev",
-    "build": "cd server && npm start && next build",
+    "build": "next build",
     "start": "next start",
     "export": "next export",
     "heroku-postbuild": "npm run build",
