@@ -37,6 +37,11 @@ startServer()
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+/**production code note when developing unote before production */
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/out')));
+  }
+
 db.once('open', () => {
     app.listen(PORT, () => {
         console.log(`API server running on ${PORT} !!! Yeah boy!`);
