@@ -26,7 +26,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
  * path once starting the app in production though ffrom my logs in the server.js file so then I can edit it here
  */
 const httpLink = new HttpLink({
-  uri: 'https://topshop1188.herokuapp.com/graphql', // Server URL (must be absolute)
+  uri: process.env.NEXT_PUBLIC_APOLLO_URI, // Server URL (must be absolute)
   credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
 })
 /*const schemaLink = new SchemaLink({schema});*/
