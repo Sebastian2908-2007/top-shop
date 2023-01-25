@@ -7,6 +7,7 @@
   },
   "main": "server/server.js",
   "scripts": {
+    "start": "cd client && npm run start",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
     "simprod": "concurrently \"cd server && npm run watch\" \"cd client && npm run build && npm run start\"",
     "install": "cd client && npm i",
