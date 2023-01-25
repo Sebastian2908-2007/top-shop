@@ -44,7 +44,7 @@ const paths = data.getBlogposts.map(blogpost => {
 })
   return {
      paths,
-     fallback: 'blocking'
+     fallback: false
   }
   
 };
