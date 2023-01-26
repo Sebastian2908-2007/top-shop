@@ -159,6 +159,7 @@ Key
         color:'rgb(252, 245, 239)',
         border: '2px solid black',
         textShadow: '0 0 10px rgb(254, 167, 53)',
+        fontFamily:'sans-serif'
         }}>
          {isAdmin && <AdminItemNameSpan>Product Name:</AdminItemNameSpan>} {name}
         </Typography>
@@ -174,6 +175,7 @@ Key
          textShadow: '0 0 10px rgb(254, 114, 53)',
          boxShadow:  '0 0 10px black',
          fontWeight:'bolder',
+         fontFamily:'sans-serif',
          fontSize:{xs:'1.3rem',xl:'1.5rem'}}}>
         {isAdmin && <AdminItemNameSpan>Product description:</AdminItemNameSpan>} {description}
         </Typography>
