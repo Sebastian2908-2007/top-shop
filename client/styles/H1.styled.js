@@ -61,7 +61,7 @@ border: 2px solid black;
 text-shadow: 0 0 10px rgb(0, 119, 255);
 margin-top: 0.2em;
 font-size: 1.7em;
-font-family: 'dancing script';
+font-family: 'sans-serif';
 text-align: center;
 border-radius: 8px;
 font-weight: bolder;  

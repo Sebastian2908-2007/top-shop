@@ -60,6 +60,7 @@ export const FullBlogPostLink = styled(Link)`
 background: linear-gradient(to right, rgb(254, 114, 53),rgb(0,0,0));
 padding: 3%;
 border-radius: 11px;
+font-family: "sans-serif";
 color: rgb(254, 167, 53);
 &:hover {
 //background-color: rgb(255,255,255,0.8);
@@ -136,6 +137,7 @@ color: rgb(0, 119, 255);
 text-decoration: none;
 font-size: .7rem;
 padding: 1%;
+font-family: "sans-serif";
 //font-family: 'dancingscript';
 &:hover {
 color:rgb(0, 195, 255);
