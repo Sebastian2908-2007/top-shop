@@ -44,7 +44,7 @@ const paths = data.getBlogposts.map(blogpost => {
 })
   return {
      paths,
-     fallback: false
+     fallback: 'blocking'
   }
   
 };
@@ -57,7 +57,8 @@ const {data} = await client.query({
     query: GET_BLOG_POST_BY_ID ,variables:{_id: _id}
 })
 return {
-    props: {blogPost: data}
+    props: {blogPost: data},
+    revalidate: 10,
 }
 };
 
