@@ -28,10 +28,8 @@ const CreateUser = () => {
         });
         const token = addUserResponse.data.addUser.token;
         auth.login(token);
-        console.log(token);
     }catch(e) {
         setErrorMsg(e.message);
-        console.log(e);
     }
     };
 

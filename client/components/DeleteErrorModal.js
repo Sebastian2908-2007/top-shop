@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
 const DeleteErrorModal = ({open,setOpen,categoryDeleteError,setCategoryDeleteError}) => {
-    console.log(categoryDeleteError.message);
     const style = {
         display:"flex",
         flexDirection: "row",

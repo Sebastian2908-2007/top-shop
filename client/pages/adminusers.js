@@ -55,25 +55,20 @@ export default function Adminusers () {
 
 /**delete user function for card button*/
 const deleteUser = (_id) => {
-    console.log(_id,"FROM DELETE");
     setOpen(true);
     setModalInfo({_id: _id,itemType:'user',EditOrDelete:'delete'});
 };
 /**edit user function for card button*/
 const editUser = (_id,firstName,lastName,email) => {
-    console.log(_id,firstName,lastName,email,"FROM EDIT");
     setOpen(true);
     setModalInfo({_id: _id,itemType:'user',EditOrDelete:'edit'});
 };
 /**function to open user order info modal on click of orders button in user card*/
 const setOrder = (order) => {
-    console.log(order,"logged in func");
     setOrderOpen(true);
     setOrderInfo(order);
 };
 
-//useEffect(()=>{console.log(modalInfo,"FROM USEEFFECT")},[modalInfo,setModalInfo]);
-//console.log(getUsers);
     return (
        
         <AdminUsersSection>

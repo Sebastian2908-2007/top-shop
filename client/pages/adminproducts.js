@@ -34,7 +34,6 @@ if(loading) {
 }
 /**turn data into a products variable for ease of use */
 const products = data.getProducts;
-//console.log(products); 
 return (
     /**if stuff is not loading display all products */
     <AdminProductPageSection>
@@ -57,18 +56,3 @@ return (
 );
 
  };
- /** 
-   auth.loggedIn() && auth.getProfile().data.isAdmin ? (<AdminProductPageSection>
-        {products.map(product => (
-            <ProductCard key={product._id} product={product}/>
-        ))}
-    </AdminProductPageSection>):(<div>no admin</div>)
-
-
-       <AdminProductPageSection>
-        {products.map(product => (
-            <ProductCard key={product._id} product={product}/>
-        ))}
-    </AdminProductPageSection>
-
- */

@@ -54,7 +54,7 @@ const AddCategory = ({data,refetch,loading}) => {
         /**clear form state */
         setCategoryFormData({name:''});
        }catch(e){
-       console.log(e);
+       //console.log(e);
        }
 
     };
@@ -65,7 +65,7 @@ const AddCategory = ({data,refetch,loading}) => {
          /**call refetch so UI can be updated if delete is successful*/
          refetch();
        }catch(e) {
-        console.log(e);
+        //console.log(e);
         setCategoryDeleteError(e);
         setOpen(true);
        }

@@ -20,7 +20,6 @@ const ReviewCard = ({review,setHasLeftReview}) => {
     const {_id,reviewText,author,rating} = review;
     /**destructure author data from destructured review data*/
     const {firstName,lastName} = author;
-    //console.log(author);
           /**modal info this state will hold the information I need to either delete or edit a review it will be set here on the review page
      */
           const [modalInfo,setModalInfo] = useState({});

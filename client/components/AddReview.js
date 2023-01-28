@@ -48,7 +48,6 @@ const AddReview = ({open,setOpenLeaveReviewModal,hasLeftReview,setHasLeftReview}
             ...formData,
             [name]: value,
         });
-        console.log(formData);
     };
     /**this will submit the review data to our db*/
     const submitReview = async (event) => {
@@ -60,7 +59,6 @@ const AddReview = ({open,setOpenLeaveReviewModal,hasLeftReview,setHasLeftReview}
                     reviewText: formData.reviewText
                 }
             });
-            console.log(review,'NEW REVIEW');
             setHasLeftReview(true);
             handleClose();
         }catch(e){

@@ -73,7 +73,7 @@ userSchema.methods.isPasswordCorrect = async function(password) {
 /**this should remove review if the user is deleted */
 userSchema.post("remove", function(doc) {
    
-    console.log(doc,'removed');
+    
    
   });
 

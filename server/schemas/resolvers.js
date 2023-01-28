@@ -77,7 +77,6 @@ const resolvers = {
                 // the below images do not work in development!
                 images: [`${products[i].image.Location}`]
               });
-      //console.log(product);
               // generate price id using the product id
               const price = await stripe.prices.create({
                 product: product.id,
@@ -161,18 +160,16 @@ const resolvers = {
             try{
                 await Review.findByIdAndDelete(user.review._id);
                 const deletedUser = await User.findOneAndDelete({_id:_id});
-                console.log('deleting user and review block ran');
                 return deletedUser;
             }catch(e) {
-                console.log('delete review and user block',e);
+                console.log(e);
              }
             }
                try{
                 const deletedUser = await User.findOneAndDelete({_id:_id});
-                console.log('only deleting user block ran');
                 return deletedUser;
                }catch(e) {
-                console.log('only delete user block',e);
+                console.log(e);
                }
         
             }
@@ -210,7 +207,7 @@ const resolvers = {
             const deletedReview = await Review.findOneAndDelete({_id:_id});
             try{await User.findByIdAndUpdate({_id:context.user._id},{hasLeftReview:false},{new:true});}
             catch(e){
-                console.log('update user fail review delete',e);
+                console.log(e);
             }
             return deletedReview;
             }
@@ -222,8 +219,6 @@ const resolvers = {
               /*get author's id from the found review*/
             const author = review.author.toHexString();
             const currentUser = context.user._id;
-            console.log(author);
-            console.log(currentUser);
             if(author === currentUser || context.user.isAdmin) {
                 try {
                 const updatedReview = await Review.findByIdAndUpdate(
@@ -261,10 +256,7 @@ const resolvers = {
             if(context.user.isAdmin) {
                 /**search for products belonging to category and store it in a variable*/
                 const categoryHasProducts = await Product.find({category:args._id});
-                console.log(categoryHasProducts);
                 if(categoryHasProducts.length) {
-                    //const error = 'category has active associated products'
-                   // throw error;
                    throw new Error('category has active associated products! Please first delete those products')
                 }else { 
                 return await Category.findByIdAndDelete(args._id);
@@ -371,9 +363,6 @@ const resolvers = {
      updateBlogpost: async (parent,{_id,title,blogText,blogPic},context) => {
         // here we find the blogpost so we can get the old values
         const oldBlogpost = await Blogpost.findById(_id);
-        console.log(oldBlogpost.blogPic.toHexString(),'OLD');
-        console.log(blogPic,'NEW');
-        
         /*Below we check to see if all our data has been fed with values if not we set variables to the old data
         so that we can run our update with the old data this allows a user to not need to fill out or change all data
         these variables will be used in the update action*/
@@ -388,25 +377,16 @@ const resolvers = {
          if(isEmpty) {
              throw new AuthenticationError('it appears you are not logged in');
          }
-
-         console.log(titleToUse);
-         console.log(blogPicToUse,"PIC WE ARE USING");
-         console.log(blogTextToUse);
-
          if(context.user.isAdmin) {
 
             /*if there is new blogPic data run delete on the old blogPost*/
             if(blogPic) {
                 try{
                 await FileUpload.findByIdAndDelete({_id: oldBlogpost.blogPic.toHexString()});
-                console.log('backend old blogPost successfully killed!');
                 }catch(e) {
-                    console.log('backend edit blogPic file delete err',e);
+                    console.log(e);
                 }
-            }else{
-                console.log('no new blogPic we are going with the old one!');
             }
-
            // return oldBlogpost.populate('blogPic');
             return await Blogpost.findOneAndUpdate(
                 {_id:_id},
@@ -432,7 +412,6 @@ const resolvers = {
             const blogPost = await Blogpost.findById({_id:_id});
             /**get the blogPic _id i.e. FileUpload _id */
             const blogPic_id = blogPost.blogPic.toHexString()
-            console.log(blogPic_id);
             /**here we delete the blogpic */
        await FileUpload.findByIdAndDelete({_id: blogPic_id});
        /**delete the blogpost*/

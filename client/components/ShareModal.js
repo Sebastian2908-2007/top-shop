@@ -60,7 +60,6 @@ import {
         : '';
         /**take our origin and add it with the path to get our url this is what we feed to the modal to share*/
         const URL = `${origin}${asPath}`;
-        console.log(modalInfo);
     return( 
         <Modal
         open={openShareModal}

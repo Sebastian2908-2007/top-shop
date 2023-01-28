@@ -22,8 +22,6 @@ const Blog = () => {
         return (<div>loading...</div>);
     }
     const blogPosts = data.getBlogposts;
-    //console.log(blogPosts);
-    
 return(
     <div>
         <BlogPostHeroSection id="Hero">
@@ -32,7 +30,6 @@ src="/topshop-hero1.png"
 alt="futuristic shop collage"
 width={1920}
 height={1080}
-//fill
 priority
 layout='responsive'
 />
@@ -53,18 +50,4 @@ layout='responsive'
 )
 };
 
-/**use getStaticProps for non dynamic routes */
-/*export async function getStaticProps () {
-    const client = initializeApollo();
- const {data} =  await client.query({
-      query: GET_BLOGPOSTS_ADMIN
-  });
-  console.log(data);
-  return {
-    props: {
-        blogPostId: data.getBlogposts
-    }
-}
-};
-*/
 export default Blog;

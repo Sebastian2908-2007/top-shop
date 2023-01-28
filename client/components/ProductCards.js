@@ -38,8 +38,6 @@ export default function ProductCard({product,setOpen,setEditOrDelete,setModalInf
     isAdmin = false
   };
 
-
-  //console.log(isAdmin);
   /**this is state for the text that resides in the product item buttons so that it can be changed when adding to cart */
   const [crtBtnTxt, setCrtBtnTxt] = useState('Add To Cart');
   /**destructure product */
@@ -51,8 +49,6 @@ export default function ProductCard({product,setOpen,setEditOrDelete,setModalInf
     quantity,
     _id
   } = product;
-  //console.log(product);
-
   /**destructure Location from image that is nested in the product */
   const {
 Location,

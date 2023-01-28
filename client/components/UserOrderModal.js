@@ -16,8 +16,6 @@ import dateFormat from '../utils/dateFormat';
 
 const UserOrderModal = ({orderOpen,setOrderOpen,orderInfo,setOrderInfo})=> {
    const orders = orderInfo.map(order => order);
-    console.log(orders);
-    console.log(orderInfo);
     const style = {
         display:"flex",
         flexDirection: "column",

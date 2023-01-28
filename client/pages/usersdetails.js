@@ -31,16 +31,7 @@ export default function Usersdetails () {
         lastName,
         email,
         orders 
-    } = data.getUserById;
-
-    console.log(firstName);
-    console.log(lastName);
-    console.log(email);
-    console.log(orders);
-
-    //console.log(data.getUserById);
-    //console.log(date);
-   
+    } = data.getUserById;   
     return(
         <UserDetailsSection>
             <UserPersonalDetailsSection>

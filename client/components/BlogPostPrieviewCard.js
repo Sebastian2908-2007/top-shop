@@ -11,9 +11,6 @@ import { CardImageDiv } from "../styles/Div.styled";
 import Image from 'next/legacy/image';
 const BlogPostPrieviewCard = ({blogPost}) => {
     const {_id,title,blogText,blogPic} = blogPost;
-   // console.log(_id,title,blogText);
-   // console.log(blogPic);
-   useEffect(() => {console.log('main blog rendering')},[])
     return(
         <Card sx={{ 
             boxShadow:' 0 0 10px black',

@@ -38,8 +38,6 @@ export default function Reviews () {
 const openReviewForm = () => {
     setOpenLeaveReviewModal(true);
 };
-
-//console.log( auth.getProfile().data)
    const reviews = data.getReviews;
     return(
         

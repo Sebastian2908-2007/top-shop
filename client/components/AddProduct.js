@@ -115,7 +115,7 @@ const [addProduct,{productError}] = useMutation(ADD_PRODUCT);
      /**this resets our select menu*/
      setCategory('');
         }catch(e){
-            console.log(e);
+            //console.log(e);
             setFormError(e.message);
             /**sets error message null so it will dissapear from the ui */
             setTimeout(() => {setFormError(null)},3000)

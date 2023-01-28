@@ -57,7 +57,6 @@ const style = {
        // state for rating component for editing a review
        //const [Ratingvalue, setRatingValue] = useState(modalInfo.rating);
       useEffect(() => {SetItemType(modalInfo.itemType)},[open]);
-     // useEffect(() => {console.log(modalInfo)},[modalInfo]);
 /**name mutation for deleting a product we also instruct get all products to be run each time this is */
 const [deleteProduct] = useMutation(DELETE_PRODUCT,{
     refetchQueries:[{query: GET_ALL_PRODUCTS}]
@@ -119,7 +118,6 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
        /**PRODUCT LOGIC ENDS */
 /**BLOGPOST LOGIC STARTS */
        case 'blogpost':
-        console.log('your deleting a blogpost!!!');
         try{
           await deleteBlogPost({variables:{_id: modalInfo._id}});
           handleClose();
@@ -137,8 +135,6 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
        /**BLOGPOST LOGIC ENDS */
        /**REVIEW LOGIC STARTS*/
        case 'review':
-        console.log('your deleting a review!');
-        console.log(modalInfo);
         await deleteReview({
           variables:{
             _id: modalInfo._id
@@ -154,7 +150,6 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
           await deleteUser({
             variables:{_id: modalInfo._id}
           });
-          console.log('Successful user delete');
           handleClose();
           setModalInfo({});
         }catch(e){
@@ -175,7 +170,6 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
                 [name]:value
             }
         );
-        console.log(modalInfo);
     };
 
        /**this is used to capture the file or picture from form*/
@@ -210,8 +204,6 @@ const handleClose = () => {setOpen(false); setModalInfo({})/*setEditOrDelete(nul
 
   /**BLOGPOST LOGIC STARTS */
     case 'blogpost':
-      console.log(modalInfo.title, modalInfo.blogText);
-
       /**the below if statement only happens if there is new blog pic info detected */
 if(modalInfo.blogPic) {
   try{
@@ -282,7 +274,6 @@ if(modalInfo.blogPic) {
         email: modalInfo.email
       }
     });
-    console.log('this edit ran through successfully!!!');
     setOpen(false);
     setModalInfo({});
     break;
@@ -341,7 +332,6 @@ if(modalInfo.blogPic) {
             value={modalInfo.rating}
             onChange={(event, newValue) => {
               setModalInfo({...modalInfo, rating: newValue});
-              console.log(modalInfo.rating,'in rating');
             }}
             sx={{marginBottom:'.5rem'}}
             />

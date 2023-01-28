@@ -32,8 +32,6 @@ const SavedAddressModal = ({open,setOpen,previousAddress}) => {
 const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
     const [state] = useStoreContext();  
-
-  //console.log(previousAddress);
     const handleClose = () => {setOpen(false);};
 
     const submitCheckout = async () => {

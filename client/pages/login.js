@@ -26,10 +26,8 @@ const Login = () => {
         });
         const token = loginResponse.data.loginUser.token;
         auth.login(token);
-        console.log(token);
     }catch(e) {
         setErrorMsg(e.message);
-        console.log(e.message);
     }
     };
 

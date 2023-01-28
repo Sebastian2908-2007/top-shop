@@ -8,7 +8,6 @@ import { GET_BASIC_USERS } from "../utils/queries";
 /**COMPONENT TO GO ON ADMIN DASHBOARD THE LOWER CASE FILE WITH THE SAME NAME IN THE PAGES DIR IS ACTUALLY A PAGE*/
 const AdminUsers = () => {
     const {loading , data: getUsers} = useQuery(GET_BASIC_USERS);
-    console.log(getUsers);
     return(
     <AdminBlogpostLink href='/adminusers'>
        {loading ? 'loading': getUsers.getUsers.length} users ➯<EditLinkSpan>edit ?</EditLinkSpan>

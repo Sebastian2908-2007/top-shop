@@ -34,20 +34,14 @@ const httpLink = new HttpLink({
 const authLink = setContext((_, { headers }) => {
   if (typeof window !== 'undefined') {
     const token = localStorage.getItem('id_token');
-    console.log('endpoint running on client');
     return {
       headers: {
         ...headers,
         authorization: token ? `Bearer ${token}` : '',
       },
     };
-  }else{
-    console.log('endpoint running on sever');
-  }
-    
- 
-  
-  });
+   }
+});
   
 
 

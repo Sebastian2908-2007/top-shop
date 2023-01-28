@@ -22,9 +22,7 @@ const AddressForm = () => {
  
   /**get the current user by _id so that we can determin whether or not they have added an address in the past*/
   const {loading, data: addressData} = useQuery(GET_USER_ADDRESS_FOR_CHECKOUT,{variables:{_id: auth.getProfile().data._id}});
-  if(!loading) {
-    console.log(addressData);
-  }
+
   /*mutation for adding the address*/
   const [addAddress] = useMutation(ADD_ADDRESS);
   const [ state, dispatch ] = useStoreContext();
@@ -65,7 +63,6 @@ const AddressForm = () => {
             country: form.country
         }
     });
-    console.log(address);
    getCheckout({
      variables: { products: productIds }
     });
@@ -79,8 +76,6 @@ useEffect(() => {
         });
     }
   }, [data]);
-
-  //useEffect(() => {console.log(form)},[form]);
 
   /**if user data is loading return loading div*/
   if(loading) {

@@ -35,7 +35,7 @@ const AddBlogpost = () => {
             ...blogPostData,
             [name]: value
         });
-        console.log(blogPostData);
+        //console.log(blogPostData);
     };
     /**this is used to capture the file or picture from form*/
     const handleFileChange = event => {
@@ -67,7 +67,7 @@ const AddBlogpost = () => {
             blogPic: blogPicId
         }
        });
-console.log(blogPostUpload);
+//console.log(blogPostUpload);
  /**this will reset the product form*/
  document.getElementById('blogpost-form').reset();
  setBlogPic(null);
@@ -75,7 +75,7 @@ console.log(blogPostUpload);
  refetch();
 
         }catch(e){
-            console.log(e.message);
+            //console.log(e.message);
             setFormErr(e.message);
             /**sets error message null so it will dissapear from the ui */
            setTimeout(() => {setFormErr(null)},3000)
@@ -83,7 +83,7 @@ console.log(blogPostUpload);
         
     };
 
-    useEffect(() => {console.log(formErr);},[formErr]);
+    //useEffect(() => {console.log(formErr);},[formErr]);
     
     return( 
    <CarouselAdminSection>
