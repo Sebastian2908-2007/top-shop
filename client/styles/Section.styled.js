@@ -105,6 +105,9 @@ height: 100%;
 width: 100%;
 padding: 5%;
 padding-bottom: 11em;
+@media screen and (min-width: 2560px){
+    padding-bottom: 13em; 
+}
 `;
 
 export const BlogPostHeroSection = styled.section`
@@ -133,6 +136,9 @@ padding-bottom: 11em;
 display: flex;
 flex-direction: column;
 align-items: center;
+@media screen and (min-width: 2560px){
+    padding-bottom: 13em; 
+}
 `;
 
 export const SingleBlogPostHeroSection = styled.section`

@@ -181,7 +181,7 @@ return(
         src={blogPic.Location}
         width={600}
         height={600}
-        layout='responsive'
+        layout='intrinsic'
         priority
         />
           <SingleBlogpostTitle>{title}</SingleBlogpostTitle>

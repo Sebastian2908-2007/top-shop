@@ -183,13 +183,10 @@ transform: skew(10deg, -8deg);
 `;
 export const BlogHeroPic = styled(Image)`
 width: 100%;
-height: 40vh;
-//max-height: 100%;
-object-fit: fill;
+object-fit: contain;
 border-bottom: 2px solid black;
 animation: ${bounceIn} 2s linear 1;
 @media screen and (min-width: 768px) {
-  height: 50vh;
   width: 80%;
   margin-top: 2%;
   margin-bottom: 2%;

@@ -31,7 +31,7 @@ alt="futuristic shop collage"
 width={1920}
 height={1080}
 priority
-layout='responsive'
+layout='intrinsic'
 />
 <MainTitle>Top Blog</MainTitle>
 <TopLinkPack/>
