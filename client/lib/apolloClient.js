@@ -27,7 +27,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
  */
 const httpLink = new HttpLink({
   uri: process.env.NEXT_PUBLIC_APOLLO_URI, // Server URL (must be absolute)
-  credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+  credentials: 'https://topshop1188.herokuapp.com/', // Additional fetch() options like `credentials` or `headers`
 })
 /*const schemaLink = new SchemaLink({schema});*/
 
