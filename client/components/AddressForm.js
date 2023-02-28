@@ -71,6 +71,7 @@ const AddressForm = () => {
   /*if data var changes we will be redirected to stripe checkout page*/
 useEffect(() => {
     if (data) {
+      console.log("data",data);
         stripePromise.then((res) => {
             res.redirectToCheckout({ sessionId: data.checkout.session });
         });
