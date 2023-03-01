@@ -9,25 +9,29 @@ import { AddressModalCancelButton,AddressModalCheckoutButton } from '../styles/B
 import { useStoreContext } from '../utils/Globalstate';
 import {loadStripe} from '@stripe/stripe-js';
 
-const style = {
-    display:"flex",
-    flexDirection: "column",
-    alignItems:"center",
-      position: 'absolute',
-      top: '50%',
-      padding: '5%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      width: '80%',
-      bgcolor: 'rgb(0,0,0,.8)',
-      border: '2px solid rgb(254, 114, 53)',
-      boxShadow: 24,
-    };
+
 
 /**stripe pub key*/
 const stripePromise = loadStripe(  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const SavedAddressModal = ({open,setOpen,previousAddress}) => {
+  const style = {
+    display:"flex",
+    flexDirection: "column",
+    alignItems:"center",
+    width: '80%',
+    '@media screen and (min-width:1366px )': {
+      width:'35%',
+     },
+      position: 'absolute',
+      top: '50%',
+      padding: '5%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',  
+      bgcolor: 'rgb(0,0,0,.8)',
+      border: '2px solid rgb(254, 114, 53)',
+      boxShadow: 24,
+    };
  /* useLazyQuery for doing our checkout query on button click*/
 const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 

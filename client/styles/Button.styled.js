@@ -125,6 +125,10 @@ border-radius: 11px;
 border: none;
 background-color:rgb(254, 114, 53);
 margin-left: 5%;
+&:hover {
+background-color: rgb(254, 114, 53,.5);
+color: #017698;
+}
 `;
 export const AddressModalCancelButton = styled.button`
 padding: 6%;
@@ -134,6 +138,10 @@ border: none;
 //background-color: rgb(0, 0, 50.2);
 background-color: rgb(255, 0, 0);
 margin-right: 5%;
+&:hover {
+background-color: rgb(255, 0, 0,.5);
+color: #017698;
+}
 `;
 
 export const PreviousAddressBtn = styled.button`
