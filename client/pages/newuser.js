@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
-import {Form,FormInput,FormButton } from "../styles/Forms.styled";
+import {Form,FormInput,FormButton,AddForm } from "../styles/Forms.styled";
 import { FormSection } from "../styles/Section.styled";
 import { LoginSignupErrorDiv } from "../styles/Div.styled";
 import auth from "../utils/auth";
@@ -51,17 +51,19 @@ const CreateUser = () => {
         return(
             <FormSection flxDirErr={error && 'column'} alignItemsErr={error &&'center'} pdngBtmErr={error && '9em'}>
                 {error && <LoginSignupErrorDiv>{errorMsg} Please Try again!</LoginSignupErrorDiv> }
-                <Form onSubmit={submitAddUser} /*transform={error ? 'translateY(1%)':'translateY(15%)'*/ transform390='translateY(40%)'
+                {/*<Form onSubmit={submitAddUser} transform={error ? 'translateY(1%)':'translateY(15%)' transform390='translateY(40%)'
                 transform540={error ? 'translateY(11%)':'translateY(11%)'} transform768='translateY(35%)' padding1024='1%'
                 transform1024={error ? 'translateY(2%)':'translateY(-6%)'} transform1280='translateY(8%)' transform1366={error ? 'translateY(2%)':'translateY(-2%)'}
                 transform1920='translateY(20%)' errorColor={error && 'linear-gradient(rgb(0,0,0,0.8),rgb(170, 74, 68))'}
-                >
+        >*/}
+                <AddForm onSubmit={submitAddUser} errorColor={error && 'linear-gradient(rgb(0,0,0,0.8),rgb(170, 74, 68))'}>
                     <FormInput onChange={handleChange} placeholder="first name" name="firstName" type='firstName' />
                     <FormInput onChange={handleChange} placeholder="last name" name="lastName" type='lastName'/>
                     <FormInput onChange={handleChange} placeholder="Your Email" name="email" type='email' marginTop='.5em'/>
                     <FormInput onChange={handleChange} placeholder="Password" name="password" type='password'/>
                     <FormButton type="submit">Complete Signup</FormButton>
-                </Form>
+                    </AddForm>
+                {/*</Form>*/}
             </FormSection>
         );
 };

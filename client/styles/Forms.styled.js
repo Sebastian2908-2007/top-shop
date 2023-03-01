@@ -45,16 +45,18 @@ background: ${props => props.errorColor ? props.errorColor: 'linear-gradient(to 
 `;
 
 export const AddForm = styled.form`
-/**all transform props were added for the create user form and that is where they are being used */
 display: flex;
 flex-direction: column;
 justify-content: center;
+align-items: center;
 padding: 7%;
-border: 2px solid rgb(0,0,0);
 width: 100%;
+border: 3px solid rgb(254, 167, 53);
+box-shadow: 0 0 20px rgb(254, 114, 53);
 border-radius: 11px;
-//background-color: rgb(252, 245, 239,.8);
-background: ${props => props.errorColor };
+background: ${props => props.errorColor ?
+ props.errorColor: 'linear-gradient(to right, rgb(0, 119, 255),rgb(0,0,0,0.7))' };
+
 @media screen and (min-width: 390px) {
     
 }

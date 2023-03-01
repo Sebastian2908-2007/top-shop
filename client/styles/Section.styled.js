@@ -40,13 +40,13 @@ export const FormSection = styled.section`
 padding: 4%;
 height: auto;
 /**I start using below prop on form error at 1024 px */
-padding-bottom: ${props => props.pdngBtmErr ? props.pdngBtmErr: '15rem'};
+padding-bottom: ${props => props.pdngBtmErr ? props.pdngBtmErr: '4rem'};
 @media screen and (min-width: 768px) {
     display: flex;
      /**these props will be used with error only */
     flex-direction:${props => props.flxDirErr ? props.flxDirErr: 'row'};
     justify-content: center;
-    padding-bottom: ${props => props.pdngBtmErr ? props.pdngBtmErr: '20rem'};
+    padding-bottom: ${props => props.pdngBtmErr ? props.pdngBtmErr: '8rem'};
     /**used only when a form error is present */
     align-items: ${props => props.alignItemsErr};
 }
